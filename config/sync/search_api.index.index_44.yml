@@ -1,6 +1,6 @@
 uuid: 253b16fe-ef58-4f4c-b904-cf24dbb83a05
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - search_api_solr
@@ -15,21 +15,21 @@ dependencies:
     - field.storage.node.field_civic_engagements
     - field.storage.node.field_description
     - field.storage.node.field_domiciles
-    - field.storage.node.field_educational_activities
-    - field.storage.node.field_sw_education
     - field.storage.node.field_education_type
+    - field.storage.node.field_educational_activities
     - field.storage.node.field_father
-    - field.storage.node.field_nachname
     - field.storage.node.field_location
     - field.storage.node.field_marriage_children
     - field.storage.node.field_mother
+    - field.storage.node.field_nachname
     - field.storage.node.field_name
     - field.storage.node.field_other_activities
     - field.storage.node.field_other_sources
-    - field.storage.node.field_postanschrift
     - field.storage.node.field_professional_activities
     - field.storage.node.field_siblings
+    - field.storage.node.field_sw_education
     - field.storage.node.field_year_of_migration
+    - field.storage.node.field_postanschrift
     - search_api.server.server_44
 third_party_settings:
   search_api_solr:
