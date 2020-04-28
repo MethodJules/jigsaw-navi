@@ -1,0 +1,29 @@
+uuid: 82b321be-c186-45ad-996d-aa86f69d55fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_education_type
+    - node.type.sweducation
+    - taxonomy.vocabulary.tax_morph_m_education_type
+id: node.sweducation.field_education_type
+field_name: field_education_type
+entity_type: node
+bundle: sweducation
+label: 'Education Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tax_morph_m_education_type: tax_morph_m_education_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

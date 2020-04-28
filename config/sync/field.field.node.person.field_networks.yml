@@ -1,0 +1,30 @@
+uuid: 6d98169c-c18f-4674-b3c6-809ee3708926
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_networks
+    - node.type.person
+_core:
+  default_config_hash: ujgTi71T_GV53EdZRGCLkuZTFZ0WsbxvXo2npdVZVRU
+id: node.person.field_networks
+field_name: field_networks
+entity_type: node
+bundle: person
+label: Networks
+description: 'Please add any relevant person. If the person you wish to add is not included in the list of persons, please add this person to the database. If this person you wish to add does not match the criteria of the list, please just add the name and no further information.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

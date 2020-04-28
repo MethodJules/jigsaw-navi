@@ -1,0 +1,31 @@
+uuid: b237c934-4433-4995-917e-0831a1cb6771
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sw_education
+    - node.type.chronic
+    - node.type.sweducation
+_core:
+  default_config_hash: 07WUqVgoPsIaYuRvh4z_sr-8tECCf4hhnHAl7g_MVYI
+id: node.chronic.field_sw_education
+field_name: field_sw_education
+entity_type: node
+bundle: chronic
+label: Educations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sweducation: sweducation
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

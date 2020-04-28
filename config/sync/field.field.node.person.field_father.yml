@@ -1,0 +1,21 @@
+uuid: d665d0ac-e13c-43a1-9d81-61be9b15c967
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_father
+    - node.type.person
+_core:
+  default_config_hash: PGWqTP7KIwxUO8LPSl2liTvxoJ7HAY8Mim-HNOPMNNQ
+id: node.person.field_father
+field_name: field_father
+entity_type: node
+bundle: person
+label: Father
+description: 'Please add name, dates of birth and death and occupation if known.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

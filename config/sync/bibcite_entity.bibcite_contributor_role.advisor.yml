@@ -1,0 +1,9 @@
+uuid: 327c9479-9728-425e-bd03-554527d8ab29
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: bzMhHDZ7HNRnHSCzzHKSN9AbOkiJC3nNS2XOUijy7SA
+id: advisor
+label: Advisor
+weight: 7

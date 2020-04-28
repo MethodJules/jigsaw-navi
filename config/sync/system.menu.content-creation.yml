@@ -1,0 +1,8 @@
+uuid: 80177b3d-b0c0-4702-b6ac-5593a982b5da
+langcode: en
+status: true
+dependencies: {  }
+id: content-creation
+label: 'Content Creation'
+description: 'Content creation menu'
+locked: false

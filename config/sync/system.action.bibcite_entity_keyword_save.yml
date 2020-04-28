@@ -1,0 +1,13 @@
+uuid: 87980f25-77ce-449f-833d-3cf99d6f77be
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_entity
+_core:
+  default_config_hash: 0v0UTsNQ96dPHTNiuVzlY9wc4a2pf1VdRHQOTlD4Wks
+id: bibcite_entity_keyword_save
+label: 'Save keyword'
+type: bibcite_keyword
+plugin: bibcite_entity_keyword_save
+configuration: {  }

@@ -1,0 +1,19 @@
+uuid: 8538fbf2-3131-47d6-8837-af1d596b5b95
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: TuL9ygKbUIWGo9iIUmZsAhZbkl1lwr_3KkchUjSWSBE
+name: Person
+type: person
+description: 'Use this pattern for the persons name: name, forename (alternative names)'
+help: 'Please add all known names as Displayname (example: Wronsky,  Siddy (born Neufeld), or Hoffert-Horani, Mir-jam, Dr. (Hoffert, Maria, Fassbender, Maria)) '
+new_revision: false
+preview_mode: 1
+display_submitted: false

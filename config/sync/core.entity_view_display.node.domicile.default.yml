@@ -1,0 +1,52 @@
+uuid: b67475f6-dc06-4dc8-a696-42c887f1f9ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.domicile.field_person
+    - field.field.node.domicile.field_place
+    - field.field.node.domicile.field_time
+    - node.type.domicile
+  module:
+    - datetime_range
+    - user
+_core:
+  default_config_hash: cvEOl_UFpgIu18VwbzugEoyKnDpXA1PWpZCIeG38S6Y
+id: node.domicile.default
+targetEntityType: node
+bundle: domicile
+mode: default
+content:
+  field_person:
+    label: above
+    weight: 2
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_place:
+    label: above
+    weight: 0
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_time:
+    weight: 1
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: html_year
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  links:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

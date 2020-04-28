@@ -1,0 +1,33 @@
+uuid: dca6b30c-b34e-44e2-940f-8a4984f0b6f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.glossar.body
+    - node.type.glossar
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: ZrYZQ-s8u_gggNxukiSQiqlk2SxoTUOkJjmofU8zZs4
+id: node.glossar.teaser
+targetEntityType: node
+bundle: glossar
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

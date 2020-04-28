@@ -1,0 +1,31 @@
+<?php
+use Drupal\taxonomy\Entity\Term;
+/**
+ * @file
+ * Module installation hooks implementation.
+ */
+
+/**
+ * Add Taxonomy terms.
+ */
+function women_data_update_8101() {
+  // Machine name of the Taxonomy vocabulary.
+  $vocabulary = 'tax_morph_m_education_type';
+
+  // Term names to be added.
+  $items = [
+    'Social Work Education',
+    'Education in related fields',
+    'Other Education',
+  ];
+
+  $weight = 0;
+  foreach ($items as $item) {
+    Term::create([
+      'parent' => array(),
+      'name' => $item,
+      'vid' => $vocabulary,
+      'weight' => $weight++,
+    ])->save();
+  }
+}

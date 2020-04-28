@@ -1,0 +1,23 @@
+uuid: 9c4cd2bf-06d7-4f07-97ea-17f240849f47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_biography
+    - node.type.person
+  module:
+    - text
+_core:
+  default_config_hash: K7dZcFx6i7KSUokZLeJJo1vbV65XngSWrimOxmgqFx0
+id: node.person.field_biography
+field_name: field_biography
+entity_type: node
+bundle: person
+label: Biography
+description: 'Please add information on: date of birth, place of birth, date of death, place of death, short sum-maries of a) family background, b) educational background, c) activities in social work, d) im-portance for social work. Information on other education than in social work should be added more thoroughly here, because they are not specified later.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

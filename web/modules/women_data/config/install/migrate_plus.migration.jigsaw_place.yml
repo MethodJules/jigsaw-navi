@@ -1,0 +1,45 @@
+id: jigsaw_place
+label: Jigsaw Nodes Place
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: jigsaw
+
+source:
+  plugin: d7_node
+  node_type: place
+
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    - plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_postanschrift:
+    - plugin: addressfield
+      source : field_postanschrift
+  field_location:
+    - plugin: geofield
+      source: field_location
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: place
+
+migration_dependencies:
+  required:
+  - jigsaw_person
+  - jigsaw_user
+
+dependencies:
+  enforced:
+    module:
+    - women_data

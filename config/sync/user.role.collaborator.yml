@@ -1,0 +1,35 @@
+uuid: 5502ce9c-7bb8-4d82-8be7-3c5486a33a7c
+langcode: de
+status: true
+dependencies: {  }
+id: collaborator
+label: Collaborator
+weight: -6
+is_admin: null
+permissions:
+  - 'access in-place editing'
+  - 'access tour'
+  - 'change own username'
+  - 'create activitiy content'
+  - 'create chronic content'
+  - 'create domicile content'
+  - 'create institutionassociation content'
+  - 'create person content'
+  - 'create place content'
+  - 'create sweducation content'
+  - 'delete own activitiy content'
+  - 'delete own chronic content'
+  - 'delete own domicile content'
+  - 'delete own institutionassociation content'
+  - 'delete own page content'
+  - 'delete own person content'
+  - 'delete own place content'
+  - 'delete own sweducation content'
+  - 'edit own activitiy content'
+  - 'edit own chronic content'
+  - 'edit own domicile content'
+  - 'edit own institutionassociation content'
+  - 'edit own page content'
+  - 'edit own person content'
+  - 'edit own place content'
+  - 'edit own sweducation content'

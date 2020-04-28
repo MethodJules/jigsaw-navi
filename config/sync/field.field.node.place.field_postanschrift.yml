@@ -1,0 +1,49 @@
+uuid: deeb2dfb-c2ab-42ac-b71a-5397a50cce97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_postanschrift
+    - node.type.place
+  module:
+    - address
+_core:
+  default_config_hash: A3CemZnEy9fuAl1EWv5EOMJ1d3MWxb2RTS8W--1hsPA
+id: node.place.field_postanschrift
+field_name: field_postanschrift
+entity_type: node
+bundle: place
+label: Postanschrift
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: optional
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

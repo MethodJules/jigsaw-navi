@@ -1,0 +1,67 @@
+uuid: e8a28886-76ed-496a-a938-547a669d0b83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.sweducation.field_description
+    - field.field.node.sweducation.field_education_type
+    - field.field.node.sweducation.field_educational_activities
+    - field.field.node.sweducation.field_institution_association
+    - field.field.node.sweducation.field_place
+    - node.type.sweducation
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: LTLtn4i_xpXCU4t7w_NeWA7GM0kArb6WuX_HhDQGwzE
+id: node.sweducation.default
+targetEntityType: node
+bundle: sweducation
+mode: default
+content:
+  field_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_education_type:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_educational_activities:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_institution_association:
+    label: above
+    weight: 1
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_place:
+    label: above
+    weight: 2
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

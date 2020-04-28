@@ -1,0 +1,13 @@
+uuid: e76eafab-2b46-4d1c-a5b9-1904486cd158
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_entity
+_core:
+  default_config_hash: THpbAlGVUZjTFpUSwawQr9grzuwvCkkT6onryBBUM5I
+id: bibcite_entity_keyword_merge
+label: 'Merge keyword'
+type: bibcite_keyword
+plugin: bibcite_entity_keyword_merge
+configuration: {  }

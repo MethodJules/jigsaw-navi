@@ -1,0 +1,167 @@
+uuid: e258930a-74df-4ee9-b194-268249aafb46
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.women_search_view_mode
+    - field.field.node.person.field_age_at_migration
+    - field.field.node.person.field_archival_materials
+    - field.field.node.person.field_biography
+    - field.field.node.person.field_chronics
+    - field.field.node.person.field_domiciles
+    - field.field.node.person.field_father
+    - field.field.node.person.field_marriage_children
+    - field.field.node.person.field_mother
+    - field.field.node.person.field_nachname
+    - field.field.node.person.field_networks
+    - field.field.node.person.field_other_sources
+    - field.field.node.person.field_person_bild
+    - field.field.node.person.field_person_datei
+    - field.field.node.person.field_publication
+    - field.field.node.person.field_siblings
+    - field.field.node.person.field_year_of_migration
+    - node.type.person
+  module:
+    - file
+    - text
+    - user
+_core:
+  default_config_hash: xfKyJjAEcFeEBukoF1p2qd5xabGCERQtvsxRDAIAibY
+id: node.person.women_search_view_mode
+targetEntityType: node
+bundle: person
+mode: women_search_view_mode
+content:
+  field_age_at_migration:
+    label: above
+    weight: 6
+    type: number_integer
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    region: content
+  field_archival_materials:
+    label: above
+    weight: 11
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_biography:
+    label: above
+    weight: 1
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_chronics:
+    weight: 8
+    label: above
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_domiciles:
+    weight: 9
+    label: above
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_father:
+    label: above
+    weight: 3
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_marriage_children:
+    label: above
+    weight: 5
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_mother:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_nachname:
+    label: above
+    weight: 0
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_networks:
+    label: above
+    weight: 10
+    type: entity_reference_entity_view
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    region: content
+  field_other_sources:
+    label: above
+    weight: 12
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_person_datei:
+    label: above
+    weight: 14
+    type: file_default
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    region: content
+  field_publication:
+    label: above
+    weight: 13
+    type: entity_reference_entity_view
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    region: content
+  field_siblings:
+    label: above
+    weight: 4
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_year_of_migration:
+    label: above
+    weight: 7
+    type: number_integer
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_person_bild: true
+  langcode: true

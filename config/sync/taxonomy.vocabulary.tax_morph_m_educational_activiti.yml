@@ -1,0 +1,10 @@
+uuid: 9b92c81c-b037-49f9-b73e-6d5dea764d20
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: jgD_riky9rn85_emVkreanVKhkevswfeVtk-S1qHAxM
+name: 'Educational Activities'
+vid: tax_morph_m_educational_activiti
+description: ''
+weight: 0

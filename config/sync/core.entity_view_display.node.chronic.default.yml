@@ -1,0 +1,52 @@
+uuid: 4a359a18-8d18-4046-85a6-8d38c8dfbd28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.chronic.field_activities
+    - field.field.node.chronic.field_sw_education
+    - field.field.node.chronic.field_time
+    - node.type.chronic
+  module:
+    - datetime_range
+    - user
+_core:
+  default_config_hash: U5H7nSlg-3BH83Iwk7KAJWTRWvqR_vCYrZ4jdoIyS9o
+id: node.chronic.default
+targetEntityType: node
+bundle: chronic
+mode: default
+content:
+  field_activities:
+    label: above
+    weight: 1
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_sw_education:
+    label: above
+    weight: 2
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_time:
+    weight: 0
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: html_year
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  links:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

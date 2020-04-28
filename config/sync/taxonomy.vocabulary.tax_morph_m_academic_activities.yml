@@ -1,0 +1,10 @@
+uuid: 1a9529ea-6ea6-4c65-bec8-5c77a0330834
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0wlxlsTiGYPfJx77ilUS1EuGPHlbhzJ-j2N3W-5BfLI
+name: 'Academic Activities'
+vid: tax_morph_m_academic_activities
+description: ''
+weight: 0

@@ -1,0 +1,27 @@
+uuid: 26ea6c87-fc99-49a9-bb29-eb40f7a8ad01
+langcode: en
+status: true
+dependencies:
+  config:
+    - bibcite_entity.bibcite_reference_type.web_article
+    - field.storage.bibcite_reference.field_file
+  module:
+    - file
+id: bibcite_reference.web_article.field_file
+field_name: field_file
+entity_type: bibcite_reference
+bundle: web_article
+label: File
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

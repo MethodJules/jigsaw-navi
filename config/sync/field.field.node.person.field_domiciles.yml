@@ -1,0 +1,31 @@
+uuid: d9f1a5ed-e1e1-4903-8fb5-8338a35c40a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_domiciles
+    - node.type.domicile
+    - node.type.person
+_core:
+  default_config_hash: zYvfg0Vsf-xJU1i9j39XoWVTbQKmF3RPNX2TF21fI5g
+id: node.person.field_domiciles
+field_name: field_domiciles
+entity_type: node
+bundle: person
+label: Domiciles
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      domicile: domicile
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

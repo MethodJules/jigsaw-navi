@@ -1,0 +1,23 @@
+uuid: 121d4058-634c-4709-b2ba-8aed550ceefa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time
+    - node.type.domicile
+  module:
+    - datetime_range
+_core:
+  default_config_hash: Q6YRzZcvbDuZu_62dVrqz0MsXOadT2GQYzLsVmXR0L8
+id: node.domicile.field_time
+field_name: field_time
+entity_type: node
+bundle: domicile
+label: Time
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

@@ -1,0 +1,10 @@
+uuid: fc96a48d-6e0b-4488-9598-b89815559307
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: TjCjKCqa7VxZ0oIALQ4uRp22Ee353OPx4kDAeQYLDk8
+name: 'Civic Engagements'
+vid: tax_morph_m_civic_engagements
+description: ''
+weight: 0

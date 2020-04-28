@@ -1,0 +1,21 @@
+uuid: 7ecced06-4bfb-4110-bcfd-1fe8a1193a89
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_archival_materials
+    - node.type.person
+_core:
+  default_config_hash: p6aJElB34WCaYW0yd7M3b9TBExDCkb7926jVz6Zk738
+id: node.person.field_archival_materials
+field_name: field_archival_materials
+entity_type: node
+bundle: person
+label: 'Archival Materials'
+description: 'Please add information on archival materials as accurately as possible.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

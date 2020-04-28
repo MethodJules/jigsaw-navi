@@ -1,0 +1,21 @@
+uuid: 26351246-69b3-49fd-8fdc-4d873f4b855f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_sources
+    - node.type.person
+_core:
+  default_config_hash: liaPJeHRi5_6BQqHTkTFfXBFYPdzodGh0-WrPLk4mWg
+id: node.person.field_other_sources
+field_name: field_other_sources
+entity_type: node
+bundle: person
+label: 'Other Sources'
+description: 'Please add possible other sources, as secondary literature, movies, other databases, biographical handbooks…'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

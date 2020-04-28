@@ -1,0 +1,85 @@
+uuid: aff25737-dde7-4610-9427-21e62029c517
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.activitiy.field_academic_activities
+    - field.field.node.activitiy.field_civic_engagements
+    - field.field.node.activitiy.field_description
+    - field.field.node.activitiy.field_institution_association
+    - field.field.node.activitiy.field_other_activities
+    - field.field.node.activitiy.field_place
+    - field.field.node.activitiy.field_professional_activities
+    - node.type.activitiy
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: v9GgpPmMQm7tQAzu_7IW-IPgsCo8Xm9i8MuYuaouMQQ
+id: node.activitiy.default
+targetEntityType: node
+bundle: activitiy
+mode: default
+content:
+  field_academic_activities:
+    label: above
+    weight: 5
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_civic_engagements:
+    label: above
+    weight: 4
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_institution_association:
+    label: above
+    weight: 1
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_other_activities:
+    label: above
+    weight: 6
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_place:
+    label: above
+    weight: 2
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_professional_activities:
+    label: above
+    weight: 3
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,42 @@
+uuid: 70848d67-bb10-4fef-871a-c4e9c55bbcaf
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - women_data
+id: jigsaw_institutionassociation
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: jigsaw
+label: 'Jigsaw Nodes Institution-Association'
+source:
+  plugin: d7_node
+  node_type: institutionassociation
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_name: field_name
+  field_place: field_place
+destination:
+  plugin: 'entity:node'
+  default_bundle: institutionassociation
+migration_dependencies:
+  required:
+    - jigsaw_user

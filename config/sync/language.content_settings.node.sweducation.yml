@@ -1,0 +1,11 @@
+uuid: 4abae412-b2df-41f4-8bfb-f5954bdcf55f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sweducation
+id: node.sweducation
+target_entity_type_id: node
+target_bundle: sweducation
+default_langcode: site_default
+language_alterable: false

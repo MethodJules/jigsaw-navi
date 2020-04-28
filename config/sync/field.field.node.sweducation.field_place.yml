@@ -1,0 +1,31 @@
+uuid: 15d2a480-cb85-4174-89ac-a80a1dce65d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place
+    - node.type.place
+    - node.type.sweducation
+_core:
+  default_config_hash: ohI22XV9ye66H5huwAjS0_zexzWJt4wH3jTjd5BQhf0
+id: node.sweducation.field_place
+field_name: field_place
+entity_type: node
+bundle: sweducation
+label: Place
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      place: place
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 0d0298c7-050b-41ec-8db9-be5dc77fe883
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: kMCote3Cn9Q6eSa9TkuORf4CuihlIiiDD0eqUhi98w4
+id: node.field_person
+field_name: field_person
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

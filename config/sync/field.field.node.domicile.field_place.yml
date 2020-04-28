@@ -1,0 +1,31 @@
+uuid: 879f9017-297e-44e7-b011-6f281afb5c80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place
+    - node.type.domicile
+    - node.type.place
+_core:
+  default_config_hash: HQbMnSIKpammUlfIuV4uAOMJx0nV06lx4e12x7aWGSU
+id: node.domicile.field_place
+field_name: field_place
+entity_type: node
+bundle: domicile
+label: 'Living Place'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      place: place
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

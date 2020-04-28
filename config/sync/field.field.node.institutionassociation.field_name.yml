@@ -1,0 +1,21 @@
+uuid: 7d57c322-9399-4603-befd-6e4964e40eb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_name
+    - node.type.institutionassociation
+_core:
+  default_config_hash: miwbvJq2G1gQhNG4RoUnWvVRwYhyAcY3Kzvr5ZnYE0g
+id: node.institutionassociation.field_name
+field_name: field_name
+entity_type: node
+bundle: institutionassociation
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

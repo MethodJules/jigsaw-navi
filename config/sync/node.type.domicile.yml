@@ -1,0 +1,20 @@
+uuid: f03d7ebb-c72b-408f-b501-c977d780feb2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-menu
+    parent: 'main-menu:0:'
+_core:
+  default_config_hash: KrXaqeflZagJH7TVHs0OeT4NyhsnT9kLXf4ejzLE0sg
+name: Domicile
+type: domicile
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

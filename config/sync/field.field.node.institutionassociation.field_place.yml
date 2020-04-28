@@ -1,0 +1,31 @@
+uuid: 6809f0b2-fda9-4ec2-89be-1f51b5d760ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place
+    - node.type.institutionassociation
+    - node.type.place
+_core:
+  default_config_hash: cWabXKz1jxGz2gqndkrRZftSdbXe6YSkFhYzb9A1ABg
+id: node.institutionassociation.field_place
+field_name: field_place
+entity_type: node
+bundle: institutionassociation
+label: Place
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      place: place
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

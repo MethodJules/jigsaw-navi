@@ -1,0 +1,31 @@
+uuid: 8529f422-db5b-413e-b6e0-54459843a552
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_civic_engagements
+    - node.type.activitiy
+    - taxonomy.vocabulary.tax_morph_m_civic_engagements
+_core:
+  default_config_hash: xD-MCmHhY3SvObXGcFH8VrNG9l3HhhrFOcA61Bt6hD0
+id: node.activitiy.field_civic_engagements
+field_name: field_civic_engagements
+entity_type: node
+bundle: activitiy
+label: 'Civic Engagements'
+description: 'Please categorize an activity by using one or more of the categories provided in the list of “profes-sional activities”, “civic engagement”, or “other activities”. If no given designation is fitting, click on ‘new content’ and create a new one.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tax_morph_m_civic_engagements: tax_morph_m_civic_engagements
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

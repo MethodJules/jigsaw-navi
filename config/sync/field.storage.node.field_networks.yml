@@ -1,0 +1,21 @@
+uuid: 05d287fe-4fd6-4fc6-ac11-eb0546df165c
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 1f32g6daXko4_fdTdKgTI2uidsreTMg37-RVqLjWv78
+id: node.field_networks
+field_name: field_networks
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

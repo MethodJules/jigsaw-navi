@@ -1,0 +1,10 @@
+uuid: 683cdb55-c3c8-46f8-bb42-1289c0c6a539
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 74E6VJdbjzHWKMMZ3pzcD0eHLkAZM9iTJATaNOZv2-o
+name: 'Professional Activities'
+vid: tax_morph_m_professional_activit
+description: ''
+weight: 0

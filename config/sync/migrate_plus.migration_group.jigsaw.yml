@@ -1,0 +1,15 @@
+uuid: 815aa0e0-5405-4103-807f-80af29842b39
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - women_data
+id: jigsaw
+label: 'Import data from D7 portal Jigsaw'
+description: 'Import of users, taxonomy and content nodes.'
+source_type: 'Drupal 7'
+module: null
+shared_configuration:
+  source:
+    key: jigsaw_source_db

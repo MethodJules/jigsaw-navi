@@ -1,0 +1,29 @@
+uuid: 70dffe9e-2ebe-43b8-bdef-3763a36c4be6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person_datei
+    - node.type.person
+  module:
+    - file
+_core:
+  default_config_hash: LEHd5sjZJk6OHsmGVt5tde7xDhlyyPyF5BXQqKwgcGw
+id: node.person.field_person_datei
+field_name: field_person_datei
+entity_type: node
+bundle: person
+label: Datei
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: ''
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

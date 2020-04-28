@@ -1,0 +1,15 @@
+minimum_single: 0
+minimum_multiple: 0
+disable_search_threshold: 8
+minimum_width: 200
+jquery_selector: 'select:visible'
+search_contains: true
+disable_search: false
+allow_single_deselect: true
+disabled_themes:
+  bartik: '0'
+  seven: '0'
+chosen_include: 2
+placeholder_text_multiple: '- Select an Option -'
+placeholder_text_single: '- Select Some Options -'
+no_results_text: 'No results found'

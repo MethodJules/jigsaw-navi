@@ -1,0 +1,21 @@
+uuid: dc031fe5-421e-47b3-823f-c1ac00151fa7
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: kWC6T9lQIBADY-DDlrqkyZskx0k_wWILUWReJkABbHY
+id: node.field_institution_association
+field_name: field_institution_association
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

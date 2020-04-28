@@ -1,0 +1,24 @@
+uuid: ffa5ff8e-70d2-413e-895d-6d31587d89c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.activitiy
+  module:
+    - text
+_core:
+  default_config_hash: suIAe5UqpOH8MB0wbg9P1MHE_fPggsWZuanXn9VkBS4
+id: node.activitiy.field_description
+field_name: field_description
+entity_type: node
+bundle: activitiy
+label: Description
+description: 'If further information on the activity is needed, please add here (not required).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

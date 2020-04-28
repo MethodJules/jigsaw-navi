@@ -1,0 +1,31 @@
+uuid: 4231f4d0-b5fc-42ec-8404-781a4863f237
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.glossar.body
+    - node.type.glossar
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 1atJZSTGvw5zvzWUEO1OMCIVCn9-APHuPyH4XJQqrfA
+id: node.glossar.default
+targetEntityType: node
+bundle: glossar
+mode: default
+content:
+  body:
+    label: above
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,63 @@
+id: jigsaw_activitiy
+label: Jigsaw Nodes Activity
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: jigsaw
+
+source:
+  plugin: d7_node
+  node_type: activitiy
+
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    - plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_description: field_description
+  field_institution_association: field_institution_association
+  field_place: field_place
+  field_professional_activities:
+    - plugin: sub_process
+      source: field_professional_activities
+      process:
+        target_id: tid
+  field_civic_engagements:
+    - plugin: sub_process
+      source: field_civic_engagements
+      process:
+        target_id: tid
+  field_academic_activities:
+    - plugin: sub_process
+      source: field_academic_activities
+      process:
+        target_id: tid
+  field_other_activities:
+    - plugin: sub_process
+      source: field_other_activities
+      process:
+        target_id: tid
+  field_person1: field_person
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: activitiy
+
+migration_dependencies:
+  required:
+    - jigsaw_user
+    - jigsaw_term
+
+dependencies:
+  enforced:
+    module:
+    - women_data

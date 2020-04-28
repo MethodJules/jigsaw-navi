@@ -1,0 +1,52 @@
+id: jigsaw_term
+label: Jigsaw Taxonomy Terms
+migration_group: jigsaw
+
+audit: true
+migration_tags:
+- Drupal 7
+- Taxonomy
+
+deriver: Drupal\taxonomy\Plugin\migrate\D7TaxonomyTermDeriver
+source:
+  plugin: d7_taxonomy_term
+
+process:
+  # If you are using this file to build a custom migration consider removing
+  # the tid field to allow incremental migrations.
+  tid: tid
+  vid:
+    plugin: migration_lookup
+    migration: jigsaw_vocabulary
+    source: vid
+  name: name
+  'description/value': description
+  'description/format': format
+  weight: weight
+  # Only attempt to stub real (non-zero) parents.
+  parent_id:
+    - plugin: skip_on_empty
+      method: process
+      source: parent
+    - plugin: migration_lookup
+      migration: d7_taxonomy_term
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+  forum_container: is_container
+  changed: timestamp
+  langcode: language
+
+destination:
+  plugin: entity:taxonomy_term
+
+migration_dependencies:
+  required:
+    - jigsaw_vocabulary
+
+dependencies:
+  enforced:
+    module:
+      - women_data
+

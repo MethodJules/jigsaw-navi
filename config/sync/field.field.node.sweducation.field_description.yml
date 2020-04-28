@@ -1,0 +1,24 @@
+uuid: e965d72b-394a-4db3-a0ad-4da982c8474f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.sweducation
+  module:
+    - text
+_core:
+  default_config_hash: jzunfGIXZdviS9Q5uZ97uS0II9yfLgApoHrJRB7JCkQ
+id: node.sweducation.field_description
+field_name: field_description
+entity_type: node
+bundle: sweducation
+label: Description
+description: 'If further information on the educational activity is needed, please add here (not required).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

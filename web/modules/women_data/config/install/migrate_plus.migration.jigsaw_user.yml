@@ -1,0 +1,66 @@
+# Migration configuration for Jigsaw user accounts.
+id: jigsaw_user
+label: Jigsaw Users
+migration_group: jigsaw
+
+# The source plugin defines where we are getting our data from and it's format.
+# (using Drupal core's d7_user plugin)
+source:
+  plugin: d7_user
+
+# The processing pipeline describes how each destination field is to be
+# populated based on the source data. For each destination field, one or more
+# process plugins may be invoked.
+process:
+  uid: uid
+  name:
+    -
+      plugin: get
+      source: name
+    #- # rename users with the same name
+    #  plugin: dedupe_entity
+    #  entity_type: user
+    #  field: name
+  pass: pass
+  mail: email
+  created: created
+  access: access
+  login: login
+  changed: changed
+  status: status
+  timezone: timezone
+
+  langcode:
+    plugin: user_langcode
+    source: entity_language
+    fallback_to_site_default: true
+  preferred_langcode:
+     plugin: user_langcode
+     source: language
+     fallback_to_site_default: true
+  preferred_admin_langcode:
+     plugin: user_langcode
+     source: language
+     fallback_to_site_default: true
+  init: init
+
+  # D7 user roles were keyed numerically. Use static_map plugin to map them to
+  # D8 role machine names (or migrate the user roles separately if there are many).
+  roles:
+    plugin: static_map
+    source: roles
+    map:
+      2: authenticated
+      3: administrator
+    default_value: authenticated
+# Every migration must also have a destination plugin, which handles writing
+# the migrated data in the appropriate form for that particular kind of data.
+# Most Drupal content is an "entity" of one type or another, and we need to
+# specify what entity type we are populating
+destination:
+  plugin: 'entity:user'
+
+dependencies:
+  enforced:
+    module:
+      - women_data

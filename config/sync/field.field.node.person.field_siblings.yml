@@ -1,0 +1,21 @@
+uuid: f1d7b2c2-3f14-430f-be1a-68a4a0d6a339
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_siblings
+    - node.type.person
+_core:
+  default_config_hash: BrwU0X63_TEcjQ8bfbFfukL7WxQZzwhHO1UJupl6Os4
+id: node.person.field_siblings
+field_name: field_siblings
+entity_type: node
+bundle: person
+label: Siblings
+description: 'Please add name, marriage name, dates of birth and death and occupation if known.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

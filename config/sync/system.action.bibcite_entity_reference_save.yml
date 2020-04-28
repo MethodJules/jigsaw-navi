@@ -1,0 +1,13 @@
+uuid: d8d5f361-e643-477a-bf8e-9969a5595877
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_entity
+_core:
+  default_config_hash: vSNjNg9YO5RBdjXVykw4b6RSMDtWtgP1LwleKohzjuo
+id: bibcite_entity_reference_save
+label: 'Save reference'
+type: bibcite_reference
+plugin: bibcite_entity_reference_save
+configuration: {  }

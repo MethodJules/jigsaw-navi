@@ -1,0 +1,19 @@
+uuid: 2653d766-bf69-4e9d-a316-01fa568b8304
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: W82yoYQLb5s3Rf-B9XemddHzghTLvLYK4z33LvAp_IU
+name: Education
+type: sweducation
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

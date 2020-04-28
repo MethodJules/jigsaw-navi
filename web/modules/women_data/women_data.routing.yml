@@ -1,0 +1,7 @@
+fetch_data:
+  path: 'women_data/fetch'
+  defaults:
+    _title: 'Fetch Data'
+    _controller: 'Drupal\women_data\Controller\WomenDataController::fetchData'
+  requirements:
+    _access: 'TRUE'

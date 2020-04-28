@@ -1,0 +1,23 @@
+uuid: 019f0f76-4733-4f6e-b10b-329c5ee1dc07
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 1MceBaAOZIgsVUDa8Yqe10cWGqqgYAdIBAGIWwKg9X4
+id: node.field_marriage_children
+field_name: field_marriage_children
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

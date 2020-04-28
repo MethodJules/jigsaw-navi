@@ -1,0 +1,23 @@
+uuid: 1d297bc2-21aa-4d90-a282-3eaae435cebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time
+    - node.type.chronic
+  module:
+    - datetime_range
+_core:
+  default_config_hash: SKFzsJ3DiRRuZR6WKcZh_Cpg7bVRHpsGbVnzIXQ3RAY
+id: node.chronic.field_time
+field_name: field_time
+entity_type: node
+bundle: chronic
+label: Time
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

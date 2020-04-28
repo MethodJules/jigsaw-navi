@@ -1,0 +1,21 @@
+uuid: 52950ff9-b084-43d3-bcb4-a9607443f7d9
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 3gzjiHlb4zqmY8LaV4vnmH8Y7qMyP-sr3ainlF76A6A
+id: node.field_sw_education
+field_name: field_sw_education
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

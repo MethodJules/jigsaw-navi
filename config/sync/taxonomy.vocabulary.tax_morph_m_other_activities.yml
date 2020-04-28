@@ -1,0 +1,10 @@
+uuid: f9b43dc3-2e25-463e-ae94-68423d167583
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: esT7_PeKt1iWANB6qnf-IZgdCNtiLLi1avdx8MicKhM
+name: 'Other Activities'
+vid: tax_morph_m_other_activities
+description: ''
+weight: 0

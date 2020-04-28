@@ -1,0 +1,22 @@
+uuid: 8261f52b-67ae-4622-92d4-9c81b6eb6793
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: CN4BK-SAH6br6Wri_zR6lJlK5kfscAmTLCpGscOMnL4
+id: node.field_civic_engagements
+field_name: field_civic_engagements
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

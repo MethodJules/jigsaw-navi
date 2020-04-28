@@ -1,0 +1,25 @@
+<?php
+/**
+ * Implementation of hook_element_info_alter
+ * Remove N/A option from optional radio button field
+ * @param array $types
+ */
+function women_data_element_info_alter(array &$types) {
+  if (isset($types['radios'])) {
+    $types['radios']['#process'][] = '_women_data_remove_radio_na';
+  }
+}
+
+/**
+ * Removes the N/A option of optional radio button field.
+ * A Callback function for women_data_element_info_alter
+ * @param array $element
+ * @return array $element
+ */
+function _women_data_remove_radio_na($element) {
+  if (!empty($element['#field_name']) && $element['#field_name'] === 'field_education_type') {
+    unset($element['_none']);
+  }
+
+  return $element;
+}

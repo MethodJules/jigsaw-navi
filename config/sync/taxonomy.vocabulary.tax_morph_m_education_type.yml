@@ -1,0 +1,8 @@
+uuid: f94e9f4f-dbcc-4bf8-aa6a-0de31b5c46f4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Education Type'
+vid: tax_morph_m_education_type
+description: ''
+weight: 0

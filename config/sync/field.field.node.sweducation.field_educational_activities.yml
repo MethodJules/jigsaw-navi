@@ -1,0 +1,31 @@
+uuid: 785b6a23-99ef-4995-9049-67bbbbd9bce2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_educational_activities
+    - node.type.sweducation
+    - taxonomy.vocabulary.tax_morph_m_educational_activiti
+_core:
+  default_config_hash: o3c-9LHjhsQtpZdHh118oZr5rZoGDRx0u8jqdHZjA3o
+id: node.sweducation.field_educational_activities
+field_name: field_educational_activities
+entity_type: node
+bundle: sweducation
+label: 'Educational Activities'
+description: 'Please categorize an educational activity by using one or more of the categories provided in the list of “educational activities”. If no given designation is fitting, click on ‘new content’ and create a new one.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tax_morph_m_educational_activiti: tax_morph_m_educational_activiti
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

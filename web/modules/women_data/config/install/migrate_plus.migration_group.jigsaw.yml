@@ -1,0 +1,43 @@
+# A "migration group" is - surprise! - a group of migrations. It is used to
+# group migrations for display by our tools, and to perform operations on a
+# specific set of migrations. It can also be used to hold any configuration
+# common to those migrations, so it doesn't have to be duplicated in each one.
+
+# The machine name of the group, by which it is referenced in individual
+# migrations.
+id: jigsaw
+
+# A human-friendly label for the group.
+label: Import data from D7 portal Jigsaw
+
+# More information about the group.
+description: Import of users, taxonomy and content nodes.
+
+# Short description of the type of source, e.g. "Drupal 6" or "WordPress".
+source_type: Drupal 7
+
+# Here we add any default configuration settings to be shared among all
+# migrations in the group.
+shared_configuration:
+  source:
+    # Add a database connection to your external database in settings.php
+    # and reference its key here.
+    key: jigsaw_source_db
+    # Add your source DB connection to settings.php
+    # $databases['jigsaw_source_db']['default'] = array (
+    # 'database' => 'women',
+    # 'username' => 'root',
+    # 'password' => '',
+    # 'prefix' => '',
+    # 'host' => 'localhost',
+    # 'port' => '3306',
+    # 'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    # 'driver' => 'mysql',
+    # );
+
+# Add an enforced dependency so the migration_group configuration will be
+# removed on module uninstall.
+dependencies:
+  enforced:
+    module:
+      - women_data

@@ -1,0 +1,23 @@
+uuid: 4398478d-8d19-442a-a392-99bd5cb2f056
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - node
+_core:
+  default_config_hash: 1lrMSh0hYpD0Cr-R5zSxyVnyMUhGpknpa8QJ8qy19ZY
+id: node.field_time
+field_name: field_time
+entity_type: node
+type: daterange
+settings:
+  datetime_type: allday
+  optional_end_date: 1
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

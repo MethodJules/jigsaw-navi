@@ -1,0 +1,19 @@
+uuid: c6b244b6-6b7d-48a7-8372-7ad376699b8d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: hvctV6jQVKRokmbIm6LDXYbrIc_2j6yUwNt5M45lDSI
+name: Institution-Association
+type: institutionassociation
+description: ''
+help: 'Please add the name of the institution or association. For German institutions/associations, use the German original name and add an English translation in brackets. For institutions/associations in Hebrew, please use the English name.'
+new_revision: false
+preview_mode: 1
+display_submitted: false

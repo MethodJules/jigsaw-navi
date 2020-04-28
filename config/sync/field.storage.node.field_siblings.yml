@@ -1,0 +1,23 @@
+uuid: 1eadb683-107b-4759-9460-43862ca24c7f
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: hnqoQgoG36HOeNyVw2wVB4Xz4KnDSD3j4IYbP8fnD-k
+id: node.field_siblings
+field_name: field_siblings
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

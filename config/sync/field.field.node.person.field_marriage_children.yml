@@ -1,0 +1,21 @@
+uuid: 7df82525-783c-4860-a94a-19b4712ceece
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_marriage_children
+    - node.type.person
+_core:
+  default_config_hash: aNfzh069t3iOgBHYNItlVL4h2hKLvb5YqQmvZOv7qf4
+id: node.person.field_marriage_children
+field_name: field_marriage_children
+entity_type: node
+bundle: person
+label: Marriage/Children
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

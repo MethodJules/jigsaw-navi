@@ -1,0 +1,25 @@
+uuid: f2c2a3b7-b03e-4b5e-9905-291a39bf4019
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_year_of_migration
+    - node.type.person
+_core:
+  default_config_hash: eWOqn8GezC-Ghd20zJhgXOE2E3FjCxvRVDnP0KUe-D4
+id: node.person.field_year_of_migration
+field_name: field_year_of_migration
+entity_type: node
+bundle: person
+label: 'Year of Migration'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

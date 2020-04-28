@@ -1,0 +1,22 @@
+uuid: 9e4cdb52-776f-4d5e-974f-d28cb4cdb0a8
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: 6lZgQjsY68z6w_a2JcFITICi_ExDd7van80B6FdTNYw
+id: node.field_academic_activities
+field_name: field_academic_activities
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

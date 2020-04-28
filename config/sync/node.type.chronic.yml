@@ -1,0 +1,20 @@
+uuid: c5484642-b6a2-48e9-9b22-c7529dfffd71
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-menu
+    parent: 'main-menu:0:'
+_core:
+  default_config_hash: J6-fJn5hHCtOMjprmAl5V9L73OPI9gJe4P_DFS8HyaQ
+name: Chronic
+type: chronic
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

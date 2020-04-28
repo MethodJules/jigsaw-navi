@@ -1,0 +1,21 @@
+uuid: 1d3aff4f-7753-41fd-9e62-9a1f0396f506
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: YPdct7Ev-OvkOgRcB5OhewDmViroUu3HuvjUICvkR5E
+id: node.field_domiciles
+field_name: field_domiciles
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

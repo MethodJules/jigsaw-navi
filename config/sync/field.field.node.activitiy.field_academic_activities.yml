@@ -1,0 +1,31 @@
+uuid: 34494b1e-3e4b-4183-98ca-b902fcf2040e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_academic_activities
+    - node.type.activitiy
+    - taxonomy.vocabulary.tax_morph_m_academic_activities
+_core:
+  default_config_hash: kTl7tAXagFAtWtvyTos3VR3k9QSZYffJCc4GwazojKk
+id: node.activitiy.field_academic_activities
+field_name: field_academic_activities
+entity_type: node
+bundle: activitiy
+label: 'Academic Activities'
+description: 'Please categorize an activity by using one or more of the categories provided in the list of “profes-sional activities”, “civic engagement”, or “other activities”. If no given designation is fitting, click on ‘new content’ and create a new one.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tax_morph_m_academic_activities: tax_morph_m_academic_activities
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

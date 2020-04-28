@@ -1,0 +1,27 @@
+uuid: 72b54c4e-7f22-49ff-82d5-3863925d4950
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - showcase_lite
+_core:
+  default_config_hash: nZDl4J9eNBOsTCybHEC7cLMK3FV1YoTVdzRj6Th8OKw
+id: tools
+theme: showcase_lite
+region: sidebar_second
+weight: -2
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

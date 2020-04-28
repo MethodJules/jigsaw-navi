@@ -1,0 +1,40 @@
+uuid: d7b9e15b-ff84-4502-a8a5-fc479b4ef96f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.institutionassociation.field_name
+    - field.field.node.institutionassociation.field_place
+    - node.type.institutionassociation
+  module:
+    - user
+_core:
+  default_config_hash: Q7JDRavZC3Jn3X4RwgB9uT5rfUG77U8-JDcj8n-dNwE
+id: node.institutionassociation.default
+targetEntityType: node
+bundle: institutionassociation
+mode: default
+content:
+  field_name:
+    label: above
+    weight: 0
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_place:
+    label: above
+    weight: 1
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

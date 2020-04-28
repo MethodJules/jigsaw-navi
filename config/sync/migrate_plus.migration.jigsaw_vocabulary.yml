@@ -1,0 +1,38 @@
+uuid: d2f6fd9a-e196-48c5-938a-abdd94342f9a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - women_data
+id: jigsaw_vocabulary
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Taxonomy
+migration_group: jigsaw
+label: 'Jigsaw Taxonomy Vocabularies'
+source:
+  plugin: d7_taxonomy_vocabulary
+process:
+  vid:
+    -
+      plugin: make_unique_entity_field
+      source: machine_name
+      entity_type: taxonomy_vocabulary
+      field: vid
+      length: 32
+      migrated: true
+    -
+      plugin: forum_vocabulary
+      machine_name: forums
+  label: name
+  name: name
+  description: description
+  hierarchy: hierarchy
+  weight: weight
+destination:
+  plugin: 'entity:taxonomy_vocabulary'
+migration_dependencies: null

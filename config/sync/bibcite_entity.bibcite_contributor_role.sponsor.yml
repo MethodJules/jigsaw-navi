@@ -1,0 +1,9 @@
+uuid: a3aef8d2-754e-470c-90d3-ca84c30b479f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 2lHAxWlM5y4908dvJb1f1esQR_uf0V3wBOMt6xkZUaU
+id: sponsor
+label: Sponsor
+weight: -3

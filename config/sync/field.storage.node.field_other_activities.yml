@@ -1,0 +1,22 @@
+uuid: fe9b8f41-906f-4c10-b30d-5f455461237c
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: 70Qvt2j7PknH4I5KLbXMNWhVHtP5jVRdmY0pi-aolXI
+id: node.field_other_activities
+field_name: field_other_activities
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

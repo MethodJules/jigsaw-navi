@@ -1,0 +1,10 @@
+uuid: 4014d75b-9625-43c7-95aa-fccd163f0d8b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.women_search_view_mode
+label: women_search_view_mode
+targetEntityType: node
+cache: true

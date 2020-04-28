@@ -1,0 +1,27 @@
+uuid: 9025925c-82dd-40c7-847a-310342f25573
+langcode: en
+status: true
+dependencies:
+  config:
+    - bibcite_entity.bibcite_reference_type.presentation
+    - field.storage.bibcite_reference.field_file
+  module:
+    - file
+id: bibcite_reference.presentation.field_file
+field_name: field_file
+entity_type: bibcite_reference
+bundle: presentation
+label: File
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

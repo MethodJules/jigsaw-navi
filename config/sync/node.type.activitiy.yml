@@ -1,0 +1,20 @@
+uuid: 0b5528bc-218d-4fb1-9859-143469480755
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-menu
+    parent: 'main-menu:0:'
+_core:
+  default_config_hash: bI1Sd1US-Ic1ZEi9tIkMOnGs-FRcJnS7_zIilPZncq4
+name: Activity
+type: activitiy
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

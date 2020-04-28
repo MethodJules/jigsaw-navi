@@ -1,0 +1,9 @@
+uuid: 419904ca-1c46-4bea-91be-af4a34ebc068
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: K3YyqejRL2edS3n6U-_RmkmLHcMGS7g-_PszBgUp3mU
+id: secondary_author
+label: 'Secondary Author'
+weight: -9

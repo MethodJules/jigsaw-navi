@@ -1,0 +1,15 @@
+uuid: d98087bf-de79-402c-9e95-2b69df4ceef6
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - bibcite_entity
+  module:
+    - bibcite_entity
+_core:
+  default_config_hash: GOmCoUsBSKdQ-5JzMTbQOrWdswxUy1E0S_eGZ617SvA
+id: bibcite_reference.table
+label: Table
+targetEntityType: bibcite_reference
+cache: true

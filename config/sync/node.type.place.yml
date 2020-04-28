@@ -1,0 +1,20 @@
+uuid: 9f39224f-f53e-47e3-a888-89b46d3c80cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-menu
+    parent: 'main-menu:0:'
+_core:
+  default_config_hash: x8tGq9Gf20ZHXDE-U8lmSb8pPWlqy2UdytPTVwpulYY
+name: Place
+type: place
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

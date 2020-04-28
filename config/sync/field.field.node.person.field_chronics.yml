@@ -1,0 +1,31 @@
+uuid: 66680d62-1cc2-4e88-9004-9c04e01f4db8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_chronics
+    - node.type.chronic
+    - node.type.person
+_core:
+  default_config_hash: unSCD3lCoyAqM035VzF5Rp90SguCVhdiGA3x81qVIuQ
+id: node.person.field_chronics
+field_name: field_chronics
+entity_type: node
+bundle: person
+label: Chronics
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      chronic: chronic
+    sort:
+      field: title
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

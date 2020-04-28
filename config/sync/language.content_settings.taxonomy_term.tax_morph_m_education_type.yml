@@ -1,0 +1,11 @@
+uuid: e4ccb859-b4be-429d-8ead-690a5bba029f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tax_morph_m_education_type
+id: taxonomy_term.tax_morph_m_education_type
+target_entity_type_id: taxonomy_term
+target_bundle: tax_morph_m_education_type
+default_langcode: site_default
+language_alterable: false

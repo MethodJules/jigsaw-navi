@@ -1,0 +1,31 @@
+uuid: 5e90269c-a214-4ded-94fa-53eedf3fd405
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person
+    - node.type.person
+    - node.type.place
+_core:
+  default_config_hash: PI-5O71NSEapC0fGMcnADJMeTDITg1Y--x37w3AldGU
+id: node.place.field_person
+field_name: field_person
+entity_type: node
+bundle: place
+label: Person
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

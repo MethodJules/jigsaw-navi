@@ -1,0 +1,22 @@
+uuid: 993046cc-fff0-4e66-bd24-c2c6a249788a
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: VY7d7totUX5P38oF2vEOPcgx3-tphdMnYPdGprKXRso
+id: node.field_year_of_migration
+field_name: field_year_of_migration
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

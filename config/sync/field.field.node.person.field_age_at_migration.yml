@@ -1,0 +1,25 @@
+uuid: 3da8ee1f-94b2-4c3a-9913-057c70497bfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_age_at_migration
+    - node.type.person
+_core:
+  default_config_hash: Q3lTOcNZ654-L95WZ9kYG9XSPggYh5pX9N_Rzm7PWQw
+id: node.person.field_age_at_migration
+field_name: field_age_at_migration
+entity_type: node
+bundle: person
+label: 'Age at Migration'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

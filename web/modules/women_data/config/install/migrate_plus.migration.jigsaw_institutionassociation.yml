@@ -1,0 +1,41 @@
+id: jigsaw_institutionassociation
+label: Jigsaw Nodes Institution-Association
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: jigsaw
+
+source:
+  plugin: d7_node
+  node_type: institutionassociation
+
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    - plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_name: field_name
+  field_place: field_place
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: institutionassociation
+
+migration_dependencies:
+  required:
+  - jigsaw_place
+  - jigsaw_user
+
+dependencies:
+  enforced:
+    module:
+    - women_data

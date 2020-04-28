@@ -1,0 +1,21 @@
+uuid: 01045dcc-92c9-4fdc-82a7-854f33ce7724
+langcode: und
+status: true
+dependencies:
+  module:
+    - address
+    - node
+_core:
+  default_config_hash: modOWdJ7iynWuZ6V540EQ49nv46zJysW3DehZS76o-E
+id: node.field_postanschrift
+field_name: field_postanschrift
+entity_type: node
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,49 @@
+id: jigsaw_sweducation
+label: Jigsaw Nodes SW-Education
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: jigsaw
+
+source:
+  plugin: d7_node
+  node_type: sweducation
+
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    - plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_description: field_description
+  field_institution_association: field_institution_association
+  field_place: field_place
+  field_educational_activities:
+    - plugin: sub_process
+      source: field_educational_activities
+      process:
+        target_id: tid
+  field_person1: field_person
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: sweducation
+
+migration_dependencies:
+  required:
+    - jigsaw_user
+    - jigsaw_institutionassociation
+    - jigsaw_place
+
+dependencies:
+  enforced:
+    module:
+    - women_data

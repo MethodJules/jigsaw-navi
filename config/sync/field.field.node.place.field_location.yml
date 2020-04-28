@@ -1,0 +1,24 @@
+uuid: cf0e81f5-a0e9-4bc5-8045-d32baadaddac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.place
+  module:
+    - geofield
+_core:
+  default_config_hash: L0joJrXY14D2uno3NGRhQDNA94R0zaoZ-T0HQgPeaXc
+id: node.place.field_location
+field_name: field_location
+entity_type: node
+bundle: place
+label: Location
+description: 'Please insert here the latitude and longitude coordinates of the place. You can get these data e.g. from www.openstreetmap.org.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  backend: geofield_backend_default
+field_type: geofield

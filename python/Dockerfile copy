@@ -1,0 +1,20 @@
+FROM python:3.6
+
+ADD . /app
+RUN python -m pip install -U spacy
+RUN python -m spacy download en
+RUN python -m spacy download en_core_web_lg
+RUN python -m pip install neo4j
+RUN python -m pip install nltk
+RUN python -m pip install annoy
+RUN python -m pip install flask
+RUN python -m pip install unidecode
+
+EXPOSE 5000
+
+WORKDIR /app
+
+#CMD ["python", "nlpStart.py"]
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]

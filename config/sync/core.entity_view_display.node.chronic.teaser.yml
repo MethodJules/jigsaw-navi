@@ -1,0 +1,29 @@
+uuid: 3e2fd03f-67e9-4794-bc1b-a93fec7db852
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.chronic.field_activities
+    - field.field.node.chronic.field_sw_education
+    - field.field.node.chronic.field_time
+    - node.type.chronic
+  module:
+    - user
+_core:
+  default_config_hash: 9KlHiG3SiSTmhL2obvYuQTFls0LdZHn6xPAtkZRysB8
+id: node.chronic.teaser
+targetEntityType: node
+bundle: chronic
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_activities: true
+  field_sw_education: true
+  field_time: true
+  langcode: true

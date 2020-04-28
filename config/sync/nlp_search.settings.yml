@@ -1,0 +1,2 @@
+nlp_search_content_types: '[{"content_type":"person","field":"field_biography"}]'
+nlp_search_basic_python_flask_url: 'http://127.0.0.1:5000/'

@@ -1,0 +1,69 @@
+id: jigsaw_person
+label: Jigsaw Nodes Person
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: jigsaw
+
+source:
+  plugin: d7_node
+  node_type: person
+
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    - plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_nachname: field_nachname
+  field_biography: field_biography
+  field_mother: field_mother
+  field_father: field_father
+  field_siblings: field_siblings
+  field_marriage_children: field_marriage_children
+  field_age_at_migration: field_age_at_migration
+  field_year_of_migration: field_year_of_migration
+  field_archival_materials: field_archival_materials
+  field_other_sources: field_other_sources
+  field_networks: field_networks
+  field_chronics: field_chronics
+  field_domiciles: field_domiciles
+  field_publication: field_publication
+  field_person_datei:
+    - plugin: sub_process
+      source: field_person_datei
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_person_bild:
+    - plugin: sub_process
+      source: field_person_bild
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: person
+
+migration_dependencies:
+  required:
+    - jigsaw_user
+    - jigsaw_file
+
+dependencies:
+  enforced:
+    module:
+    - women_data

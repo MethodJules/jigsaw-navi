@@ -1,0 +1,22 @@
+uuid: c7c95e9f-1f10-4182-af41-4be651291126
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: PFGf9V04y0OulIk5MRuKjH9ILW7VHhigVP9ftwlo60w
+id: node.field_age_at_migration
+field_name: field_age_at_migration
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

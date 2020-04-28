@@ -1,0 +1,37 @@
+uuid: 02b03cf7-821a-48d7-8184-ecb38db6d2fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.activitiy.field_academic_activities
+    - field.field.node.activitiy.field_civic_engagements
+    - field.field.node.activitiy.field_description
+    - field.field.node.activitiy.field_institution_association
+    - field.field.node.activitiy.field_other_activities
+    - field.field.node.activitiy.field_place
+    - field.field.node.activitiy.field_professional_activities
+    - node.type.activitiy
+  module:
+    - user
+_core:
+  default_config_hash: imj8aQCVOZSdNGUBNDUTRFZx5HMBnBtNMqmg7oM2Hmg
+id: node.activitiy.teaser
+targetEntityType: node
+bundle: activitiy
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_academic_activities: true
+  field_civic_engagements: true
+  field_description: true
+  field_institution_association: true
+  field_other_activities: true
+  field_place: true
+  field_professional_activities: true
+  langcode: true

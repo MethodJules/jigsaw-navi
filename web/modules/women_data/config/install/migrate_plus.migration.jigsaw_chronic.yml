@@ -1,0 +1,57 @@
+id: jigsaw_chronic
+label: Jigsaw Nodes Chronic
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: jigsaw
+
+source:
+  plugin: d7_node
+  node_type: chronic
+
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    - plugin: default_value
+      source: language
+      default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  field_time:
+    - plugin: sub_process
+      source: field_time
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value2
+  field_activities: field_activities
+  field_sw_education: field_sw_education
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: chronic
+
+migration_dependencies:
+  required:
+    - jigsaw_user
+    - jigsaw_activity
+    - jigsaw_sweducation
+
+dependencies:
+  enforced:
+    module:
+    - women_data
+
