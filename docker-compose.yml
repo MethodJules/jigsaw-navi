@@ -33,8 +33,10 @@ services:
         depends_on:
           - database
         build: ./drupal
-        ports:
-          - "8080:80"
+        #ports:
+        #  - "8080:80"
+        labels:
+          - "traefik.http.routers.web.rule=Host(`jigsaw.x-navi.de`)"
         volumes:
           - .:/app
     database:
@@ -50,3 +52,7 @@ services:
         restart: always
 volumes:
     jigsaw_navi_db:
+networks:
+  default:
+    external:
+      name: docker_default
