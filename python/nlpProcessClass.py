@@ -174,7 +174,7 @@ class nlpProcess(object):
                 clauses_merged += value['original_sent']
 
 
-        print (clauses_merged)
+        #print (clauses_merged)
         # URL und Port aus der Config lesen. Schlägt dies Fehl eine Exception werfen, die das Programm beendet
         corenlp_url = ''
         corenlp_port = ''
@@ -195,7 +195,7 @@ class nlpProcess(object):
         # Mit Stanford CoreNLP verbinden und den zusammengesetzten Text zur Analyse schicken
         nlp = StanfordConnect(corenlp_url, port=corenlp_port)
 
-        props={'timeout': '60000',
+        props={'timeout': '120000',
                'annotators': 'tokenize,ssplit,pos,ner,kbp',
                'pipelineLanguage':'en',
                'outputFormat': 'json'
@@ -427,7 +427,7 @@ class nlpProcess(object):
         self.add_log("Node ID: " + node_id + "; Title: " + title)
 
         print("Remaining Nodes: " + str(len(content_type_values.keys())))
-        print(node_id)
+        #print(node_id)
 
         # Versuchen die bisherige Node in Neo4j zu löschen. Dabei werden nicht Entitäten und Synonyme gelöscht, nur die Root Node
         # Content Fields, Sentence, Tags und die Relationen dazwischen. Beim erneuten indexieren einer Node und eventuellen Veränderungen
