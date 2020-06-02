@@ -28,7 +28,7 @@ password        = "test"
 
 # Connect to the neo4j database server
 #Sleep few seconds
-time.sleep(10)
+time.sleep(30)
 
 #driver  = GraphDatabase.driver(uri, auth=(userName, password), encrypted=False)
 
