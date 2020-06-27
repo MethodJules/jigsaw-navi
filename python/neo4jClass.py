@@ -56,7 +56,7 @@ class neo4jConnector(object):
             query += "OPTIONAL MATCH (sen)--(clause:Clause) "
             query += "DETACH DELETE clause, tag, sen, cf, rn "
 
-            result = session.run(query).data()
+            result = session.run(query)
 
             return result
 
