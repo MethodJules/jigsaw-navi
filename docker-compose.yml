@@ -7,9 +7,9 @@ services:
             - "7687:7687"
         volumes:
           - ./neo4j/data:/data
-          - .neo4j/logs:/logs
+          - ./neo4j/logs:/logs
           - ./neo4j/import/:/var/lib/neo4j/import
-          - .neo4j/plugins:/plugins
+          - ./neo4j/plugins:/plugins
         environment:
           - NEO4J_AUTH=neo4j/test
           - NEO4J_dbms_default__listen__address=neo4j
