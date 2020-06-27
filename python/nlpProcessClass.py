@@ -182,7 +182,7 @@ class nlpProcess(object):
             file_path = os.path.dirname(os.path.abspath(__file__))
 
             filename = os.path.join(file_path, 'config.json')
-            file = open(filename, 'r', encoding="utf8")
+            file = open(filename, 'r', encoding="utf-8")
             data = file.read()
             config = json.loads(data)
 
@@ -295,7 +295,7 @@ class nlpProcess(object):
             file_path = os.path.dirname(os.path.abspath(__file__))
 
             filename = os.path.join(file_path, 'nlplog.log')
-            f = open(filename, "a", encoding="utf8")
+            f = open(filename, "a", encoding="utf-8")
             f.write(message)
             f.close()
 
@@ -318,7 +318,7 @@ class nlpProcess(object):
         # noch existiert und der Inhalt per json.loads geladen werden kann.
         if (os.path.isfile(file_name_process)):
             try:
-                file = open(file_name_process, 'r', encoding="utf8")
+                file = open(file_name_process, 'r', encoding="utf-8")
                 data = file.read()
                 file.close()
 
@@ -348,7 +348,7 @@ class nlpProcess(object):
             file_name_default = os.path.join(file_path, 'export/nodes_export.json')
 
             try:
-                file = open(file_name_default, 'r', encoding="utf8")
+                file = open(file_name_default, 'r', encoding="utf-8")
                 data = file.read()
                 json_arr = json.loads(data)
 
@@ -375,7 +375,7 @@ class nlpProcess(object):
                 file.close()
 
                 # Inhalt aus der neuen Datei auslesen und in data speichern
-                file = open(file_name_process, 'r', encoding="utf8")
+                file = open(file_name_process, 'r', encoding="utf-8")
                 data = file.read()
                 file.close()
             except:
@@ -397,7 +397,7 @@ class nlpProcess(object):
         failed_nodes_arr = None
 
         if (os.path.isfile(failed_nodes_name)):
-            f = open(failed_nodes_name, "r", encoding="utf8")
+            f = open(failed_nodes_name, "r", encoding="utf-8")
             data = f.read()
             f.close()
 
@@ -483,8 +483,8 @@ class nlpProcess(object):
 
                             self.add_log("Insert field " + field + " with content in database")
 
-                            print(self.driver.create_root_node(extract_dict, node_id, content_type, field, title, created, changed).data())
-
+                            print(self.driver.create_root_node(extract_dict, node_id, content_type, field, title, created, changed))
+                            #self.driver.create_root_node(extract_dict, node_id, content_type, field, title, created, changed)
                         except Exception as e:
 
                             if (type(e).__name__ == "ServiceUnavailable" and i < tries - 1):
@@ -512,12 +512,12 @@ class nlpProcess(object):
             del(text_arr[content_type])
 
         # Das Array mit den Content Types und Nodes wieder abspeichern
-        file = open(file_name_process, "w", encoding="utf8")
+        file = open(file_name_process, "w", encoding="utf-8")
         file.write(json.dumps(text_arr))
         file.close()
 
         # Das Array mit den fehlgeschlagenen Nodes ebenfalls abspeichern
-        file = open(failed_nodes_name, "w", encoding="utf8")
+        file = open(failed_nodes_name, "w", encoding="utf-8")
         file.write(json.dumps(failed_nodes_arr))
         file.close()
 
@@ -561,7 +561,7 @@ class nlpProcess(object):
                 manually_entities = None
                 try:
                     changed_entities = os.path.join(file_path, 'changed_entities.json')
-                    file = open(changed_entities, 'r', encoding="utf8")
+                    file = open(changed_entities, 'r', encoding="utf-8")
                     data = file.read()
                     changed_entities = json.loads(data)
                     manually_entities = changed_entities['added_entities']
