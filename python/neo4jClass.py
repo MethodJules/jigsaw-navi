@@ -176,8 +176,8 @@ class neo4jConnector(object):
             query = "MATCH (ent:Entity) "
             query += "RETURN ent.ner as ner, ent.text as text"
 
-            result = session.run(query).data()
-
+            result = session.run(query)
+            '''
             pronouns = ['he', 'she', 'it', 'we', 'they', 'theirs', 'ours', 'hers', 'his', 'its', 'her', 'his', 'their', 'our', 'him']
             entity_arr = {}
 
@@ -204,11 +204,47 @@ class neo4jConnector(object):
             query = "MATCH (:Entity)-[rel]-(:Entity) "
             query += "RETURN collect(distinct Type(rel)) as rel"
 
-            result = session.run(query).data()
+            result = session.run(query)
             if (len(result) > 0):
                 for rel in result[0]['rel']:
                     entity_arr['relationships'].append(rel)
+            '''
+            pronouns = ['he', 'she', 'it', 'we', 'they', 'theirs', 'ours', 'hers', 'his', 'its', 'her', 'his', 'their', 'our', 'him']
 
+            entity_arr = {}
+            entity_arr['types'] = {}
+            entity_arr['relationships'] = []
+
+            # Das Array soll so aufgebaut werden, dass für jeden Typ (NER) die Entitäten zugeordnet werden.
+            for ent in result:
+                #print(ent['ner'])
+                if (ent['ner'] not in entity_arr['types']):
+                    entity_arr['types'][ent['ner']] = []
+
+                if (ent['text'].lower() not in pronouns):
+                    add = True
+
+                #print(ent['ner'])
+                # Doppelte Entitäten sollen nicht hinzugefügt werden.
+                for ner in ent['ner']:
+                    if (ner.lower().replace('-', ' ') == ent['text'].lower().replace('-', ' ')):
+                        add = False
+                    if (add):
+                        entity_arr['types'][ent['ner']].append(ent['text'])
+
+            entity_types = list(dict.fromkeys(entity_arr['types'])) #TODO list durchiterieren und duplicate pro ET entfernen
+            for entity_type in entity_types:
+                #print(entity_type)
+                entity_arr['types'][entity_type] = list(dict.fromkeys(entity_arr['types'][entity_type]))
+            print(entity_arr)
+            # Alle Relationen auslesen und dem Array hinzufügen.
+            query = "MATCH (:Entity)-[rel]-(:Entity) "
+            query += "RETURN collect(distinct Type(rel)) as rel"
+
+            result = session.run(query)
+            if (result is not None):
+                for record in result:
+                    entity_arr['relationships'] = record["rel"]
 
             return entity_arr
 
@@ -291,7 +327,7 @@ class neo4jConnector(object):
 
             query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
             query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, sen.shorten_lemma_original as shorten_original, ID(sen) as sen_id, collect([clause.shorten_lemma_clause, ID(clause)]) as shorten_clauses"
-            result = session.run(query).data()
+            result = session.run(query)
 
             return result
 
@@ -314,7 +350,7 @@ class neo4jConnector(object):
             query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
             query += 'WHERE (ID(clause) in ' + str(id_list) + ') '
             query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, clause.shorten_lemma_clause as shorten_clause"
-            result = session.run(query).data()
+            result = session.run(query)
 
             res_arr['clauses'] = result
             return res_arr
@@ -639,7 +675,7 @@ class neo4jConnector(object):
                     query += "DETACH DELETE ent "
                     query += "RETURN sen"
 
-                    result = session.run(query).data()
+                    result = session.run(query)
                 else:
                     query = "MATCH (ent:Entity) "
                     query += "WHERE (ent.text = '" + ent['text'] + "') "
@@ -647,7 +683,7 @@ class neo4jConnector(object):
                     query += "RETURN ent "
                     query += "ORDER BY ent.ner ASC"
 
-                    result = session.run(query).data()
+                    result = session.run(query)
 
     # Beim manuellen Hinzufügen von Entitäten, wird vorher überprüft, ob diese bereits in der Datenbank vorhanden ist.
     def check_entity_exists(self, entity):
