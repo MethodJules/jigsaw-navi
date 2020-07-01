@@ -28,7 +28,7 @@ password        = "test"
 
 # Connect to the neo4j database server
 #Sleep few seconds
-time.sleep(10)
+time.sleep(30)
 
 #driver  = GraphDatabase.driver(uri, auth=(userName, password), encrypted=False)
 
@@ -51,6 +51,7 @@ def hello_world():
 @app.route("/get-entities")
 def get_entities():
 
+    print('Get Entities')
     msg_arr = {}
     try:
         result = driver.get_entities()
@@ -94,7 +95,7 @@ def semantic_search():
 
     if request.method == 'POST':
         text = request.form['search_query']
-
+        print('Semantic Search...')
 
 
         if (len(text) > 0):
@@ -153,7 +154,7 @@ def semantic_search():
                         try:
                             file_path = os.path.dirname(os.path.abspath(__file__))
                             config_path = os.path.join(file_path, 'config.json')
-                            file = open(config_path, 'r', encoding="utf8")
+                            file = open(config_path, 'r', encoding="utf-8")
                             data = file.read()
                             config = json.loads(data)
 
@@ -222,6 +223,7 @@ def semantic_search():
                 except Exception as e:
                     msg_arr['type'] = 'error'
                     msg_arr['result'] = str(e)
+                    print(msg_arr)
 
 
             return json.dumps(msg_arr, ensure_ascii=False).encode(encoding='utf-8')
