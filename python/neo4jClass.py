@@ -56,7 +56,7 @@ class neo4jConnector(object):
             query += "OPTIONAL MATCH (sen)--(clause:Clause) "
             query += "DETACH DELETE clause, tag, sen, cf, rn "
 
-            result = session.run(query)
+            result = session.run(query) #laueft mit neuer neo4j driver
 
             return result
 
