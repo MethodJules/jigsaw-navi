@@ -63,17 +63,21 @@ class neo4jConnector(object):
     # Die Funktion zählt alle Hauptknoten in der Datenbank und gibt die Anzahl zurück. Wird für die Anzeige im Drupal Backend benötigt, um die Anzahl der Noddes
     # in der Datenbank auszugeben
     def get_nodes_count(self, content_type):
-        '''
+
         with self._driver.session() as session:
             query = "MATCH (rn:RootNode) "
             query += "WHERE (rn.content_type = '" + content_type + "') "
             query += "RETURN count(rn) as node_count"
-        '''
-        with self._driver.session() as session:
-            query = "MATCH(n) RETURN count(n) AS node_count"
-            result = session.run(query).data()
 
-            return result
+            '''
+            with self._driver.session() as session:
+                query = "MATCH(n) RETURN count(n) AS node_count"
+            '''
+            result = session.run(query)
+
+            for record in result:
+                node_count = record["node_count"]
+            return node_count
 
     # Diese Funktion speichert die zuvor per CoreNLP gewonnenen Informationen in der Datenbank ab.
     def create_root_node(self, extract_dict, node_id, content_type, content_field, title, created, changed):
