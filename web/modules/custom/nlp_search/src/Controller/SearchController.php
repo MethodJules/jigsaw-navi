@@ -41,10 +41,12 @@ class SearchController extends ControllerBase {
                     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
                     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
                     curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS,
-                        http_build_query(array('filter' => json_encode($nlp_filter))));
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('filter' => json_encode($nlp_filter))));
 
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    //dsm('sdsds');
+                    //dsm($ch);
+                    //dsm(http_build_query((array('filter' => json_encode($nlp_filter)))));
 
                     $response = curl_exec($ch);
 
@@ -184,6 +186,8 @@ class SearchController extends ControllerBase {
                         http_build_query(array('search_query' => json_encode($nlp_fulltext))));
 
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                    dpm($ch);
 
                     $response = curl_exec($ch);
 

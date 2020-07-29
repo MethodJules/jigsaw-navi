@@ -34,6 +34,7 @@ class SearchForm extends FormBase
 
         $config = \Drupal::config('nlp_search.settings');
         $saved_python_flask_url = $config->get('nlp_search_basic_python_flask_url');
+        \Drupal::messenger()->addMessage($saved_python_flask_url, 'status');
 
         if (!empty($saved_python_flask_url)) {
             if ($saved_python_flask_url[strlen($saved_python_flask_url) - 1] != '/') {

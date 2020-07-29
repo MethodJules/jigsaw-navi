@@ -240,7 +240,7 @@ class neo4jConnector(object):
             for entity_type in entity_types:
                 #print(entity_type)
                 entity_arr['types'][entity_type] = list(dict.fromkeys(entity_arr['types'][entity_type]))
-            print(entity_arr)
+            #print(entity_arr)
             # Alle Relationen auslesen und dem Array hinzufügen.
             query = "MATCH (:Entity)-[rel]-(:Entity) "
             query += "RETURN collect(distinct Type(rel)) as rel"
@@ -259,7 +259,7 @@ class neo4jConnector(object):
 
             # Alle übermittelten Entitäten iterieren und den Suchquery zusammenbauen.
             for types in filter_arr['types']:
-
+                #print(types)
                 # Bei der Filtersuche können auch nur die Typen ausgewählt werden, aber keinen Text einer Entiät. Z.B. es wird der Typ CITY ausgewählt, aber nicht weiter die Stadt
                 # spezifizert. Ist eines von beiden oder beides nicht gesetzt, sollen die Knoten mit jeglichem Inhalt berücksichtigt werden. Dadurch fallen einige Überprüfungen
                 # weg und der Aufbau des Suchquerys gestaltet sich deutlich einfacher.
@@ -279,11 +279,11 @@ class neo4jConnector(object):
                 query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent_ner, ent1.text as ent_text "
                 query += "ORDER BY rn1.changed DESC"
 
-                result = session.run(query).data()
+                result = session.run(query)
 
-                if (len(result) > 0):
-                    for res in result:
-                        result_dict.append(res)
+                if (result is not None):
+                    for record in result:
+                        result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent_ner':record['ent_ner'], 'ent_text':record['ent_text']})
 
             # Alle übermittelten Relationen iterieren und den Suchquery zusammenbauen.
             for relations in filter_arr['relationships']:
@@ -317,11 +317,11 @@ class neo4jConnector(object):
                 query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent1_ner, ent1.text as ent1_text, ent2.ner as ent2_ner, ent2.text as ent2_text, Type(rel) as rel "
                 query += "ORDER BY rn1.changed DESC"
 
-                result = session.run(query).data()
+                result = session.run(query)
+                if(result is not None):
+                    for record in result:
+                        result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent1_ner':record['ent1_ner'], 'ent1_text':record['ent1_text'], 'ent2_ner':record['ent2_ner'],'ent2_text':record['ent2_text'], 'rel':record['rel']})
 
-                if (len(result) > 0):
-                    for res in result:
-                        result_dict.append(res)
 
             return(result_dict)
 
