@@ -186,8 +186,7 @@ class SearchController extends ControllerBase {
                         http_build_query(array('search_query' => json_encode($nlp_fulltext))));
 
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-                    dpm($ch);
+                    dsm(http_build_query((array('search_query' => json_encode($nlp_fulltext)))));
 
                     $response = curl_exec($ch);
 

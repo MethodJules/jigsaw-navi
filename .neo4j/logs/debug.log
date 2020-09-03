@@ -5433,3 +5433,705 @@ MATCH ()-[]->() RETURN { name:'relationships', data: count(*)} AS result
 2020-04-27 19:54:38.236+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 2727 checkpoint completed in 124ms
 2020-04-27 19:54:38.237+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [neo4j] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.
 2020-04-28 05:35:34.692+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=3032, gcTime=0, gcCount=0}
+2020-04-28 10:01:11.859+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=328, gcTime=0, gcCount=0}
+2020-04-28 10:01:15.687+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5243, gcTime=0, gcCount=0}
+2020-04-28 10:01:20.194+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=3951, gcTime=0, gcCount=0}
+2020-04-28 10:01:25.381+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=3750, gcTime=0, gcCount=0}
+2020-04-28 10:01:30.248+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5147, gcTime=0, gcCount=0}
+2020-04-28 10:01:35.547+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=3275, gcTime=0, gcCount=0}
+2020-04-28 10:01:39.882+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=8412, gcTime=0, gcCount=0}
+2020-04-28 10:01:46.729+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2821, gcTime=0, gcCount=0}
+2020-04-28 10:01:48.443+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5714, gcTime=0, gcCount=0}
+2020-04-28 10:01:50.992+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1738, gcTime=0, gcCount=0}
+2020-04-28 10:01:57.018+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1208, gcTime=0, gcCount=0}
+2020-04-28 10:02:00.571+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=6158, gcTime=0, gcCount=0}
+2020-04-28 10:02:07.142+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=4342, gcTime=0, gcCount=0}
+2020-04-28 10:02:07.890+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5535, gcTime=0, gcCount=0}
+2020-04-28 10:02:09.565+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=301, gcTime=0, gcCount=0}
+2020-04-28 10:02:10.823+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1813, gcTime=0, gcCount=0}
+2020-04-28 10:02:12.478+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1425, gcTime=0, gcCount=0}
+2020-04-28 10:02:13.926+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1339, gcTime=0, gcCount=0}
+2020-04-28 10:02:14.702+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1253, gcTime=0, gcCount=0}
+2020-04-28 10:02:16.441+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1606, gcTime=0, gcCount=0}
+2020-04-28 10:02:17.689+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1255, gcTime=0, gcCount=0}
+2020-04-28 10:02:18.953+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=565, gcTime=0, gcCount=0}
+2020-04-28 10:02:19.672+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1155, gcTime=0, gcCount=0}
+2020-04-28 10:02:21.213+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1449, gcTime=0, gcCount=0}
+2020-04-28 10:02:22.065+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=580, gcTime=0, gcCount=0}
+2020-04-28 10:02:22.910+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=625, gcTime=0, gcCount=0}
+2020-04-28 10:02:24.340+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1472, gcTime=0, gcCount=0}
+2020-04-28 10:02:25.886+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1372, gcTime=0, gcCount=0}
+2020-04-28 10:02:27.301+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1637, gcTime=0, gcCount=0}
+2020-04-28 10:02:28.012+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=528, gcTime=0, gcCount=0}
+2020-04-28 10:02:29.300+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1182, gcTime=0, gcCount=0}
+2020-04-28 10:02:30.332+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=538, gcTime=0, gcCount=0}
+2020-04-28 10:02:31.241+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=942, gcTime=0, gcCount=0}
+2020-04-28 10:02:31.986+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=811, gcTime=0, gcCount=0}
+2020-04-28 10:02:33.179+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=620, gcTime=0, gcCount=0}
+2020-04-28 10:02:33.716+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1060, gcTime=0, gcCount=0}
+2020-04-28 10:02:35.197+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=475, gcTime=0, gcCount=0}
+2020-04-28 10:02:36.362+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1433, gcTime=0, gcCount=0}
+2020-04-28 10:02:37.112+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1227, gcTime=0, gcCount=0}
+2020-04-28 10:02:39.028+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1240, gcTime=0, gcCount=0}
+2020-04-28 10:02:41.552+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2941, gcTime=0, gcCount=0}
+2020-04-28 10:02:42.899+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=532, gcTime=0, gcCount=0}
+2020-04-28 10:02:43.571+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1255, gcTime=0, gcCount=0}
+2020-04-28 10:02:44.843+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=566, gcTime=0, gcCount=0}
+2020-04-28 10:02:46.345+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1311, gcTime=0, gcCount=0}
+2020-04-28 10:02:47.858+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1473, gcTime=0, gcCount=0}
+2020-04-28 10:02:48.873+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1215, gcTime=0, gcCount=0}
+2020-04-28 10:02:51.094+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1505, gcTime=0, gcCount=0}
+2020-04-28 10:02:52.045+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1423, gcTime=0, gcCount=0}
+2020-04-28 10:02:53.462+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1212, gcTime=0, gcCount=0}
+2020-04-28 10:02:54.132+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1057, gcTime=0, gcCount=0}
+2020-04-28 10:02:55.144+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=520, gcTime=0, gcCount=0}
+2020-04-28 10:02:56.681+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=888, gcTime=0, gcCount=0}
+2020-04-28 10:02:57.739+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1454, gcTime=0, gcCount=0}
+2020-04-28 10:02:58.695+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1378, gcTime=0, gcCount=0}
+2020-04-28 10:02:59.528+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=464, gcTime=0, gcCount=0}
+2020-04-28 10:03:00.456+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=738, gcTime=0, gcCount=0}
+2020-04-28 10:03:02.459+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1590, gcTime=0, gcCount=0}
+2020-04-28 10:03:09.520+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5860, gcTime=0, gcCount=0}
+2020-04-28 10:03:13.499+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2653, gcTime=0, gcCount=0}
+2020-04-28 10:03:16.330+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=3542, gcTime=0, gcCount=0}
+2020-04-28 10:03:18.909+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2647, gcTime=0, gcCount=0}
+2020-04-28 10:03:21.148+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2505, gcTime=0, gcCount=0}
+2020-04-28 10:03:22.028+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2570, gcTime=0, gcCount=0}
+2020-04-28 10:03:24.022+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=193, gcTime=0, gcCount=0}
+2020-04-28 10:03:24.650+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=2059, gcTime=0, gcCount=0}
+2020-04-28 10:03:28.737+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=481, gcTime=0, gcCount=0}
+2020-04-28 10:03:29.313+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=4020, gcTime=0, gcCount=0}
+2020-04-28 10:03:29.972+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=396, gcTime=0, gcCount=0}
+2020-04-28 10:03:30.779+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=785, gcTime=0, gcCount=0}
+2020-04-28 10:03:31.611+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=817, gcTime=0, gcCount=0}
+2020-04-28 10:03:32.039+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=380, gcTime=0, gcCount=0}
+2020-04-28 10:03:33.169+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=305, gcTime=0, gcCount=0}
+2020-04-28 10:03:34.190+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1101, gcTime=0, gcCount=0}
+2020-04-28 10:03:34.677+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=850, gcTime=0, gcCount=0}
+2020-04-28 10:03:36.054+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=471, gcTime=0, gcCount=0}
+2020-04-28 10:03:36.905+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1398, gcTime=0, gcCount=0}
+2020-04-28 10:03:38.338+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1345, gcTime=0, gcCount=0}
+2020-04-28 10:03:44.021+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1113, gcTime=0, gcCount=0}
+2020-04-28 10:03:44.707+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5162, gcTime=0, gcCount=0}
+2020-04-28 10:03:45.656+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=877, gcTime=0, gcCount=0}
+2020-04-28 10:03:46.592+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=497, gcTime=0, gcCount=0}
+2020-04-28 10:03:47.269+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=853, gcTime=0, gcCount=0}
+2020-04-28 10:03:54.405+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=493, gcTime=0, gcCount=0}
+2020-04-28 10:03:55.778+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=7186, gcTime=0, gcCount=0}
+2020-04-28 10:03:57.345+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1257, gcTime=0, gcCount=0}
+2020-04-28 10:03:59.032+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1626, gcTime=0, gcCount=0}
+2020-04-28 10:04:00.467+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1322, gcTime=0, gcCount=0}
+2020-04-28 10:04:02.022+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1433, gcTime=0, gcCount=0}
+2020-04-28 10:04:03.829+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1582, gcTime=0, gcCount=0}
+2020-04-28 10:04:05.069+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1613, gcTime=0, gcCount=0}
+2020-04-28 10:04:06.624+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1128, gcTime=0, gcCount=0}
+2020-04-28 10:04:07.326+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1408, gcTime=0, gcCount=0}
+2020-04-28 10:04:08.505+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1046, gcTime=0, gcCount=0}
+2020-04-28 10:04:09.482+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=551, gcTime=0, gcCount=0}
+2020-04-28 10:04:10.009+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=937, gcTime=0, gcCount=0}
+2020-04-28 10:04:10.607+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=258, gcTime=0, gcCount=0}
+2020-04-28 10:04:11.216+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=661, gcTime=0, gcCount=0}
+2020-04-28 10:04:11.650+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=377, gcTime=0, gcCount=0}
+2020-04-28 10:04:12.265+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=341, gcTime=0, gcCount=0}
+2020-04-28 10:04:12.716+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=494, gcTime=0, gcCount=0}
+2020-04-28 10:04:13.637+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=751, gcTime=0, gcCount=0}
+2020-04-28 10:04:14.291+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=431, gcTime=0, gcCount=0}
+2020-04-28 10:04:14.625+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=520, gcTime=0, gcCount=0}
+2020-04-28 10:04:15.039+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=244, gcTime=0, gcCount=0}
+2020-04-28 10:04:15.514+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=493, gcTime=0, gcCount=0}
+2020-04-28 10:04:15.882+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=195, gcTime=0, gcCount=0}
+2020-04-28 10:04:16.267+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=269, gcTime=0, gcCount=0}
+2020-04-28 10:04:16.776+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=475, gcTime=0, gcCount=0}
+2020-04-28 10:04:17.123+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=212, gcTime=0, gcCount=0}
+2020-04-28 10:04:17.346+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=258, gcTime=0, gcCount=0}
+2020-04-28 10:04:26.534+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=222, gcTime=0, gcCount=0}
+2020-04-28 10:04:27.038+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=359, gcTime=0, gcCount=0}
+2020-04-28 10:04:28.007+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=851, gcTime=0, gcCount=0}
+2020-04-28 10:04:28.318+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=281, gcTime=0, gcCount=0}
+2020-04-28 10:04:28.566+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=152, gcTime=0, gcCount=0}
+2020-04-28 10:04:28.733+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=175, gcTime=0, gcCount=0}
+2020-04-28 10:47:36.537+0000 INFO [o.n.g.f.DatabaseManagementServiceFactory] Shutdown started
+2020-04-28 10:47:36.549+0000 INFO [o.n.d.d.DefaultDatabaseManager] Stop 'neo4j' database.
+2020-04-28 10:47:36.550+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Requirement `Database unavailable` makes database neo4j unavailable.
+2020-04-28 10:47:36.551+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Database neo4j is unavailable.
+2020-04-28 10:47:36.570+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Database shutdown" @ txId: 2727 checkpoint started...
+2020-04-28 10:47:36.640+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Database shutdown" @ txId: 2727 checkpoint completed in 69ms
+2020-04-28 10:47:36.642+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [neo4j] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.
+2020-04-28 10:47:36.755+0000 INFO [o.n.d.d.DefaultDatabaseManager] Stop 'system' database.
+2020-04-28 10:47:36.756+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Requirement `Database unavailable` makes database system unavailable.
+2020-04-28 10:47:36.757+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Database system is unavailable.
+2020-04-28 10:47:36.761+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [system] Checkpoint triggered by "Database shutdown" @ txId: 20 checkpoint started...
+2020-04-28 10:47:36.909+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [system] Checkpoint triggered by "Database shutdown" @ txId: 20 checkpoint completed in 147ms
+2020-04-28 10:47:36.909+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [system] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.
+2020-04-28 11:18:56.767+0000 WARN [o.n.k.i.JvmChecker] The dbms.memory.heap.max_size setting has not been configured. It is recommended that this setting is always explicitly configured, to ensure the system has a balanced configuration. Until then, a JVM computed heuristic of 4167041024 bytes is used instead. Run `neo4j-admin memrec` for memory configuration suggestions.
+2020-04-28 11:18:56.768+0000 WARN [o.n.k.i.JvmChecker] The dbms.memory.heap.initial_size setting has not been configured. It is recommended that this setting is always explicitly configured, to ensure the system has a balanced configuration. Until then, a JVM computed heuristic of 262144000 bytes is used instead. Run `neo4j-admin memrec` for memory configuration suggestions.
+2020-04-28 11:18:56.869+0000 INFO [o.n.i.d.DiagnosticsManager] ********************************************************************************
+2020-04-28 11:18:56.870+0000 INFO [o.n.i.d.DiagnosticsManager]                              [ System diagnostics ]                             
+2020-04-28 11:18:56.871+0000 INFO [o.n.i.d.DiagnosticsManager] ********************************************************************************
+2020-04-28 11:18:56.881+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:56.881+0000 INFO [o.n.i.d.DiagnosticsManager]                          [ System memory information ]                          
+2020-04-28 11:18:56.882+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:56.914+0000 INFO [o.n.i.d.DiagnosticsManager] Total Physical memory: 15.52GiB
+2020-04-28 11:18:56.917+0000 INFO [o.n.i.d.DiagnosticsManager] Free Physical memory: 10.30GiB
+2020-04-28 11:18:56.918+0000 INFO [o.n.i.d.DiagnosticsManager] Committed virtual memory: 6.897GiB
+2020-04-28 11:18:56.919+0000 INFO [o.n.i.d.DiagnosticsManager] Total swap space: 2.000GiB
+2020-04-28 11:18:56.920+0000 INFO [o.n.i.d.DiagnosticsManager] Free swap space: 2.000GiB
+2020-04-28 11:18:56.920+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:56.920+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:56.920+0000 INFO [o.n.i.d.DiagnosticsManager]                            [ JVM memory information ]                           
+2020-04-28 11:18:56.920+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:56.933+0000 INFO [o.n.i.d.DiagnosticsManager] Free  memory: 191.1MiB
+2020-04-28 11:18:56.934+0000 INFO [o.n.i.d.DiagnosticsManager] Total memory: 250.0MiB
+2020-04-28 11:18:56.935+0000 INFO [o.n.i.d.DiagnosticsManager] Max   memory: 3.881GiB
+2020-04-28 11:18:56.951+0000 INFO [o.n.i.d.DiagnosticsManager] Garbage Collector: G1 Young Generation: [G1 Eden Space, G1 Survivor Space, G1 Old Gen]
+2020-04-28 11:18:56.952+0000 INFO [o.n.i.d.DiagnosticsManager] Garbage Collector: G1 Old Generation: [G1 Eden Space, G1 Survivor Space, G1 Old Gen]
+2020-04-28 11:18:56.962+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: CodeHeap 'non-nmethods' (Non-heap memory): committed=2.438MiB, used=1.111MiB, max=5.563MiB, threshold=0B
+2020-04-28 11:18:56.963+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: Metaspace (Non-heap memory): committed=19.88MiB, used=19.32MiB, max=-1B, threshold=0B
+2020-04-28 11:18:56.964+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: CodeHeap 'profiled nmethods' (Non-heap memory): committed=2.875MiB, used=2.863MiB, max=117.2MiB, threshold=0B
+2020-04-28 11:18:56.965+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: Compressed Class Space (Non-heap memory): committed=2.125MiB, used=1.897MiB, max=1024MiB, threshold=0B
+2020-04-28 11:18:56.965+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: G1 Eden Space (Heap memory): committed=97.00MiB, used=48.00MiB, max=-1B, threshold=?
+2020-04-28 11:18:56.966+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: G1 Old Gen (Heap memory): committed=151.0MiB, used=6.415MiB, max=3.881GiB, threshold=0B
+2020-04-28 11:18:56.967+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: G1 Survivor Space (Heap memory): committed=2.000MiB, used=2.000MiB, max=-1B, threshold=?
+2020-04-28 11:18:56.967+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: CodeHeap 'non-profiled nmethods' (Non-heap memory): committed=2.438MiB, used=581.1KiB, max=117.2MiB, threshold=0B
+2020-04-28 11:18:56.967+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:56.968+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:56.968+0000 INFO [o.n.i.d.DiagnosticsManager]                         [ Operating system information ]                        
+2020-04-28 11:18:56.968+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:56.969+0000 INFO [o.n.i.d.DiagnosticsManager] Operating System: Linux; version: 5.3.0-46-generic; arch: amd64; cpus: 4
+2020-04-28 11:18:56.972+0000 INFO [o.n.i.d.DiagnosticsManager] Max number of file descriptors: 1048576
+2020-04-28 11:18:56.972+0000 INFO [o.n.i.d.DiagnosticsManager] Number of open file descriptors: 152
+2020-04-28 11:18:56.984+0000 INFO [o.n.i.d.DiagnosticsManager] Process id: 6@fe76497e8eca
+2020-04-28 11:18:56.984+0000 INFO [o.n.i.d.DiagnosticsManager] Byte order: LITTLE_ENDIAN
+2020-04-28 11:18:57.015+0000 INFO [o.n.i.d.DiagnosticsManager] Local timezone: Etc/UTC
+2020-04-28 11:18:57.016+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.016+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.016+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ JVM information ]                               
+2020-04-28 11:18:57.016+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.017+0000 INFO [o.n.i.d.DiagnosticsManager] VM Name: OpenJDK 64-Bit Server VM
+2020-04-28 11:18:57.018+0000 INFO [o.n.i.d.DiagnosticsManager] VM Vendor: Oracle Corporation
+2020-04-28 11:18:57.018+0000 INFO [o.n.i.d.DiagnosticsManager] VM Version: 11.0.6+10
+2020-04-28 11:18:57.019+0000 INFO [o.n.i.d.DiagnosticsManager] JIT compiler: HotSpot 64-Bit Tiered Compilers
+2020-04-28 11:18:57.020+0000 INFO [o.n.i.d.DiagnosticsManager] VM Arguments: [-Dunsupported.dbms.udc.source=docker,-XX:+UseG1GC, -Dunsupported.dbms.udc.source=docker,-XX:-OmitStackTraceInFastThrow, -Dunsupported.dbms.udc.source=docker,-XX:+AlwaysPreTouch, -Dunsupported.dbms.udc.source=docker,-XX:+UnlockExperimentalVMOptions, -Dunsupported.dbms.udc.source=docker,-XX:+TrustFinalNonStaticFields, -Dunsupported.dbms.udc.source=docker,-XX:+DisableExplicitGC, -Dunsupported.dbms.udc.source=docker,-Djdk.nio.maxCachedBufferSize=262144, -Dunsupported.dbms.udc.source=docker,-Dio.netty.tryReflectionSetAccessible=true, -Dunsupported.dbms.udc.source=docker,-Djdk.tls.ephemeralDHKeySize=2048, -Dunsupported.dbms.udc.source=docker,-Djdk.tls.rejectClientInitiatedRenegotiation=true, -Dfile.encoding=UTF-8]
+2020-04-28 11:18:57.020+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.021+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.021+0000 INFO [o.n.i.d.DiagnosticsManager]                                [ Java classpath ]                               
+2020-04-28 11:18:57.021+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.033+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/parboiled-core-1.2.0.jar
+2020-04-28 11:18:57.033+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/hk2-api-2.5.0.jar
+2020-04-28 11:18:57.034+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-configuration-4.0.0.jar
+2020-04-28 11:18:57.034+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-server-4.0.0.jar
+2020-04-28 11:18:57.034+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-webapp-9.4.17.v20190418.jar
+2020-04-28 11:18:57.034+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-spatial-index-4.0.0.jar
+2020-04-28 11:18:57.034+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jackson-databind-2.10.0.jar
+2020-04-28 11:18:57.035+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jakarta.activation-api-1.2.1.jar
+2020-04-28 11:18:57.035+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jPowerShell-3.0.jar
+2020-04-28 11:18:57.035+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-consistency-check-4.0.0.jar
+2020-04-28 11:18:57.035+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-concurrent-4.0.0.jar
+2020-04-28 11:18:57.035+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-planner-4.0.0.jar
+2020-04-28 11:18:57.036+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jaxb-runtime-2.3.2.jar
+2020-04-28 11:18:57.036+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-ssl-4.0.0.jar
+2020-04-28 11:18:57.036+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-container-servlet-core-2.29.jar
+2020-04-28 11:18:57.036+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jna-5.4.0.jar
+2020-04-28 11:18:57.036+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/annotations-4.0.0.jar
+2020-04-28 11:18:57.037+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-server-9.4.17.v20190418.jar
+2020-04-28 11:18:57.037+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-codegen-4.0.0.jar
+2020-04-28 11:18:57.037+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jackson-core-2.10.0.jar
+2020-04-28 11:18:57.037+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-planner-spi-4.0.0.jar
+2020-04-28 11:18:57.037+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jackson-jaxrs-base-2.10.0.jar
+2020-04-28 11:18:57.037+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-native-4.0.0.jar
+2020-04-28 11:18:57.038+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-command-line-4.0.0.jar
+2020-04-28 11:18:57.038+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/picocli-4.0.4.jar
+2020-04-28 11:18:57.038+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-procedure-4.0.0.jar
+2020-04-28 11:18:57.038+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/activation-1.1.1.jar
+2020-04-28 11:18:57.038+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/WMI4Java-1.6.3.jar
+2020-04-28 11:18:57.039+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-container-servlet-2.29.jar
+2020-04-28 11:18:57.039+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jakarta.xml.bind-api-2.3.2.jar
+2020-04-28 11:18:57.039+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jProcesses-1.6.5.jar
+2020-04-28 11:18:57.039+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-collections-3.2.2.jar
+2020-04-28 11:18:57.039+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-storage-engine-api-4.0.0.jar
+2020-04-28 11:18:57.040+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-dbms-4.0.0.jar
+2020-04-28 11:18:57.040+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-data-collector-4.0.0.jar
+2020-04-28 11:18:57.040+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/hk2-locator-2.5.0.jar
+2020-04-28 11:18:57.040+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-security-9.4.17.v20190418.jar
+2020-04-28 11:18:57.040+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-graph-algo-4.0.0.jar
+2020-04-28 11:18:57.040+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-hk2-2.29.jar
+2020-04-28 11:18:57.041+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-common-4.0.0.jar
+2020-04-28 11:18:57.041+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jakarta.annotation-api-1.3.4.jar
+2020-04-28 11:18:57.041+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/lucene-codecs-8.2.0.jar
+2020-04-28 11:18:57.041+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /plugins/*
+2020-04-28 11:18:57.041+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/lucene-analyzers-common-8.2.0.jar
+2020-04-28 11:18:57.041+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-interpreted-runtime-4.0.0.jar
+2020-04-28 11:18:57.042+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/javax.ws.rs-api-2.1.1.jar
+2020-04-28 11:18:57.042+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-procedure-api-4.0.0.jar
+2020-04-28 11:18:57.042+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-io-4.0.0.jar
+2020-04-28 11:18:57.042+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/bcpkix-jdk15on-1.63.jar
+2020-04-28 11:18:57.042+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-io-9.4.17.v20190418.jar
+2020-04-28 11:18:57.042+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-core-1.4.1.jar
+2020-04-28 11:18:57.043+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-bolt-4.0.0.jar
+2020-04-28 11:18:57.043+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-csv-4.0.0.jar
+2020-04-28 11:18:57.043+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-values-4.0.0.jar
+2020-04-28 11:18:57.043+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-kernel-api-4.0.0.jar
+2020-04-28 11:18:57.043+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-server-2.29.jar
+2020-04-28 11:18:57.043+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jakarta.activation-1.2.1.jar
+2020-04-28 11:18:57.044+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /plugins
+2020-04-28 11:18:57.044+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-record-storage-engine-4.0.0.jar
+2020-04-28 11:18:57.044+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/conf
+2020-04-28 11:18:57.044+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-ast-4.0-4.0.0.jar
+2020-04-28 11:18:57.044+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/parboiled-scala_2.12-1.2.0.jar
+2020-04-28 11:18:57.044+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-4.0.0.jar
+2020-04-28 11:18:57.045+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-expressions-4.0-4.0.0.jar
+2020-04-28 11:18:57.045+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-xml-9.4.17.v20190418.jar
+2020-04-28 11:18:57.045+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-client-2.29.jar
+2020-04-28 11:18:57.045+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-graphdb-api-4.0.0.jar
+2020-04-28 11:18:57.045+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-crypto-hash-1.4.1.jar
+2020-04-28 11:18:57.045+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-ir-4.0.0.jar
+2020-04-28 11:18:57.046+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-logging-4.0.0.jar
+2020-04-28 11:18:57.046+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/istack-commons-runtime-3.0.8.jar
+2020-04-28 11:18:57.046+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/bcprov-jdk15on-1.63.jar
+2020-04-28 11:18:57.046+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-util-9.4.17.v20190418.jar
+2020-04-28 11:18:57.046+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-kernel-4.0.0.jar
+2020-04-28 11:18:57.047+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-http-9.4.17.v20190418.jar
+2020-04-28 11:18:57.047+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/lucene-queryparser-8.2.0.jar
+2020-04-28 11:18:57.047+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-collections-4.0.0.jar
+2020-04-28 11:18:57.047+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-lucene-index-4.0.0.jar
+2020-04-28 11:18:57.047+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-lock-4.0.0.jar
+2020-04-28 11:18:57.047+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-expression-evaluator-4.0.0.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-resource-4.0.0.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-crypto-cipher-1.4.1.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-exceptions-4.0.0.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jackson-annotations-2.10.0.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-config-core-1.4.1.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jackson-jaxrs-json-provider-2.10.0.jar
+2020-04-28 11:18:57.048+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-lang-2.6.jar
+2020-04-28 11:18:57.049+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-cache-1.4.1.jar
+2020-04-28 11:18:57.049+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/stax-ex-1.8.1.jar
+2020-04-28 11:18:57.049+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-rewriting-4.0-4.0.0.jar
+2020-04-28 11:18:57.049+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-label-index-4.0.0.jar
+2020-04-28 11:18:57.049+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-lang3-3.9.jar
+2020-04-28 11:18:57.049+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/txw2-2.3.2.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-schema-4.0.0.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-util-4.0-4.0.0.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/eclipse-collections-10.0.0.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-logical-plans-4.0.0.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-lang-1.4.1.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/FastInfoset-1.2.16.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-logging-1.2.jar
+2020-04-28 11:18:57.050+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-common-2.29.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-crypto-core-1.4.1.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-unsafe-4.0.0.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-compress-1.19.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-batch-insert-4.0.0.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-monitoring-4.0.0.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-config-ogdl-1.4.1.jar
+2020-04-28 11:18:57.051+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-front-end-4.0-4.0.0.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-import-tool-4.0.0.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-text-1.7.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/validation-api-2.0.1.Final.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/netty-all-4.1.43.Final.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-runtime-util-4.0.0.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jakarta.inject-2.5.0.jar
+2020-04-28 11:18:57.052+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-browser-4.0.1.jar
+2020-04-28 11:18:57.053+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/eclipse-collections-api-10.0.0.jar
+2020-04-28 11:18:57.053+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-token-api-4.0.0.jar
+2020-04-28 11:18:57.053+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jackson-module-jaxb-annotations-2.10.0.jar
+2020-04-28 11:18:57.053+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jersey-media-jaxb-2.29.jar
+2020-04-28 11:18:57.053+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/shiro-event-1.4.1.jar
+2020-04-28 11:18:57.053+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-layout-4.0.0.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jaxb-api-2.3.0.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/zstd-proxy-4.0.0.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-index-4.0.0.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-fulltext-index-4.0.0.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/server-api-4.0.0.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jetty-servlet-9.4.17.v20190418.jar
+2020-04-28 11:18:57.054+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-configuration-1.10.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-parser-4.0-4.0.0.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/javassist-3.22.0-CR2.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-security-4.0.0.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/scala-library-2.12.7.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-io-2.6.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/hk2-utils-2.5.0.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-wal-4.0.0.jar
+2020-04-28 11:18:57.055+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/slf4j-api-1.7.25.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/zstd-jni-1.4.3-1.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jctools-core-2.1.2.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/javax.servlet-api-3.1.0.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-diagnostics-4.0.0.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-import-util-4.0.0.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/commons-beanutils-1.9.4.jar
+2020-04-28 11:18:57.056+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/scala-reflect-2.12.7.jar
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-id-generator-4.0.0.jar
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/lucene-core-8.2.0.jar
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/neo4j-cypher-4.0.0.jar
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/caffeine-2.8.0.jar
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath] /var/lib/neo4j/lib/jakarta.ws.rs-api-2.1.5.jar
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.057+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.058+0000 INFO [o.n.i.d.DiagnosticsManager]                                 [ Library path ]                                
+2020-04-28 11:18:57.058+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.058+0000 INFO [o.n.i.d.DiagnosticsManager] /usr/java/packages/lib
+2020-04-28 11:18:57.058+0000 INFO [o.n.i.d.DiagnosticsManager] /usr/lib64
+2020-04-28 11:18:57.059+0000 INFO [o.n.i.d.DiagnosticsManager] /lib64
+2020-04-28 11:18:57.059+0000 INFO [o.n.i.d.DiagnosticsManager] /lib
+2020-04-28 11:18:57.059+0000 INFO [o.n.i.d.DiagnosticsManager] /usr/lib
+2020-04-28 11:18:57.059+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.059+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.059+0000 INFO [o.n.i.d.DiagnosticsManager]                              [ System properties ]                              
+2020-04-28 11:18:57.060+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.060+0000 INFO [o.n.i.d.DiagnosticsManager] awt.toolkit = sun.awt.X11.XToolkit
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] sun.cpu.isalist = 
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] sun.jnu.encoding = UTF-8
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] sun.arch.data.model = 64
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] user.timezone = Etc/UTC
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] sun.java.launcher = SUN_STANDARD
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] sun.boot.library.path = /usr/local/openjdk-11/lib
+2020-04-28 11:18:57.061+0000 INFO [o.n.i.d.DiagnosticsManager] sun.java.command = org.neo4j.server.CommunityEntryPoint --home-dir=/var/lib/neo4j --config-dir=/var/lib/neo4j/conf
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] jdk.debug = release
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] sun.cpu.endian = little
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] user.home = /var/lib/neo4j
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] user.language = en
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] file.separator = /
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.udc.source = docker,-Djdk.tls.rejectClientInitiatedRenegotiation=true
+2020-04-28 11:18:57.062+0000 INFO [o.n.i.d.DiagnosticsManager] sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] user.name = neo4j
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] path.separator = :
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] file.encoding = UTF-8
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] user.dir = /var/lib/neo4j
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] sun.os.patch.level = unknown
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] sun.io.unicode.encoding = UnicodeLittle
+2020-04-28 11:18:57.063+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.064+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.064+0000 INFO [o.n.i.d.DiagnosticsManager]                       [ (IANA) TimeZone database version ]                      
+2020-04-28 11:18:57.064+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.122+0000 INFO [o.n.i.d.DiagnosticsManager]   TimeZone version: 2019c (available for 600 zone identifiers)
+2020-04-28 11:18:57.123+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.123+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.123+0000 INFO [o.n.i.d.DiagnosticsManager]                             [ Network information ]                             
+2020-04-28 11:18:57.123+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.125+0000 INFO [o.n.i.d.DiagnosticsManager] Interface eth0:
+2020-04-28 11:18:57.126+0000 INFO [o.n.i.d.DiagnosticsManager]     address: 172.21.0.4
+2020-04-28 11:18:57.126+0000 INFO [o.n.i.d.DiagnosticsManager] Interface lo:
+2020-04-28 11:18:57.126+0000 INFO [o.n.i.d.DiagnosticsManager]     address: 127.0.0.1
+2020-04-28 11:18:57.126+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.126+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.126+0000 INFO [o.n.i.d.DiagnosticsManager]                          [ Native access information ]                          
+2020-04-28 11:18:57.127+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.250+0000 INFO [o.n.i.d.DiagnosticsManager] Native access details: Linux native access is available.
+2020-04-28 11:18:57.250+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.253+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.254+0000 INFO [o.n.i.d.DiagnosticsManager]                                 [ DBMS config ]                                 
+2020-04-28 11:18:57.254+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:18:57.256+0000 INFO [o.n.i.d.DiagnosticsManager] DBMS provided settings:
+2020-04-28 11:18:57.262+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.bolt.advertised_address=0.0.0.0:7687
+2020-04-28 11:18:57.262+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.bolt.enabled=true
+2020-04-28 11:18:57.262+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.bolt.listen_address=neo4j:7687
+2020-04-28 11:18:57.263+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.http.advertised_address=0.0.0.0:7474
+2020-04-28 11:18:57.263+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.http.enabled=true
+2020-04-28 11:18:57.263+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.http.listen_address=neo4j:7474
+2020-04-28 11:18:57.263+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.https.advertised_address=0.0.0.0:7473
+2020-04-28 11:18:57.264+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.https.enabled=false
+2020-04-28 11:18:57.264+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.default_advertised_address=neo4j
+2020-04-28 11:18:57.264+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.default_listen_address=neo4j
+2020-04-28 11:18:57.264+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.directories.import=/var/lib/neo4j/import
+2020-04-28 11:18:57.264+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.directories.logs=/logs
+2020-04-28 11:18:57.265+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.directories.neo4j_home=/var/lib/neo4j
+2020-04-28 11:18:57.265+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.directories.plugins=/plugins
+2020-04-28 11:18:57.265+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.jvm.additional=-Dunsupported.dbms.udc.source=docker,-Djdk.tls.rejectClientInitiatedRenegotiation=true
+2020-04-28 11:18:57.265+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.memory.pagecache.size=512M
+2020-04-28 11:18:57.265+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.tx_log.rotation.retention_policy=100M size
+2020-04-28 11:18:57.265+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.windows_service_name=neo4j
+2020-04-28 11:18:57.266+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:18:57.360+0000 INFO [o.n.g.f.EditionLocksFactories] Locking implementation 'community' selected.
+2020-04-28 11:18:59.314+0000 INFO [o.n.d.d.DefaultDatabaseManager] Creating 'system' database.
+2020-04-28 11:18:59.490+0000 INFO [o.n.b.BoltServer] Bolt server loaded
+2020-04-28 11:18:59.549+0000 INFO [o.n.d.d.DefaultDatabaseManager] Starting 'system' database.
+2020-04-28 11:18:59.750+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [system] Selected RecordFormat:StandardV4_0[SF4.0.0] record format from store /data/databases/system
+2020-04-28 11:18:59.752+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [system] Selected format 'RecordFormat:StandardV4_0[SF4.0.0]' for existing store /data/databases/system with format 'RecordFormat:StandardV4_0[SF4.0.0]'
+2020-04-28 11:18:59.870+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [system] Selected RecordFormat:StandardV4_0[SF4.0.0] record format from store /data/databases/system
+2020-04-28 11:18:59.870+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [system] Format not configured for store /data/databases/system. Selected format from the store files: RecordFormat:StandardV4_0[SF4.0.0]
+2020-04-28 11:19:00.206+0000 INFO [o.n.i.d.DiagnosticsManager] ********************************************************************************
+2020-04-28 11:19:00.206+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ Database: system ]                              
+2020-04-28 11:19:00.206+0000 INFO [o.n.i.d.DiagnosticsManager] ********************************************************************************
+2020-04-28 11:19:00.207+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.207+0000 INFO [o.n.i.d.DiagnosticsManager]                                   [ Version ]                                   
+2020-04-28 11:19:00.207+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.217+0000 INFO [o.n.i.d.DiagnosticsManager] DBMS: community single StoreId{creationTime=1588012417426, randomId=3528924868791952650, storeVersion=3471765337752883975, upgradeTime=1588012417426, upgradeTxId=1}
+2020-04-28 11:19:00.217+0000 INFO [o.n.i.d.DiagnosticsManager] Kernel version: 4.0.0,f0592a116729ba1ee9001dfc87cf46e5145cfe37
+2020-04-28 11:19:00.218+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:00.222+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.222+0000 INFO [o.n.i.d.DiagnosticsManager]                                 [ Store files ]                                 
+2020-04-28 11:19:00.222+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.223+0000 INFO [o.n.i.d.DiagnosticsManager] Disk space on partition (Total / Free / Free %): 201569390592 / 85032685568 / 42
+2020-04-28 11:19:00.225+0000 INFO [o.n.i.d.DiagnosticsManager] Storage files stored on file store: ext4
+2020-04-28 11:19:00.225+0000 INFO [o.n.i.d.DiagnosticsManager] Storage files: (filename : modification date - size)
+2020-04-28 11:19:00.229+0000 INFO [o.n.i.d.DiagnosticsManager]   database_lock: 2020-04-27T18:33:37+0000 - 0B
+2020-04-28 11:19:00.229+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore: 2020-04-27T18:33:40+0000 - 7.998KiB
+2020-04-28 11:19:00.230+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.counts.db: 2020-04-28T11:19:00+0000 - 48.00KiB
+2020-04-28 11:19:00.230+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.id: 2020-04-28T11:18:59+0000 - 48.00KiB
+2020-04-28 11:19:00.230+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.indexstats.db: 2020-04-28T10:47:36+0000 - 48.00KiB
+2020-04-28 11:19:00.231+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labelscanstore.db: 2020-04-28T10:47:36+0000 - 48.00KiB
+2020-04-28 11:19:00.231+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db: 2020-04-27T18:33:39+0000 - 7.998KiB
+2020-04-28 11:19:00.231+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.232+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db.names: 2020-04-27T18:33:39+0000 - 7.979KiB
+2020-04-28 11:19:00.232+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db.names.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.232+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db: 2020-04-27T18:33:39+0000 - 7.998KiB
+2020-04-28 11:19:00.233+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.233+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db.labels: 2020-04-27T18:33:37+0000 - 8.000KiB
+2020-04-28 11:19:00.233+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db.labels.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.233+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db: 2020-04-27T18:33:39+0000 - 7.968KiB
+2020-04-28 11:19:00.234+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.arrays: 2020-04-27T18:33:37+0000 - 8.000KiB
+2020-04-28 11:19:00.234+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.arrays.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.234+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.235+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index: 2020-04-27T18:33:39+0000 - 7.998KiB
+2020-04-28 11:19:00.235+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.235+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index.keys: 2020-04-27T18:33:39+0000 - 7.979KiB
+2020-04-28 11:19:00.236+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index.keys.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.236+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.strings: 2020-04-27T18:33:39+0000 - 8.000KiB
+2020-04-28 11:19:00.236+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.strings.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.236+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipgroupstore.db: 2020-04-27T18:33:37+0000 - 7.983KiB
+2020-04-28 11:19:00.237+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipgroupstore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.237+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipstore.db: 2020-04-27T18:33:37+0000 - 0B
+2020-04-28 11:19:00.237+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipstore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.238+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db: 2020-04-27T18:33:37+0000 - 0B
+2020-04-28 11:19:00.238+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.238+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db.names: 2020-04-27T18:33:37+0000 - 7.979KiB
+2020-04-28 11:19:00.239+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db.names.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.239+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.schemastore.db: 2020-04-27T18:33:39+0000 - 8.000KiB
+2020-04-28 11:19:00.239+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.schemastore.db.id: 2020-04-28T11:18:59+0000 - 40.00KiB
+2020-04-28 11:19:00.242+0000 INFO [o.n.i.d.DiagnosticsManager]   schema:
+2020-04-28 11:19:00.243+0000 INFO [o.n.i.d.DiagnosticsManager]     index:
+2020-04-28 11:19:00.243+0000 INFO [o.n.i.d.DiagnosticsManager]       native-btree-1.0:
+2020-04-28 11:19:00.243+0000 INFO [o.n.i.d.DiagnosticsManager]         1:
+2020-04-28 11:19:00.243+0000 INFO [o.n.i.d.DiagnosticsManager]           index-1: 2020-04-28T10:47:36+0000 - 48.00KiB
+2020-04-28 11:19:00.244+0000 INFO [o.n.i.d.DiagnosticsManager]         - Total: 2020-04-27T18:33:38+0000 - 48.00KiB
+2020-04-28 11:19:00.244+0000 INFO [o.n.i.d.DiagnosticsManager]         3:
+2020-04-28 11:19:00.244+0000 INFO [o.n.i.d.DiagnosticsManager]           index-3: 2020-04-28T10:47:36+0000 - 48.00KiB
+2020-04-28 11:19:00.245+0000 INFO [o.n.i.d.DiagnosticsManager]         - Total: 2020-04-27T18:33:39+0000 - 48.00KiB
+2020-04-28 11:19:00.245+0000 INFO [o.n.i.d.DiagnosticsManager]       - Total: 2020-04-27T18:33:39+0000 - 96.00KiB
+2020-04-28 11:19:00.245+0000 INFO [o.n.i.d.DiagnosticsManager]     - Total: 2020-04-27T18:33:38+0000 - 96.00KiB
+2020-04-28 11:19:00.245+0000 INFO [o.n.i.d.DiagnosticsManager]   - Total: 2020-04-27T18:33:38+0000 - 96.00KiB
+2020-04-28 11:19:00.245+0000 INFO [o.n.i.d.DiagnosticsManager] Storage summary: 
+2020-04-28 11:19:00.246+0000 INFO [o.n.i.d.DiagnosticsManager]   Total size of store: 951.9KiB
+2020-04-28 11:19:00.246+0000 INFO [o.n.i.d.DiagnosticsManager]   Total size of mapped files: 247.9KiB
+2020-04-28 11:19:00.246+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:00.247+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.247+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ Transaction log ]                               
+2020-04-28 11:19:00.247+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.248+0000 INFO [o.n.i.d.DiagnosticsManager] Transaction log files stored on file store: ext4
+2020-04-28 11:19:00.254+0000 INFO [o.n.i.d.DiagnosticsManager] Oldest transaction 2 found in log with version 0
+2020-04-28 11:19:00.254+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:00.255+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.255+0000 INFO [o.n.i.d.DiagnosticsManager]                                   [ Id usage ]                                  
+2020-04-28 11:19:00.255+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.255+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore: used=1 high=0
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] NodeStore: used=3 high=2
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=49 high=48
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyIndexStore: used=28 high=27
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=3 high=2
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore: used=1 high=0
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyStore: used=40 high=39
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipStore: used=0 high=-1
+2020-04-28 11:19:00.256+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=1 high=0
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipTypeStore: used=0 high=-1
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=3 high=2
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] LabelTokenStore: used=2 high=1
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] SchemaStore: used=5 high=4
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipGroupStore: used=1 high=0
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] NeoStore: used=15 high=14
+2020-04-28 11:19:00.257+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:00.258+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.258+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ Neostore records ]                              
+2020-04-28 11:19:00.258+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.279+0000 INFO [o.n.i.d.DiagnosticsManager] TIME (Creation time): 1588012417426
+2020-04-28 11:19:00.280+0000 INFO [o.n.i.d.DiagnosticsManager] RANDOM_NUMBER (Random number for store id): 3528924868791952650
+2020-04-28 11:19:00.280+0000 INFO [o.n.i.d.DiagnosticsManager] LOG_VERSION (Current log version): 0
+2020-04-28 11:19:00.280+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_ID (Last committed transaction): 20
+2020-04-28 11:19:00.280+0000 INFO [o.n.i.d.DiagnosticsManager] STORE_VERSION (Store format version): 3471765337752883975
+2020-04-28 11:19:00.280+0000 INFO [o.n.i.d.DiagnosticsManager] FIRST_GRAPH_PROPERTY (First property record containing graph properties): -1
+2020-04-28 11:19:00.280+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CONSTRAINT_TRANSACTION (Last committed transaction containing constraint changes): 16
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_ID (Transaction id most recent upgrade was performed at): 1
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TIME (Time of last upgrade): 1588012417426
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_CHECKSUM (Checksum of last committed transaction): -1915397566
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_CHECKSUM (Checksum of transaction id the most recent upgrade was performed at): -559063315
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_VERSION (Log version where the last transaction commit entry has been written into): 0
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_BYTE_OFFSET (Byte offset in the log file where the last transaction commit entry has been written into): 15346
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_COMMIT_TIMESTAMP (Commit time timestamp for last committed transaction): 1588012419361
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_COMMIT_TIMESTAMP (Commit timestamp of transaction the most recent upgrade was performed at): 0
+2020-04-28 11:19:00.281+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_MISSING_STORE_FILES_RECOVERY_TIMESTAMP (Timestamp of last attempt to perform a recovery on the store with missing files.): -1
+2020-04-28 11:19:00.282+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:00.282+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.282+0000 INFO [o.n.i.d.DiagnosticsManager]                                [ Store versions ]                               
+2020-04-28 11:19:00.282+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:00.283+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore SF4.0.0
+2020-04-28 11:19:00.283+0000 INFO [o.n.i.d.DiagnosticsManager] NodeStore SF4.0.0
+2020-04-28 11:19:00.283+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:00.283+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyIndexStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipTypeStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] LabelTokenStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] SchemaStore SF4.0.0
+2020-04-28 11:19:00.284+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipGroupStore SF4.0.0
+2020-04-28 11:19:00.285+0000 INFO [o.n.i.d.DiagnosticsManager] NeoStore SF4.0.0
+2020-04-28 11:19:00.285+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:00.408+0000 INFO [o.n.k.i.a.i.IndexingService] [system] IndexingService.init: indexes not specifically mentioned above are ONLINE
+2020-04-28 11:19:00.413+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Requirement `Database unavailable` makes database system unavailable.
+2020-04-28 11:19:00.414+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Database system is unavailable.
+2020-04-28 11:19:00.431+0000 INFO [o.n.k.i.a.i.IndexingService] [system] IndexingService.start: indexes not specifically mentioned above are ONLINE
+2020-04-28 11:19:00.448+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Fulfilling of requirement 'Database unavailable' makes database system available.
+2020-04-28 11:19:00.449+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Database system is ready.
+2020-04-28 11:19:00.454+0000 INFO [o.n.m.DatabaseHealth] [system] Database health set to OK
+2020-04-28 11:19:00.739+0000 INFO [o.n.d.d.DefaultDatabaseManager] Creating 'neo4j' database.
+2020-04-28 11:19:00.740+0000 INFO [o.n.d.d.DefaultDatabaseManager] Starting 'neo4j' database.
+2020-04-28 11:19:00.761+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [neo4j] Selected RecordFormat:StandardV4_0[SF4.0.0] record format from store /data/databases/neo4j
+2020-04-28 11:19:00.762+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [neo4j] Selected format 'RecordFormat:StandardV4_0[SF4.0.0]' for existing store /data/databases/neo4j with format 'RecordFormat:StandardV4_0[SF4.0.0]'
+2020-04-28 11:19:00.968+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [neo4j] Selected RecordFormat:StandardV4_0[SF4.0.0] record format from store /data/databases/neo4j
+2020-04-28 11:19:00.968+0000 INFO [o.n.k.i.s.f.RecordFormatSelector] [neo4j] Format not configured for store /data/databases/neo4j. Selected format from the store files: RecordFormat:StandardV4_0[SF4.0.0]
+2020-04-28 11:19:01.030+0000 INFO [o.n.i.d.DiagnosticsManager] ********************************************************************************
+2020-04-28 11:19:01.030+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ Database: neo4j ]                               
+2020-04-28 11:19:01.030+0000 INFO [o.n.i.d.DiagnosticsManager] ********************************************************************************
+2020-04-28 11:19:01.030+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager]                                   [ Version ]                                   
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] DBMS: community single StoreId{creationTime=1588012419514, randomId=7941922518950785266, storeVersion=3471765337752883975, upgradeTime=1588012419514, upgradeTxId=1}
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] Kernel version: 4.0.0,f0592a116729ba1ee9001dfc87cf46e5145cfe37
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager]                                 [ Store files ]                                 
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.031+0000 INFO [o.n.i.d.DiagnosticsManager] Disk space on partition (Total / Free / Free %): 201569390592 / 85032669184 / 42
+2020-04-28 11:19:01.032+0000 INFO [o.n.i.d.DiagnosticsManager] Storage files stored on file store: ext4
+2020-04-28 11:19:01.032+0000 INFO [o.n.i.d.DiagnosticsManager] Storage files: (filename : modification date - size)
+2020-04-28 11:19:01.033+0000 INFO [o.n.i.d.DiagnosticsManager]   database_lock: 2020-04-27T18:33:39+0000 - 0B
+2020-04-28 11:19:01.033+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore: 2020-04-27T19:54:38+0000 - 7.998KiB
+2020-04-28 11:19:01.033+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.counts.db: 2020-04-28T11:19:01+0000 - 48.00KiB
+2020-04-28 11:19:01.034+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.id: 2020-04-28T11:19:00+0000 - 48.00KiB
+2020-04-28 11:19:01.034+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.indexstats.db: 2020-04-28T10:47:36+0000 - 40.00KiB
+2020-04-28 11:19:01.034+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labelscanstore.db: 2020-04-28T10:47:36+0000 - 48.00KiB
+2020-04-28 11:19:01.034+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db: 2020-04-27T19:24:37+0000 - 7.998KiB
+2020-04-28 11:19:01.035+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db.id: 2020-04-28T11:19:01+0000 - 40.00KiB
+2020-04-28 11:19:01.035+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db.names: 2020-04-27T19:24:37+0000 - 7.979KiB
+2020-04-28 11:19:01.035+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.labeltokenstore.db.names.id: 2020-04-28T11:19:01+0000 - 40.00KiB
+2020-04-28 11:19:01.037+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db: 2020-04-27T19:54:38+0000 - 95.98KiB
+2020-04-28 11:19:01.038+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.038+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db.labels: 2020-04-27T18:33:39+0000 - 8.000KiB
+2020-04-28 11:19:01.039+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.nodestore.db.labels.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.039+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db: 2020-04-27T19:54:38+0000 - 270.9KiB
+2020-04-28 11:19:01.039+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.arrays: 2020-04-27T18:33:39+0000 - 8.000KiB
+2020-04-28 11:19:01.040+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.arrays.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.040+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.040+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index: 2020-04-27T19:24:37+0000 - 7.998KiB
+2020-04-28 11:19:01.040+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.041+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index.keys: 2020-04-27T19:24:37+0000 - 7.979KiB
+2020-04-28 11:19:01.041+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.index.keys.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.041+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.strings: 2020-04-27T19:54:38+0000 - 176.0KiB
+2020-04-28 11:19:01.042+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.propertystore.db.strings.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.042+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipgroupstore.db: 2020-04-27T18:33:39+0000 - 7.983KiB
+2020-04-28 11:19:01.043+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipgroupstore.db.id: 2020-04-28T11:19:01+0000 - 40.00KiB
+2020-04-28 11:19:01.043+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipstore.db: 2020-04-27T19:54:38+0000 - 406.4KiB
+2020-04-28 11:19:01.043+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshipstore.db.id: 2020-04-28T11:19:00+0000 - 40.00KiB
+2020-04-28 11:19:01.043+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db: 2020-04-27T19:54:38+0000 - 7.998KiB
+2020-04-28 11:19:01.044+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db.id: 2020-04-28T11:19:01+0000 - 40.00KiB
+2020-04-28 11:19:01.044+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db.names: 2020-04-27T19:54:38+0000 - 7.979KiB
+2020-04-28 11:19:01.044+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.relationshiptypestore.db.names.id: 2020-04-28T11:19:01+0000 - 40.00KiB
+2020-04-28 11:19:01.044+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.schemastore.db: 2020-04-27T18:33:39+0000 - 8.000KiB
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager]   neostore.schemastore.db.id: 2020-04-28T11:19:01+0000 - 40.00KiB
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager] Storage summary: 
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager]   Total size of store: 1.739MiB
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager]   Total size of mapped files: 1.060MiB
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ Transaction log ]                               
+2020-04-28 11:19:01.045+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.046+0000 INFO [o.n.i.d.DiagnosticsManager] Transaction log files stored on file store: ext4
+2020-04-28 11:19:01.046+0000 INFO [o.n.i.d.DiagnosticsManager] Oldest transaction 2 found in log with version 0
+2020-04-28 11:19:01.047+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:01.047+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.047+0000 INFO [o.n.i.d.DiagnosticsManager]                                   [ Id usage ]                                  
+2020-04-28 11:19:01.047+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.048+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore: used=1 high=0
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] NodeStore: used=6335 high=6334
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=13 high=12
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyIndexStore: used=12 high=11
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=1348 high=1347
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore: used=1 high=0
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyStore: used=6745 high=6744
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipStore: used=12060 high=12059
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=35 high=34
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipTypeStore: used=32 high=31
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore: used=8 high=7
+2020-04-28 11:19:01.049+0000 INFO [o.n.i.d.DiagnosticsManager] LabelTokenStore: used=7 high=6
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] SchemaStore: used=1 high=0
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipGroupStore: used=1 high=0
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] NeoStore: used=15 high=14
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager]                               [ Neostore records ]                              
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] TIME (Creation time): 1588012419514
+2020-04-28 11:19:01.050+0000 INFO [o.n.i.d.DiagnosticsManager] RANDOM_NUMBER (Random number for store id): 7941922518950785266
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] LOG_VERSION (Current log version): 0
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_ID (Last committed transaction): 2727
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] STORE_VERSION (Store format version): 3471765337752883975
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] FIRST_GRAPH_PROPERTY (First property record containing graph properties): -1
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CONSTRAINT_TRANSACTION (Last committed transaction containing constraint changes): 0
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_ID (Transaction id most recent upgrade was performed at): 1
+2020-04-28 11:19:01.051+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TIME (Time of last upgrade): 1588012419514
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_CHECKSUM (Checksum of last committed transaction): 1637446081
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_CHECKSUM (Checksum of transaction id the most recent upgrade was performed at): -559063315
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_VERSION (Log version where the last transaction commit entry has been written into): 0
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_BYTE_OFFSET (Byte offset in the log file where the last transaction commit entry has been written into): 4264619
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_COMMIT_TIMESTAMP (Commit time timestamp for last committed transaction): 1588017226480
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_COMMIT_TIMESTAMP (Commit timestamp of transaction the most recent upgrade was performed at): 0
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_MISSING_STORE_FILES_RECOVERY_TIMESTAMP (Timestamp of last attempt to perform a recovery on the store with missing files.): -1
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager]                                [ Store versions ]                               
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] --------------------------------------------------------------------------------
+2020-04-28 11:19:01.052+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] NodeStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyIndexStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] ArrayPropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] PropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipTypeStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] StringPropertyStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] LabelTokenStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] SchemaStore SF4.0.0
+2020-04-28 11:19:01.053+0000 INFO [o.n.i.d.DiagnosticsManager] RelationshipGroupStore SF4.0.0
+2020-04-28 11:19:01.054+0000 INFO [o.n.i.d.DiagnosticsManager] NeoStore SF4.0.0
+2020-04-28 11:19:01.054+0000 INFO [o.n.i.d.DiagnosticsManager] 
+2020-04-28 11:19:01.063+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Requirement `Database unavailable` makes database neo4j unavailable.
+2020-04-28 11:19:01.064+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Database neo4j is unavailable.
+2020-04-28 11:19:01.074+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Fulfilling of requirement 'Database unavailable' makes database neo4j available.
+2020-04-28 11:19:01.075+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Database neo4j is ready.
+2020-04-28 11:19:01.075+0000 INFO [o.n.m.DatabaseHealth] [neo4j] Database health set to OK
+2020-04-28 11:19:01.164+0000 INFO [o.n.b.BoltServer] Bolt enabled on neo4j:7687.
+2020-04-28 11:19:01.195+0000 INFO [o.n.s.AbstractNeoServer$ServerComponentsLifecycleAdapter] [system] Starting web server
+2020-04-28 11:19:02.902+0000 INFO [o.n.s.AbstractNeoServer$ServerComponentsLifecycleAdapter] [system] Web server started.
+2020-04-28 19:32:29.452+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=19934, gcTime=0, gcCount=0}
+2020-04-28 19:32:49.618+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=19959, gcTime=0, gcCount=0}
+2020-04-28 19:33:27.859+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=37939, gcTime=0, gcCount=0}
+2020-04-28 19:33:48.115+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=20055, gcTime=0, gcCount=0}
+2020-04-28 19:34:08.790+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=20169, gcTime=0, gcCount=0}
+2020-04-28 19:42:16.670+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=95421, gcTime=0, gcCount=0}
+2020-04-29 06:47:14.086+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=1224, gcTime=0, gcCount=0}
+2020-04-29 07:31:42.936+0000 INFO [o.n.g.f.DatabaseManagementServiceFactory] Shutdown started
+2020-04-29 07:31:42.955+0000 INFO [o.n.d.d.DefaultDatabaseManager] Stop 'neo4j' database.
+2020-04-29 07:31:42.962+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Requirement `Database unavailable` makes database neo4j unavailable.
+2020-04-29 07:31:42.966+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Database neo4j is unavailable.
+2020-04-29 07:31:43.015+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Database shutdown" @ txId: 2727 checkpoint started...
+2020-04-29 07:31:43.128+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Database shutdown" @ txId: 2727 checkpoint completed in 105ms
+2020-04-29 07:31:43.137+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [neo4j] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.
+2020-04-29 07:31:43.185+0000 INFO [o.n.d.d.DefaultDatabaseManager] Stop 'system' database.
+2020-04-29 07:31:43.185+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Requirement `Database unavailable` makes database system unavailable.
+2020-04-29 07:31:43.186+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Database system is unavailable.
+2020-04-29 07:31:43.187+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [system] Checkpoint triggered by "Database shutdown" @ txId: 20 checkpoint started...
+2020-04-29 07:31:43.258+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [system] Checkpoint triggered by "Database shutdown" @ txId: 20 checkpoint completed in 70ms
+2020-04-29 07:31:43.258+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [system] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.

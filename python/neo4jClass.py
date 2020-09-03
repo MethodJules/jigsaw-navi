@@ -340,7 +340,7 @@ class neo4jConnector(object):
     # und Clauses geladen werden.
     def get_sent_clauses_by_id(self, id_list):
         with self._driver.session() as session:
-
+            '''
             res_arr = {}
             res_arr['sentences'] = []
             res_arr['clauses'] = []
@@ -357,6 +357,32 @@ class neo4jConnector(object):
             result = session.run(query)
 
             res_arr['clauses'] = result
+            '''
+
+            res_arr = {}
+            res_arr['sentences'] = []
+            res_arr['clauses'] = []
+
+            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
+            query += 'WHERE (ID(sen) in ' + str(id_list) + ') '
+            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, sen.shorten_lemma_original as shorten_original"
+
+            result = session.run(query)
+
+
+            for record in result:
+                res_arr['sentences'].append({'node_id' : record['node_id'], 'node_title' : record['node_title'], 'node_created' : record['node_created'], 'node_changed': record['node_changed'], 'sent' : record['sent'], 'shorten_original' : record['shorten_original']})
+            #print(res_arr['sentences'])
+
+            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
+            query += 'WHERE (ID(clause) in ' + str(id_list) + ') '
+            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, clause.shorten_lemma_clause as shorten_clause"
+            result = session.run(query)
+
+            for record in result:
+                res_arr['clauses'].append({'node_id' : record['node_id'], 'node_title' : record['node_title'], 'node_created' : record['node_created'], 'node_changed': record['node_changed'], 'sent' : record['sent'], 'shorten_original' : record['shorten_clause']})
+
+            #print(res_arr)
             return res_arr
 
     # Diese Funktion gibt zu einem Suchquery bestehend aus einem Array mit Wörtern Hauptknoten mit ihren Sätze zurück, in denen die einzelnen Wörter als Tags oder Synonyme auftauchen.
@@ -394,11 +420,19 @@ class neo4jConnector(object):
             query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
             query += "LIMIT 100"
 
-            result = session.run(query).data()
+            #result = session.run(query).data()
+            ###----Test----###
+            result_dict = []
+            result = session.run(query)
+            for record in result:
+                result_dict.append({'node_id': record['node_id'], 'node_title' : record['node_title'], 'node_created' : record['node_created'], 'node_changed': record['node_changed'], 'sent': record['sent']})
+
+            print(result_dict)
+            ###---ENDE---###
 
             result_arr = []
 
-            for res in result:
+            for res in result_dict:
                 exists = False
                 i = 0
                 # Hauptknoten sollen im result_arr nur einmal vorkommen und den Knoten werden dann die gefundenen Sätze zugeordnet.
