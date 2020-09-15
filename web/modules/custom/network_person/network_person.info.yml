@@ -1,0 +1,5 @@
+name: Person Network
+description: Creates a visual network of all persons
+type: module
+core: 8.x
+package: Custom
