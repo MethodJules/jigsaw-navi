@@ -56,28 +56,24 @@ class neo4jConnector(object):
             query += "OPTIONAL MATCH (sen)--(clause:Clause) "
             query += "DETACH DELETE clause, tag, sen, cf, rn "
 
-            result = session.run(query) #laueft mit neuer neo4j driver
+            result = session.run(query)
 
             return result
 
     # Die Funktion zählt alle Hauptknoten in der Datenbank und gibt die Anzahl zurück. Wird für die Anzeige im Drupal Backend benötigt, um die Anzahl der Noddes
     # in der Datenbank auszugeben
     def get_nodes_count(self, content_type):
-
+        '''
         with self._driver.session() as session:
             query = "MATCH (rn:RootNode) "
             query += "WHERE (rn.content_type = '" + content_type + "') "
             query += "RETURN count(rn) as node_count"
+        '''
+        with self._driver.session() as session:
+            query = "MATCH(n) RETURN count(n) AS node_count"
+            result = session.run(query).data()
 
-            '''
-            with self._driver.session() as session:
-                query = "MATCH(n) RETURN count(n) AS node_count"
-            '''
-            result = session.run(query)
-
-            for record in result:
-                node_count = record["node_count"]
-            return node_count
+            return result
 
     # Diese Funktion speichert die zuvor per CoreNLP gewonnenen Informationen in der Datenbank ab.
     def create_root_node(self, extract_dict, node_id, content_type, content_field, title, created, changed):
@@ -177,11 +173,12 @@ class neo4jConnector(object):
     # und für das Laden der Entitäten auf der Editierseite
     def get_entities(self):
         with self._driver.session() as session:
+            '''
             query = "MATCH (ent:Entity) "
             query += "RETURN ent.ner as ner, ent.text as text"
 
-            result = session.run(query)
-            '''
+            result = session.run(query).data()
+
             pronouns = ['he', 'she', 'it', 'we', 'they', 'theirs', 'ours', 'hers', 'his', 'its', 'her', 'his', 'their', 'our', 'him']
             entity_arr = {}
 
@@ -208,13 +205,17 @@ class neo4jConnector(object):
             query = "MATCH (:Entity)-[rel]-(:Entity) "
             query += "RETURN collect(distinct Type(rel)) as rel"
 
-            result = session.run(query)
+            result = session.run(query).data()
             if (len(result) > 0):
                 for rel in result[0]['rel']:
                     entity_arr['relationships'].append(rel)
-            '''
-            pronouns = ['he', 'she', 'it', 'we', 'they', 'theirs', 'ours', 'hers', 'his', 'its', 'her', 'his', 'their', 'our', 'him']
 
+
+            return entity_arr
+            '''
+            result = session.run("MATCH (ent: Entity) RETURN ent.ner as ner, ent.text as text")
+
+            pronouns = ['he', 'she', 'it', 'we', 'they', 'theirs', 'ours', 'hers', 'his', 'its', 'her', 'his', 'their', 'our', 'him']
             entity_arr = {}
             entity_arr['types'] = {}
             entity_arr['relationships'] = []
@@ -246,12 +247,13 @@ class neo4jConnector(object):
             query += "RETURN collect(distinct Type(rel)) as rel"
 
             result = session.run(query)
+
             if (result is not None):
                 for record in result:
+                    #print(record["rel"])
                     entity_arr['relationships'] = record["rel"]
 
             return entity_arr
-
     # Die Funktion gibt gefundene Hauptknoten der Nodes aus, die zu der Filtersuche passen
     def get_nodes_by_filter(self, filter_arr):
         with self._driver.session() as session:
@@ -259,7 +261,7 @@ class neo4jConnector(object):
 
             # Alle übermittelten Entitäten iterieren und den Suchquery zusammenbauen.
             for types in filter_arr['types']:
-                #print(types)
+
                 # Bei der Filtersuche können auch nur die Typen ausgewählt werden, aber keinen Text einer Entiät. Z.B. es wird der Typ CITY ausgewählt, aber nicht weiter die Stadt
                 # spezifizert. Ist eines von beiden oder beides nicht gesetzt, sollen die Knoten mit jeglichem Inhalt berücksichtigt werden. Dadurch fallen einige Überprüfungen
                 # weg und der Aufbau des Suchquerys gestaltet sich deutlich einfacher.
@@ -279,11 +281,11 @@ class neo4jConnector(object):
                 query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent_ner, ent1.text as ent_text "
                 query += "ORDER BY rn1.changed DESC"
 
-                result = session.run(query)
+                result = session.run(query).data()
 
-                if (result is not None):
-                    for record in result:
-                        result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent_ner':record['ent_ner'], 'ent_text':record['ent_text']})
+                if (len(result) > 0):
+                    for res in result:
+                        result_dict.append(res)
 
             # Alle übermittelten Relationen iterieren und den Suchquery zusammenbauen.
             for relations in filter_arr['relationships']:
@@ -317,11 +319,11 @@ class neo4jConnector(object):
                 query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent1_ner, ent1.text as ent1_text, ent2.ner as ent2_ner, ent2.text as ent2_text, Type(rel) as rel "
                 query += "ORDER BY rn1.changed DESC"
 
-                result = session.run(query)
-                if(result is not None):
-                    for record in result:
-                        result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent1_ner':record['ent1_ner'], 'ent1_text':record['ent1_text'], 'ent2_ner':record['ent2_ner'],'ent2_text':record['ent2_text'], 'rel':record['rel']})
+                result = session.run(query).data()
 
+                if (len(result) > 0):
+                    for res in result:
+                        result_dict.append(res)
 
             return(result_dict)
 
@@ -331,7 +333,7 @@ class neo4jConnector(object):
 
             query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
             query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, sen.shorten_lemma_original as shorten_original, ID(sen) as sen_id, collect([clause.shorten_lemma_clause, ID(clause)]) as shorten_clauses"
-            result = session.run(query)
+            result = session.run(query).data()
 
             return result
 
@@ -340,7 +342,7 @@ class neo4jConnector(object):
     # und Clauses geladen werden.
     def get_sent_clauses_by_id(self, id_list):
         with self._driver.session() as session:
-            '''
+
             res_arr = {}
             res_arr['sentences'] = []
             res_arr['clauses'] = []
@@ -354,35 +356,9 @@ class neo4jConnector(object):
             query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
             query += 'WHERE (ID(clause) in ' + str(id_list) + ') '
             query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, clause.shorten_lemma_clause as shorten_clause"
-            result = session.run(query)
+            result = session.run(query).data()
 
             res_arr['clauses'] = result
-            '''
-
-            res_arr = {}
-            res_arr['sentences'] = []
-            res_arr['clauses'] = []
-
-            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
-            query += 'WHERE (ID(sen) in ' + str(id_list) + ') '
-            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, sen.shorten_lemma_original as shorten_original"
-
-            result = session.run(query)
-
-
-            for record in result:
-                res_arr['sentences'].append({'node_id' : record['node_id'], 'node_title' : record['node_title'], 'node_created' : record['node_created'], 'node_changed': record['node_changed'], 'sent' : record['sent'], 'shorten_original' : record['shorten_original']})
-            #print(res_arr['sentences'])
-
-            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
-            query += 'WHERE (ID(clause) in ' + str(id_list) + ') '
-            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, clause.shorten_lemma_clause as shorten_clause"
-            result = session.run(query)
-
-            for record in result:
-                res_arr['clauses'].append({'node_id' : record['node_id'], 'node_title' : record['node_title'], 'node_created' : record['node_created'], 'node_changed': record['node_changed'], 'sent' : record['sent'], 'shorten_original' : record['shorten_clause']})
-
-            #print(res_arr)
             return res_arr
 
     # Diese Funktion gibt zu einem Suchquery bestehend aus einem Array mit Wörtern Hauptknoten mit ihren Sätze zurück, in denen die einzelnen Wörter als Tags oder Synonyme auftauchen.
@@ -420,19 +396,11 @@ class neo4jConnector(object):
             query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
             query += "LIMIT 100"
 
-            #result = session.run(query).data()
-            ###----Test----###
-            result_dict = []
-            result = session.run(query)
-            for record in result:
-                result_dict.append({'node_id': record['node_id'], 'node_title' : record['node_title'], 'node_created' : record['node_created'], 'node_changed': record['node_changed'], 'sent': record['sent']})
-
-            print(result_dict)
-            ###---ENDE---###
+            result = session.run(query).data()
 
             result_arr = []
 
-            for res in result_dict:
+            for res in result:
                 exists = False
                 i = 0
                 # Hauptknoten sollen im result_arr nur einmal vorkommen und den Knoten werden dann die gefundenen Sätze zugeordnet.
@@ -713,7 +681,7 @@ class neo4jConnector(object):
                     query += "DETACH DELETE ent "
                     query += "RETURN sen"
 
-                    result = session.run(query)
+                    result = session.run(query).data()
                 else:
                     query = "MATCH (ent:Entity) "
                     query += "WHERE (ent.text = '" + ent['text'] + "') "
@@ -721,7 +689,7 @@ class neo4jConnector(object):
                     query += "RETURN ent "
                     query += "ORDER BY ent.ner ASC"
 
-                    result = session.run(query)
+                    result = session.run(query).data()
 
     # Beim manuellen Hinzufügen von Entitäten, wird vorher überprüft, ob diese bereits in der Datenbank vorhanden ist.
     def check_entity_exists(self, entity):

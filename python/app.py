@@ -11,6 +11,7 @@ import unidecode
 import os
 import spacy
 from annoy import AnnoyIndex
+import getEntities
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ password        = "test"
 
 # Connect to the neo4j database server
 #Sleep few seconds
-time.sleep(30)
+time.sleep(10)
 
 #driver  = GraphDatabase.driver(uri, auth=(userName, password), encrypted=False)
 
@@ -50,8 +51,6 @@ def hello_world():
 # Gibt alle Entitäten und Relationen wieder. In der Klasse neo4jClass steht bei den Methoden eine genaurere Beschreibung wofür diese verwendet werden.
 @app.route("/get-entities")
 def get_entities():
-
-    print('Get Entities')
     msg_arr = {}
     try:
         result = driver.get_entities()
@@ -62,29 +61,24 @@ def get_entities():
         msg_arr['result'] = str(e)
 
     return json.dumps(msg_arr, ensure_ascii=False).encode(encoding='utf-8')
-
 # Gibt gefundene Nodes für die Filtersuche zurück.
 @app.route("/get-nodes-by-filter", methods=['POST'])
 def get_nodes_by_filter():
     if request.method == 'POST':
         filter = request.form['filter']
-        print('Get nodes by filter aufgerufen...')
+
         if (len(filter) > 0):
 
             if (len(filter) > 0 and filter != None):
 
                 msg_arr = {}
-                json_dict = json.loads(filter, encoding="utf-8")
-                result = driver.get_nodes_by_filter(json_dict)
-                #print(result)
                 try:
 
                     json_dict = json.loads(filter, encoding="utf-8")
                     result = driver.get_nodes_by_filter(json_dict)
-                    #print(result)
                     msg_arr['type'] = 'success'
                     msg_arr['result'] = result
-                    #print(msg_arr)
+                    print(msg_arr)
                 except Exception as e:
                     msg_arr['type'] = 'error'
                     msg_arr['result'] = str(e)
@@ -99,7 +93,7 @@ def semantic_search():
 
     if request.method == 'POST':
         text = request.form['search_query']
-        print('Semantic Search...')
+
 
 
         if (len(text) > 0):
@@ -151,7 +145,6 @@ def semantic_search():
 
                     # Den Vektor vom Suchstring übergeben und die 50 nächsten Nachbarn anhand der Vektoren zurückgeben.
                     similar_ids = ann.get_nns_by_vector(doc.vector, 50)
-                    print(type(similar_ids))
 
                     if (len(similar_ids) > 0):
 
@@ -159,7 +152,7 @@ def semantic_search():
                         try:
                             file_path = os.path.dirname(os.path.abspath(__file__))
                             config_path = os.path.join(file_path, 'config.json')
-                            file = open(config_path, 'r', encoding="utf-8")
+                            file = open(config_path, 'r', encoding="utf8")
                             data = file.read()
                             config = json.loads(data)
 
@@ -170,7 +163,6 @@ def semantic_search():
 
                         # Die Informationen 50 nächsten Sätze aus dem Suchindex aus der Datenbank laden
                         result = driver.get_sent_clauses_by_id(similar_ids)
-                        print(result)
 
                         # Alle Sätze iterieren und mit der Funktion doc.similarity von Spacy mit dem Suchstring vergleichen. Die Ähnlichkeit der nächsten 50 Sätze
                         # ist nicht klar. Dies kann eine hohe Ähnlichkeit von z.B. mehr als 80% sein, die Ähnlichkeit kann aber auch nur 10% betragen. Deshalb werden für diese 50
@@ -229,7 +221,6 @@ def semantic_search():
                 except Exception as e:
                     msg_arr['type'] = 'error'
                     msg_arr['result'] = str(e)
-                    print(msg_arr)
 
 
             return json.dumps(msg_arr, ensure_ascii=False).encode(encoding='utf-8')
