@@ -257,7 +257,7 @@ class neo4jConnector(object):
     # Die Funktion gibt gefundene Hauptknoten der Nodes aus, die zu der Filtersuche passen
     def get_nodes_by_filter(self, filter_arr):
         with self._driver.session() as session:
-            '''
+
             result_dict = []
 
             # Alle übermittelten Entitäten iterieren und den Suchquery zusammenbauen.
@@ -327,252 +327,218 @@ class neo4jConnector(object):
                         result_dict.append(res)
 
             return(result_dict)
-            '''
-            result_dict = []
-            msg_arr = {}
-
-            #types = filter_arr['types']
-            #print(types)
-            #first_element = types['0']
-            #print(first_element['ner'])
-
-            for key, value in filter_arr['types'].items():
-                #print(key)
-                #print(value)
-                #print(value['ner'])
-                ent_ner = "ent1.ner =~ '.*'"
-                ent_text = "ent1.text =~ '.*'"
-                # Ist der Typ gesetzt, so soll auch nach diesem gefiltert werden.
-                if (value['ner'] != 'default'):
-                    ent_ner = "ent1.ner = '" + value['ner'] + "'"
-                #Gleiches gilt fuer den Text
-                if (value['text'] != 'default'):
-                    ent_text = "ent1.text = '" + value['text'] + "'"
-
-                query = "MATCH (rn1:RootNode)--(cf1:ContentField)--(sen1:Sentence)--(ent1:Entity) "
-                query += "WHERE (" + ent_ner + " and " + ent_text + ") "
-                query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent_ner, ent1.text as ent_text "
-                query += "ORDER BY rn1.changed DESC"
-                #print(query)
-
-                result = session.run(query)
-                for record in result:
-                    #print(record)
-                    result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent_ner':record['ent_ner'], 'ent_text':record['ent_text']})
-
-                return result_dict
 
 
-            # Diese Funktion gibt anhand der IDs von Knoten Sentences und Clauses zurück. Wird beim Überprüfen von einem eingegeben Suchstring auf semantische Ähnlichkeit mit
-            # Sentences und Clauses in der Datenbank benötigt. Im Suchindex stehen nur IDs von Knoten aus der Datenbank und Vektoren drin. Zu diesen IDs müssen die einzelnen Sentences
-            # und Clauses geladen werden.
-            def get_sent_clauses_by_id(self, id_list):
-                with self._driver.session() as session:
+    # Diese Funktion gibt anhand der IDs von Knoten Sentences und Clauses zurück. Wird beim Überprüfen von einem eingegeben Suchstring auf semantische Ähnlichkeit mit
+    # Sentences und Clauses in der Datenbank benötigt. Im Suchindex stehen nur IDs von Knoten aus der Datenbank und Vektoren drin. Zu diesen IDs müssen die einzelnen Sentences
+    # und Clauses geladen werden.
+    def get_sent_clauses_by_id(self, id_list):
+        with self._driver.session() as session:
 
-                    res_arr = {}
-                    res_arr['sentences'] = []
-                    res_arr['clauses'] = []
+            res_arr = {}
+            res_arr['sentences'] = []
+            res_arr['clauses'] = []
+            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
+            query += 'WHERE (ID(sen) in ' + str(id_list) + ') '
+            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, sen.shorten_lemma_original as shorten_original"
+            result = session.run(query).data()
+
+            res_arr['sentences'] = result
+
+            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
+            query += 'WHERE (ID(clause) in ' + str(id_list) + ') '
+            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, clause.shorten_lemma_clause as shorten_clause"
+            result = session.run(query).data()
+
+            res_arr['clauses'] = result
+            return res_arr
+
+    # Diese Funktion gibt zu einem Suchquery bestehend aus einem Array mit Wörtern Hauptknoten mit ihren Sätze zurück, in denen die einzelnen Wörter als Tags oder Synonyme auftauchen.
+    def get_tag_syn_for_sent(self, search_query):
+        with self._driver.session() as session:
+
+            # Der erste Query schaut, ob es Tags zu den Suchwörtern gibt und optional auch ob es Synonyme gibt, die den Suchwörtern entsprechen. Dieser Query liefert allerdings nur Ergebnisse zurück
+            # wenn mindestens ein Tag mit einem Suchwort vorhanden ist, ansonsten schlägt dieser fehl. Der Query gibt nur Ergebnisse zurück wo die Anzahl von gefunden Tags oder Synonymen größer gleich
+            # der Anzahl der Suchwörter ist.
+            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
+            query += "MATCH (sen)--(tag1:Tag) "
+            query += "WHERE ("
+
+            for i in range(0, len(search_query)):
+                if (i == (len(search_query) - 1)):
+                    query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*')"
+                else:
+                    query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*') or "
+
+                    query += ") "
+                    query += "OPTIONAL MATCH (sen)--(tag2:Tag)--(syn:Synonym) "
+                    query += "WHERE ("
+
+                    for i in range(0, len(search_query)):
+
+                        if (i == (len(search_query) - 1)):
+                            query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
+                        else:
+                            query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
+
+                    query += ") "
+                    query += "WITH rn, sen, collect(DISTINCT tag1.label) as tags1, collect(DISTINCT tag2.label) as tags2, count(DISTINCT tag1) as tagCount, collect(DISTINCT syn) as syns, count(DISTINCT syn) as synCount "
+                    query += "WITH rn, sen, tags1, tags2, syns, sum(tagCount + synCount) as totalCount "
+                    query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
+                    query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
+                    query += "LIMIT 100"
+
+                    result = session.run(query).data()
+
+                    result_arr = []
+
+                    for res in result:
+                        exists = False
+                        i = 0
+                        # Hauptknoten sollen im result_arr nur einmal vorkommen und den Knoten werden dann die gefundenen Sätze zugeordnet.
+                        for i in range(0, len(result_arr)):
+                            if (result_arr[i]['node_id'] == res['node_id']):
+                                exists = True
+                                break
+
+                        if (exists):
+
+                            # Damit bei den Ergenissen auf der Suchseite nicht zu viele Sätze angezeigt werden, werden maximal drei Sätze einem Hauptknoten angezeigt.
+                            if (len(result_arr[i]['sents']) <= 2):
+                                result_arr[i]['sents'].append(res['sents'])
+                        else:
+                            # Wenn der Hauptknoten noch nicht existiert, aus dem Satz ein Array machen, sodass bei der Überprüfung weiter oben diesem Array weitere Sätze hinzugefügt
+                            # werden können.
+                            elem = res
+                            elem['sents'] = [elem['sents']]
+
+                        result_arr.append(elem)
+
+                    # Da der obere Query fehl schlägt, wenn nicht mindestens ein Tag ein Suchwort beinhaltet, gibt es einen weiteren Query, der nur die Synonyme durchsucht.
+                    # Ablauf, Aufbau und Auswertung ist analog zu dem ersten Query.
                     query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
-                    query += 'WHERE (ID(sen) in ' + str(id_list) + ') '
-                    query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, sen.shorten_lemma_original as shorten_original"
+                    query += "MATCH (sen)--(tag1:Tag)--(syn:Synonym) "
+                    query += "WHERE ("
+
+                    for i in range(0, len(search_query)):
+
+                        if (i == (len(search_query) - 1)):
+                            query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
+                        else:
+                            query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
+
+                    query += ") "
+                    query += "WITH rn, sen, collect(DISTINCT tag1.label) as tags1, collect(DISTINCT syn) as syns, count(DISTINCT syn) as totalCount "
+                    query += "WITH rn, sen, tags1, syns, totalCount "
+                    query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
+                    query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
+                    query += "LIMIT 100"
+
                     result = session.run(query).data()
 
-                    res_arr['sentences'] = result
+                    for res in result:
+                        exists = False
+                        i = 0
+                        for i in range(0, len(result_arr)):
+                            if (result_arr[i]['node_id'] == res['node_id']):
 
-                    query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(clause:Clause) "
-                    query += 'WHERE (ID(clause) in ' + str(id_list) + ') '
-                    query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sent, clause.shorten_lemma_clause as shorten_clause"
-                    result = session.run(query).data()
+                                exists = True
+                                break
 
-                    res_arr['clauses'] = result
-                    return res_arr
+                        if (exists):
 
-            # Diese Funktion gibt zu einem Suchquery bestehend aus einem Array mit Wörtern Hauptknoten mit ihren Sätze zurück, in denen die einzelnen Wörter als Tags oder Synonyme auftauchen.
-            def get_tag_syn_for_sent(self, search_query):
-                    with self._driver.session() as session:
-
-                        # Der erste Query schaut, ob es Tags zu den Suchwörtern gibt und optional auch ob es Synonyme gibt, die den Suchwörtern entsprechen. Dieser Query liefert allerdings nur Ergebnisse zurück
-                        # wenn mindestens ein Tag mit einem Suchwort vorhanden ist, ansonsten schlägt dieser fehl. Der Query gibt nur Ergebnisse zurück wo die Anzahl von gefunden Tags oder Synonymen größer gleich
-                        # der Anzahl der Suchwörter ist.
-                        query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
-                        query += "MATCH (sen)--(tag1:Tag) "
-                        query += "WHERE ("
-
-                        for i in range(0, len(search_query)):
-                            if (i == (len(search_query) - 1)):
-                                query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*')"
-                            else:
-                                query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                        query += ") "
-                        query += "OPTIONAL MATCH (sen)--(tag2:Tag)--(syn:Synonym) "
-                        query += "WHERE ("
-
-                        for i in range(0, len(search_query)):
-
-                            if (i == (len(search_query) - 1)):
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
-                            else:
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                        query += ") "
-                        query += "WITH rn, sen, collect(DISTINCT tag1.label) as tags1, collect(DISTINCT tag2.label) as tags2, count(DISTINCT tag1) as tagCount, collect(DISTINCT syn) as syns, count(DISTINCT syn) as synCount "
-                        query += "WITH rn, sen, tags1, tags2, syns, sum(tagCount + synCount) as totalCount "
-                        query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
-                        query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
-                        query += "LIMIT 100"
-
-                        result = session.run(query).data()
-
-                        result_arr = []
-
-                        for res in result:
-                            exists = False
-                            i = 0
-                            # Hauptknoten sollen im result_arr nur einmal vorkommen und den Knoten werden dann die gefundenen Sätze zugeordnet.
-                            for i in range(0, len(result_arr)):
-                                if (result_arr[i]['node_id'] == res['node_id']):
-                                    exists = True
-                                    break
-
-                            if (exists):
-
-                                # Damit bei den Ergenissen auf der Suchseite nicht zu viele Sätze angezeigt werden, werden maximal drei Sätze einem Hauptknoten angezeigt.
-                                if (len(result_arr[i]['sents']) <= 2):
+                            if (len(result_arr[i]['sents']) <= 2):
+                                if(res['sents'] not in result_arr[i]['sents']):
                                     result_arr[i]['sents'].append(res['sents'])
-                            else:
-                                # Wenn der Hauptknoten noch nicht existiert, aus dem Satz ein Array machen, sodass bei der Überprüfung weiter oben diesem Array weitere Sätze hinzugefügt
-                                # werden können.
-                                elem = res
-                                elem['sents'] = [elem['sents']]
+                        else:
+                            elem = res
+                            elem['sents'] = [elem['sents']]
+                            result_arr.append(elem)
 
-                                result_arr.append(elem)
+                    # Array nach dem Änderungsdatum sortieren
+                    result_arr = sorted(result_arr, key=lambda x: x['node_changed'], reverse=True)
+                    return result_arr
 
-                        # Da der obere Query fehl schlägt, wenn nicht mindestens ein Tag ein Suchwort beinhaltet, gibt es einen weiteren Query, der nur die Synonyme durchsucht.
-                        # Ablauf, Aufbau und Auswertung ist analog zu dem ersten Query.
-                        query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence) "
-                        query += "MATCH (sen)--(tag1:Tag)--(syn:Synonym) "
-                        query += "WHERE ("
+    # Diese Funktion wird verwendert, wenn die Funktion get_tag_syn_for_sent keine Ergebnisse liefert. Die Suche wird auf den Inhalt der gesamten Node
+    # ausgeweitet und die Suchwörter müssen nicht alle in einem Satz stehen. Hier werden auch wieder zwei Suchquerys benötigt. Der Rest ist analog zu der
+    # anderen Funktion.
+    def get_tag_syn_for_node(self, search_query):
+        with self._driver.session() as session:
+            query = "MATCH (rn:RootNode) "
+            query += "MATCH (rn)--(cf1:ContentField)--(sen1:Sentence)--(tag1:Tag) "
+            query += "WHERE ("
 
-                        for i in range(0, len(search_query)):
+            for i in range(0, len(search_query)):
+                if (i == (len(search_query) - 1)):
+                    query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*')"
+                else:
+                    query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*') or "
 
-                            if (i == (len(search_query) - 1)):
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
-                            else:
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
+                    query += ") "
+                    query += "OPTIONAL MATCH (rn)--(cf2:ContentField)--(sen2:Sentence)--(tag2:Tag)--(syn:Synonym) "
+                    query += "WHERE ("
 
-                        query += ") "
-                        query += "WITH rn, sen, collect(DISTINCT tag1.label) as tags1, collect(DISTINCT syn) as syns, count(DISTINCT syn) as totalCount "
-                        query += "WITH rn, sen, tags1, syns, totalCount "
-                        query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
-                        query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
-                        query += "LIMIT 100"
+            for i in range(0, len(search_query)):
 
-                        result = session.run(query).data()
+                if (i == (len(search_query) - 1)):
+                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
+                else:
+                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
 
-                        for res in result:
-                            exists = False
-                            i = 0
-                            for i in range(0, len(result_arr)):
-                                if (result_arr[i]['node_id'] == res['node_id']):
+                    query += ") "
+                    query += "WITH rn, collect(cf1) as cfs1, collect(cf2) as cfs2, collect(DISTINCT sen1.original_sent) as sents1, collect(DISTINCT sen2.original_sent) as sents2, collect(DISTINCT tag1) as tags1, collect(DISTINCT tag2) as tags2, count(DISTINCT tag1) as tagCount, collect(DISTINCT syn) as syns, count(DISTINCT syn) as synCount "
+                    query += "WITH rn, cfs1, cfs2, sents1, sents2, tags1, tags2, syns, sum(tagCount + synCount) as totalCount "
+                    query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
+                    query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sents1, sents2, totalCount "
+                    query += "ORDER BY rn.changed DESC"
 
-                                    exists = True
-                                    break
+                    result = session.run(query).data()
 
-                            if (exists):
-
-                                if (len(result_arr[i]['sents']) <= 2):
-                                    if(res['sents'] not in result_arr[i]['sents']):
-                                        result_arr[i]['sents'].append(res['sents'])
-                            else:
-                                elem = res
-                                elem['sents'] = [elem['sents']]
-                                result_arr.append(elem)
-
-                        # Array nach dem Änderungsdatum sortieren
-                        result_arr = sorted(result_arr, key=lambda x: x['node_changed'], reverse=True)
-                        return result_arr
-
-                # Diese Funktion wird verwendert, wenn die Funktion get_tag_syn_for_sent keine Ergebnisse liefert. Die Suche wird auf den Inhalt der gesamten Node
-                # ausgeweitet und die Suchwörter müssen nicht alle in einem Satz stehen. Hier werden auch wieder zwei Suchquerys benötigt. Der Rest ist analog zu der
-                # anderen Funktion.
-                def get_tag_syn_for_node(self, search_query):
-                    with self._driver.session() as session:
-                        query = "MATCH (rn:RootNode) "
-                        query += "MATCH (rn)--(cf1:ContentField)--(sen1:Sentence)--(tag1:Tag) "
-                        query += "WHERE ("
-
-                        for i in range(0, len(search_query)):
-                            if (i == (len(search_query) - 1)):
-                                query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*')"
-                            else:
-                                query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                        query += ") "
-                        query += "OPTIONAL MATCH (rn)--(cf2:ContentField)--(sen2:Sentence)--(tag2:Tag)--(syn:Synonym) "
-                        query += "WHERE ("
-
-                        for i in range(0, len(search_query)):
-
-                            if (i == (len(search_query) - 1)):
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
-                            else:
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                        query += ") "
-                        query += "WITH rn, collect(cf1) as cfs1, collect(cf2) as cfs2, collect(DISTINCT sen1.original_sent) as sents1, collect(DISTINCT sen2.original_sent) as sents2, collect(DISTINCT tag1) as tags1, collect(DISTINCT tag2) as tags2, count(DISTINCT tag1) as tagCount, collect(DISTINCT syn) as syns, count(DISTINCT syn) as synCount "
-                        query += "WITH rn, cfs1, cfs2, sents1, sents2, tags1, tags2, syns, sum(tagCount + synCount) as totalCount "
-                        query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
-                        query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sents1, sents2, totalCount "
-                        query += "ORDER BY rn.changed DESC"
-
-                        result = session.run(query).data()
-
-                        result_arr = []
+                    result_arr = []
 
 
-                        for res in result:
-                            exists = False
-                            i = 0
-                            for i in range(0, len(result_arr)):
-                                if (result_arr[i]['node_id'] == res['node_id']):
+            for res in result:
+                exists = False
+                i = 0
+                for i in range(0, len(result_arr)):
+                    if (result_arr[i]['node_id'] == res['node_id']):
 
-                                    exists = True
-                                    break
+                        exists = True
+                        break
 
-                            if (exists):
+                    if (exists):
 
-                                # Bei diesem Suchquery werden zwei Arrays mit Sätzen zurückgegeben. Einmal mit Sätzen, bei denen die Suchwörter als Tags übereinstimmen und einmal bei denen
-                                # die Suchwörter mit Synonyem übereinstimmen.
-                                for sent in res['sents1']:
-                                    if (len(result_arr[i]['sents']) <= 2):
-                                        if(sent not in result_arr[i]['sents']):
-                                            result_arr[i]['sents'].append(sent)
+                        # Bei diesem Suchquery werden zwei Arrays mit Sätzen zurückgegeben. Einmal mit Sätzen, bei denen die Suchwörter als Tags übereinstimmen und einmal bei denen
+                        # die Suchwörter mit Synonyem übereinstimmen.
+                        for sent in res['sents1']:
+                            if (len(result_arr[i]['sents']) <= 2):
+                                if(sent not in result_arr[i]['sents']):
+                                    result_arr[i]['sents'].append(sent)
 
 
-                                for sent in res['sents2']:
-                                    if (len(result_arr[i]['sents']) <= 2):
-                                        if(sent not in result_arr[i]['sents']):
-                                            result_arr[i]['sents'].append(sent)
+                        for sent in res['sents2']:
+                            if (len(result_arr[i]['sents']) <= 2):
+                                if(sent not in result_arr[i]['sents']):
+                                    result_arr[i]['sents'].append(sent)
                             else:
                                 elem = res
                                 elem['sents'] = []
 
-                                for sent in elem['sents1']:
-                                    if (len(elem['sents']) <= 2):
-                                        if(sent not in elem['sents']):
-                                            elem['sents'].append(sent)
+                        for sent in elem['sents1']:
+                            if (len(elem['sents']) <= 2):
+                                if(sent not in elem['sents']):
+                                    elem['sents'].append(sent)
 
 
-                                for sent in elem['sents2']:
-                                    if (len(elem['sents']) <= 2):
-                                        if(sent not in elem['sents']):
-                                            elem['sents'].append(sent)
+                        for sent in elem['sents2']:
+                            if (len(elem['sents']) <= 2):
+                                if(sent not in elem['sents']):
+                                    elem['sents'].append(sent)
 
-                                del(elem['sents1'])
-                                del(elem['sents2'])
+                        del(elem['sents1'])
+                        del(elem['sents2'])
 
-                                result_arr.append(elem)
+                    result_arr.append(elem)
 
                         query = "MATCH (rn:RootNode) "
                         query += "MATCH (rn)--(cf:ContentField)--(sen:Sentence)--(tag:Tag)--(syn:Synonym) "
