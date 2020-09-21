@@ -76,6 +76,7 @@ def get_nodes_by_filter():
 
                     json_dict = json.loads(filter, encoding="utf-8")
                     result = driver.get_nodes_by_filter(json_dict)
+                    print(result)
                     msg_arr['type'] = 'success'
                     msg_arr['result'] = result
                     print(msg_arr)
