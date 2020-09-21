@@ -8,6 +8,8 @@ RUN apt-get update && apt install python3.7 -y
 RUN apt-get update && apt-get install python3-pip -y
 RUN pip3 --version
 
+ENV LANG C.UTF-8
+
 ADD . /app
 RUN python3 -m pip install -U spacy
 RUN python3 -m spacy download en

@@ -7264,3 +7264,16 @@ RETURN {name: "relationships", data: count(*)} AS result
 2020-09-21 19:04:20.212+0000 INFO [o.n.s.AbstractNeoWebServer$ServerComponentsLifecycleAdapter] Starting web server
 2020-09-21 19:04:21.534+0000 INFO [o.n.s.CommunityNeoWebServer] Remote interface available at http://neo4j:7474/
 2020-09-21 19:04:21.534+0000 INFO [o.n.s.AbstractNeoWebServer$ServerComponentsLifecycleAdapter] Web server started.
+2020-09-21 20:19:06.407+0000 INFO [o.n.g.f.DatabaseManagementServiceFactory] Shutdown started
+2020-09-21 20:19:06.470+0000 INFO [o.n.d.d.DefaultDatabaseManager] Stop 'neo4j' database.
+2020-09-21 20:19:06.472+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Requirement `Database unavailable` makes database neo4j unavailable.
+2020-09-21 20:19:06.472+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [neo4j] Database neo4j is unavailable.
+2020-09-21 20:19:06.480+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Database shutdown" @ txId: 2725 checkpoint started...
+2020-09-21 20:19:06.502+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j] Checkpoint triggered by "Database shutdown" @ txId: 2725 checkpoint completed in 21ms
+2020-09-21 20:19:06.517+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [neo4j] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.
+2020-09-21 20:19:06.536+0000 INFO [o.n.d.d.DefaultDatabaseManager] Stop 'system' database.
+2020-09-21 20:19:06.537+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Requirement `Database unavailable` makes database system unavailable.
+2020-09-21 20:19:06.537+0000 INFO [o.n.k.a.DatabaseAvailabilityGuard] [system] Database system is unavailable.
+2020-09-21 20:19:06.539+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [system] Checkpoint triggered by "Database shutdown" @ txId: 22 checkpoint started...
+2020-09-21 20:19:06.555+0000 INFO [o.n.k.i.t.l.c.CheckPointerImpl] [system] Checkpoint triggered by "Database shutdown" @ txId: 22 checkpoint completed in 15ms
+2020-09-21 20:19:06.555+0000 INFO [o.n.k.i.t.l.p.LogPruningImpl] [system] No log version pruned. The strategy used was '104857600 size'. Last checkpoint was made in log version 0.

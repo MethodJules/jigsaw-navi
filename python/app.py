@@ -11,6 +11,7 @@ import unidecode
 import os
 import spacy
 from annoy import AnnoyIndex
+import getEntities
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ password        = "test"
 
 # Connect to the neo4j database server
 #Sleep few seconds
-time.sleep(30)
+time.sleep(10)
 
 #driver  = GraphDatabase.driver(uri, auth=(userName, password), encrypted=False)
 
@@ -50,7 +51,6 @@ def hello_world():
 # Gibt alle Entitäten und Relationen wieder. In der Klasse neo4jClass steht bei den Methoden eine genaurere Beschreibung wofür diese verwendet werden.
 @app.route("/get-entities")
 def get_entities():
-
     msg_arr = {}
     try:
         result = driver.get_entities()
@@ -61,12 +61,11 @@ def get_entities():
         msg_arr['result'] = str(e)
 
     return json.dumps(msg_arr, ensure_ascii=False).encode(encoding='utf-8')
-
 # Gibt gefundene Nodes für die Filtersuche zurück.
 @app.route("/get-nodes-by-filter", methods=['POST'])
 def get_nodes_by_filter():
     if request.method == 'POST':
-        filter = json.loads(request.form['filter'], encoding="utf-8")
+        filter = request.form['filter']
 
         if (len(filter) > 0):
 
@@ -77,6 +76,7 @@ def get_nodes_by_filter():
 
                     json_dict = json.loads(filter, encoding="utf-8")
                     result = driver.get_nodes_by_filter(json_dict)
+                    print(result)
                     msg_arr['type'] = 'success'
                     msg_arr['result'] = result
                     print(msg_arr)
