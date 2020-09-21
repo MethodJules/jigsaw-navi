@@ -211,9 +211,47 @@ class neo4jConnector(object):
 
 
             return entity_arr
-
-    # Die Funktion gibt gefundene Hauptknoten der Nodes aus, die zu der Filtersuche passen
     def get_nodes_by_filter(self, filter_arr):
+        with self._driver.session() as session:
+            result_dict = []
+            msg_arr = {}
+
+            #types = filter_arr['types']
+            #print(types)
+            #first_element = types['0']
+            #print(first_element['ner'])
+
+            for key, value in filter_arr['types'].items():
+                #print(key)
+                #print(value)
+                #print(value['ner'])
+                ent_ner = "ent1.ner =~ '.*'"
+                ent_text = "ent1.text =~ '.*'"
+                # Ist der Typ gesetzt, so soll auch nach diesem gefiltert werden.
+                if (value['ner'] != 'default'):
+                    ent_ner = "ent1.ner = '" + value['ner'] + "'"
+                #Gleiches gilt fuer den Text
+                if (value['text'] != 'default'):
+                    ent_text = "ent1.text = '" + value['text'] + "'"
+
+                query = "MATCH (rn1:RootNode)--(cf1:ContentField)--(sen1:Sentence)--(ent1:Entity) "
+                query += "WHERE (" + ent_ner + " and " + ent_text + ") "
+                query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent_ner, ent1.text as ent_text "
+                query += "ORDER BY rn1.changed DESC"
+                #print(query)
+
+                result = session.run(query)
+                for record in result:
+                    #print(record)
+                    result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent_ner':record['ent_ner'], 'ent_text':record['ent_text']})
+
+                msg_arr['type'] = 'success'
+                msg_arr['result'] = result_dict
+
+                #response = json.dumps(msg_arr, ensure_ascii=False).encode(encoding='utf-8')
+                return msg_arr
+    # Die Funktion gibt gefundene Hauptknoten der Nodes aus, die zu der Filtersuche passen
+    def get_nodes_by_filter_old(self, filter_arr):
         with self._driver.session() as session:
             result_dict = []
 

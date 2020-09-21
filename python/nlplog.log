@@ -204,3 +204,63 @@
 2020-04-27 19:53:49: exit Task
 2020-04-27 19:53:49: No input for processing in /app/export/nodes_export.json
 2020-04-27 19:53:49: exit Task
+2020-09-21 17:23:30: Starting NLP Task
+2020-09-21 17:23:30: Copy file /app/export/nodes_export.json to /app/export/nodes_export_process.json
+2020-09-21 17:23:30: Remaining Nodes: 17
+2020-09-21 17:23:30: Node ID: 3793; Title: Schupler, Zwi
+2020-09-21 17:25:33: Insert field field_biography with content in database
+2020-09-21 17:25:49: Remaining Nodes: 16
+2020-09-21 17:25:49: Node ID: 1702; Title: Rosenthal, Hugo (Jashuvi, Joseph)
+2020-09-21 17:27:44: Insert field field_biography with content in database
+2020-09-21 17:28:04: Remaining Nodes: 15
+2020-09-21 17:28:04: Node ID: 1587; Title: Ollendorff, Friedrich
+2020-09-21 17:29:02: Insert field field_biography with content in database
+2020-09-21 17:29:15: Remaining Nodes: 14
+2020-09-21 17:29:15: Node ID: 2197; Title: Landauer, Georg
+2020-09-21 17:30:06: Insert field field_biography with content in database
+2020-09-21 17:30:15: Remaining Nodes: 13
+2020-09-21 17:30:15: Node ID: 2221; Title: Kreutzberger, Dr. Max
+2020-09-21 17:30:45: Insert field field_biography with content in database
+2020-09-21 17:30:50: Remaining Nodes: 12
+2020-09-21 17:30:50: Node ID: 1284; Title: Lotan, Giora (née Lubinski, Georg)
+2020-09-21 17:33:26: Insert field field_biography with content in database
+2020-09-21 17:33:47: Remaining Nodes: 11
+2020-09-21 17:33:47: Node ID: 1282; Title: Senator, David Werner 
+2020-09-21 17:35:36: Insert field field_biography with content in database
+2020-09-21 17:35:52: Remaining Nodes: 10
+2020-09-21 17:35:52: Node ID: 3811; Title: Rothschild, Dr. Leopold Jehuda
+2020-09-21 17:36:29: Insert field field_biography with content in database
+2020-09-21 17:36:35: Remaining Nodes: 9
+2020-09-21 17:36:35: Node ID: 3825; Title: Ostfeld, Zvi Hermon (Hermann)
+2020-09-21 17:37:37: Insert field field_biography with content in database
+2020-09-21 17:37:53: Remaining Nodes: 8
+2020-09-21 17:37:53: Node ID: 3844; Title: Frankenstein, Carl (Karl)
+2020-09-21 17:38:41: Insert field field_biography with content in database
+2020-09-21 17:38:55: Remaining Nodes: 7
+2020-09-21 17:38:55: Node ID: 3857; Title: Rothschild, Siegfried (Pinchas)
+2020-09-21 17:39:40: Insert field field_biography with content in database
+2020-09-21 17:39:51: Remaining Nodes: 6
+2020-09-21 17:39:51: Node ID: 3884; Title: Franz Hainbach/Heinebach (Perez Uriel)
+2020-09-21 17:40:26: Insert field field_biography with content in database
+2020-09-21 17:40:31: Remaining Nodes: 5
+2020-09-21 17:40:31: Node ID: 3896; Title: Rund, Ernst (Yaacov)
+2020-09-21 17:40:49: Insert field field_biography with content in database
+2020-09-21 17:40:51: Remaining Nodes: 4
+2020-09-21 17:40:51: Node ID: 3900; Title: Hirsch, Siegfried (Shimon)
+2020-09-21 17:42:00: Insert field field_biography with content in database
+2020-09-21 17:42:16: Remaining Nodes: 3
+2020-09-21 17:42:16: Node ID: 3944; Title: Brachiahu (Borochov), Dr. Mordechai
+2020-09-21 17:44:07: Insert field field_biography with content in database
+2020-09-21 17:44:26: Remaining Nodes: 2
+2020-09-21 17:44:26: Node ID: 1784; Title: Aloni, Jenny (née Rosenbaum)
+2020-09-21 17:45:44: Insert field field_biography with content in database
+2020-09-21 17:46:08: Remaining Nodes: 1
+2020-09-21 17:46:08: Node ID: 1835; Title: Avneri, Bruria (born Heymann, Bertha )
+2020-09-21 17:46:44: Insert field field_biography with content in database
+2020-09-21 17:46:56: Creating search index
+2020-09-21 17:46:59: Adding manual created nodes
+2020-09-21 17:46:59: File /app/export/nodes_export_process.json is empty. Delete file.
+2020-09-21 17:46:59: No input for processing in /app/export/nodes_export.json
+2020-09-21 17:46:59: exit Task
+2020-09-21 17:46:59: No input for processing in /app/export/nodes_export.json
+2020-09-21 17:46:59: exit Task

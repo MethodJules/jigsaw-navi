@@ -66,7 +66,7 @@ def get_entities():
 @app.route("/get-nodes-by-filter", methods=['POST'])
 def get_nodes_by_filter():
     if request.method == 'POST':
-        filter = request.form['filter']
+        filter = json.loads(request.form['filter'], encoding="utf-8")
 
         if (len(filter) > 0):
 
