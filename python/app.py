@@ -68,13 +68,14 @@ def get_nodes_by_filter():
     if request.method == 'POST':
         filter = request.form['filter']
         #print(type(filter))
-        #print(filter)
+        print(filter)
         if (len(filter) > 0):
 
             if (len(filter) > 0 and filter != None):
 
                 msg_arr = {}
-                result_dict = []
+                #result_dict = []
+                print(filter)
                 try:
 
                     json_dict = json.loads(filter, encoding="utf-8")
