@@ -24,16 +24,18 @@ class SearchController extends ControllerBase {
         if (!$nlp_filter) {
             \Drupal::messenger()->addMessage(t('Invalid parameters'), 'error');
         } else {
+            dpm($nlp_filter);
             if (count($nlp_filter['types']) > 0 || count($nlp_filter['relationships']) > 0) {
 
                 $config = \Drupal::config('nlp_search.settings');
                 $saved_python_flask_url = $config->get('nlp_search_basic_python_flask_url');
+                dpm($saved_python_flask_url);
 
                 if (!empty($saved_python_flask_url)) {
                     if ($saved_python_flask_url[strlen($saved_python_flask_url) - 1] != '/') {
                         $saved_python_flask_url .= '/';
                     }
-
+                    dpm(json_encode($nlp_filter));
                     //cUrl Aufruf und holen der Suchergebnisse von der Python Flask Anwendung.
                     $ch = curl_init();
 
@@ -45,8 +47,10 @@ class SearchController extends ControllerBase {
                         http_build_query(array('filter' => json_encode($nlp_filter))));
 
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+                    dpm($ch);
                     $response = curl_exec($ch);
+
+                    dpm($response);
 
                     if ($response === FALSE) {
                         \Drupal::messenger()->addMessage(curl_error($ch), 'error');

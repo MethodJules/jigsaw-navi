@@ -261,18 +261,18 @@ class neo4jConnector(object):
             result_dict = []
 
             # Alle übermittelten Entitäten iterieren und den Suchquery zusammenbauen.
-            for key, value in filter_arr['types'].items():
+            for types in filter_arr['types']:
                 #print(key)
                 #print(value)
                 #print(value['ner'])
                 ent_ner = "ent1.ner =~ '.*'"
                 ent_text = "ent1.text =~ '.*'"
                 # Ist der Typ gesetzt, so soll auch nach diesem gefiltert werden.
-                if (value['ner'] != 'default'):
-                    ent_ner = "ent1.ner = '" + value['ner'] + "'"
+                if (types['ner'] != 'default'):
+                    ent_ner = "ent1.ner = '" + types['ner'] + "'"
                 #Gleiches gilt fuer den Text
-                if (value['text'] != 'default'):
-                    ent_text = "ent1.text = '" + value['text'] + "'"
+                if (types['text'] != 'default'):
+                    ent_text = "ent1.text = '" + types['text'] + "'"
 
                 query = "MATCH (rn1:RootNode)--(cf1:ContentField)--(sen1:Sentence)--(ent1:Entity) "
                 query += "WHERE (" + ent_ner + " and " + ent_text + ") "
