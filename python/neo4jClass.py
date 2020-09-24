@@ -608,9 +608,13 @@ class neo4jConnector(object):
             query += "RETURN DISTINCT rn.name as node_id, ent.ner as ent_ner, ent.text as ent_text "
             query += "ORDER BY ent.ner ASC"
 
-            result = session.run(query).data()
+            result = session.run(query)
 
-            return result 
+            res_dict = []
+            for record in result:
+                res_dict.append({'node_id': record['node_id'], 'ent_ner': record['ent_ner'], 'ent_text': record['ent_text']})
+
+            return res_dict 
 
                 
 
@@ -626,9 +630,12 @@ class neo4jConnector(object):
             query += "WHERE (rn.name = '" + str(node_id) + "') "
             query += "RETURN DISTINCT rn.name as node_id, ent.ner as ent_ner, ent.text as ent_text, ent2.ner as ent2_ner, ent2.text as ent2_text, Type(rel) as rel "
 
-            result = session.run(query).data()
+            result = session.run(query)
+            res_dict = []
+            for record in result:
+                res_dict.append({'node_id': record['node_id'], 'ent_ner': record['ent_ner'], 'ent_text': record['ent_text'], 'ent2_ner': record['ent2_ner'], 'ent2_text': record['ent2_text'], 'rel': record['rel']})
 
-            return result
+            return res_dict
 
     # Diese Funktion arbeitet ähnlich wie get_node_by_id, nur das im Mittelpunkt eine Entität steht und keine Drupal Node ID. Wenn beim Grapen in der Ansicht der Node
     # doppelt auf eine Entität geklickt wird, sollen alle Entitäten und Hauptknoten geladen werden, die mit dieser Entität in Verbindung stehen. Diese Funktion lädt alle
