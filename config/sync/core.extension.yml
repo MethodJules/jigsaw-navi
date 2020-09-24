@@ -47,6 +47,7 @@ module:
   migrate_plus: 0
   migrate_tools: 0
   migrate_upgrade: 0
+  network_person: 0
   nlp_search: 0
   node: 0
   optional_end_date: 0

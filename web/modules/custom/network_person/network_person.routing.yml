@@ -1,0 +1,6 @@
+network_person.visualize:
+  path: '/person-network'
+  defaults:
+    _controller: '\Drupal\network_person\Controller\NetworkController::content'
+  requirements:
+    _permission: 'access content'
