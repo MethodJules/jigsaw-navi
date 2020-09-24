@@ -68,7 +68,7 @@ def get_nodes_by_filter():
     if request.method == 'POST':
         filter = request.form['filter']
         #print(type(filter))
-        print(filter)
+        #print(filter)
         if (len(filter) > 0):
 
             if (len(filter) > 0 and filter != None):
