@@ -162,7 +162,7 @@ class SearchController extends ControllerBase {
     //Die Funktion wird aufgerufen, wenn bei der SearchForm eine Volltextsuche gestartet wird.
     public function fulltext($search_content) {
         $nlp_fulltext = urldecode($search_content);
-
+        dpm($nlp_fulltext);
         $content = array();
         if (!$nlp_fulltext) {
             \Drupal::messenger()->addMessage(t('Invalid parameters'), 'error');
@@ -176,7 +176,7 @@ class SearchController extends ControllerBase {
                     if ($saved_python_flask_url[strlen($saved_python_flask_url) - 1] != '/') {
                         $saved_python_flask_url .= '/';
                     }
-
+                    dpm(json_encode($nlp_fulltext));
                     $ch = curl_init();
 
                     //cUrl Aufruf an die Python Flask Anwendung
