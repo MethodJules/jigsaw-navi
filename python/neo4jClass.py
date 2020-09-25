@@ -597,14 +597,14 @@ class neo4jConnector(object):
             result_arr = sorted(result_arr, key=lambda x: x['node_changed'], reverse=True)
             return result_arr
 
-                # Diese Funktion liefert zu einer Node ID von einer Drupal Node alle dazugehörigen Entitäten aus. Wird für die Graphenanzeige bei der Ansicht der Node benötigt
-                def get_entities_by_id(self, node_id):
-                    with self._driver.session() as session:
+    # Diese Funktion liefert zu einer Node ID von einer Drupal Node alle dazugehörigen Entitäten aus. Wird für die Graphenanzeige bei der Ansicht der Node benötigt
+    def get_entities_by_id(self, node_id):
+        with self._driver.session() as session:
 
-                        query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(ent:Entity) "
-                        query += "WHERE (rn.name = '" + str(node_id) + "') "
-                        query += "RETURN DISTINCT rn.name as node_id, ent.ner as ent_ner, ent.text as ent_text "
-                        query += "ORDER BY ent.ner ASC"
+            query = "MATCH (rn:RootNode)--(cf:ContentField)--(sen:Sentence)--(ent:Entity) "
+            query += "WHERE (rn.name = '" + str(node_id) + "') "
+            query += "RETURN DISTINCT rn.name as node_id, ent.ner as ent_ner, ent.text as ent_text "
+            query += "ORDER BY ent.ner ASC"
 
             result = session.run(query)
 

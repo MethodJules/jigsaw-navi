@@ -34,3 +34,5 @@
 /drush.bat
 /default.config.yml
 /.vagrant/
+
+python/__pycache__/
