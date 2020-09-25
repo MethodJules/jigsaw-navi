@@ -1,0 +1,7 @@
+neo4j_connect.content:
+    path: '/neo4j/connect'
+    defaults:
+      _controller: '\Drupal\neo4j_connect\Controller\Neo4jConnectController::content'
+      _title: 'Neo4j Connector'
+    requirements:
+      _permission: 'access content'

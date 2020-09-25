@@ -61,6 +61,7 @@
         "drupal/search_api_solr": "^2.7",
         "drupal/showcase_lite": "^1.1",
         "drush/drush": "9.*",
+        "graphaware/neo4j-php-client": "^4.0",
         "harvesthq/chosen": "^1.8",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",

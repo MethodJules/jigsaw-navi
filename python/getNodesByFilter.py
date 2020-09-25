@@ -7,7 +7,9 @@ session = driver.session()
 
 
 #API Endpoint Simulation
-filter = '{"types":{"0":{"ner":"CITY","text":"Berlin"}},"relationships":{}}'
+#filter = '{"types":{"0":{"ner":"CITY","text":"Berlin"}},"relationships":{}}'
+filter = '{"types":[{"ner":"CITY","text":"Berlin"}],"relationships":[]}'
+
 json_dict = json.loads(filter, encoding="utf-8")
 #print(json_dict)
 #print(type(json_dict))
@@ -20,19 +22,19 @@ msg_arr = {}
 #print(types)
 #first_element = types['0']
 #print(first_element['ner'])
-
-for key, value in filter_arr['types'].items():
+for types in filter_arr['types']:
+#for key, value in filter_arr['types'].items():
     #print(key)
     #print(value)
     #print(value['ner'])
     ent_ner = "ent1.ner =~ '.*'"
     ent_text = "ent1.text =~ '.*'"
     # Ist der Typ gesetzt, so soll auch nach diesem gefiltert werden.
-    if (value['ner'] != 'default'):
-        ent_ner = "ent1.ner = '" + value['ner'] + "'"
+    if (types['ner'] != 'default'):
+        ent_ner = "ent1.ner = '" + types['ner'] + "'"
     #Gleiches gilt fuer den Text
-    if (value['text'] != 'default'):
-        ent_text = "ent1.text = '" + value['text'] + "'"
+    if (types['text'] != 'default'):
+        ent_text = "ent1.text = '" + types['text'] + "'"
 
     query = "MATCH (rn1:RootNode)--(cf1:ContentField)--(sen1:Sentence)--(ent1:Entity) "
     query += "WHERE (" + ent_ner + " and " + ent_text + ") "

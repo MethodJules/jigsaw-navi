@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# coding=latin-1
 from flask import Flask
 from flask import request
 from neo4j import GraphDatabase
@@ -12,6 +12,7 @@ import os
 import spacy
 from annoy import AnnoyIndex
 import getEntities
+import sys
 
 app = Flask(__name__)
 
@@ -66,19 +67,24 @@ def get_entities():
 def get_nodes_by_filter():
     if request.method == 'POST':
         filter = request.form['filter']
-
+        #print(type(filter))
+        #print(filter)
         if (len(filter) > 0):
 
             if (len(filter) > 0 and filter != None):
 
                 msg_arr = {}
+                #result_dict = []
+                print(filter)
                 try:
 
                     json_dict = json.loads(filter, encoding="utf-8")
-                    result = driver.get_nodes_by_filter(json_dict)
-                    print(result)
+                    result_dict = driver.get_nodes_by_filter(json_dict)
+                    print('...')
+                    print(type(result_dict))
+                    print(*result_dict)
                     msg_arr['type'] = 'success'
-                    msg_arr['result'] = result
+                    msg_arr['result'] = result_dict
                     print(msg_arr)
                 except Exception as e:
                     msg_arr['type'] = 'error'

@@ -1,0 +1,4 @@
+name: Neo4j Connection
+description: Connect to Neo4j Database
+type: module
+core: 8.x

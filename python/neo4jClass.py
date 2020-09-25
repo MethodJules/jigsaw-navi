@@ -43,7 +43,7 @@ class neo4jConnector(object):
             print("Connected...")
         except:
             raise
-
+ 
     def close(self):
         self._driver.close()
 
@@ -262,18 +262,15 @@ class neo4jConnector(object):
 
             # Alle übermittelten Entitäten iterieren und den Suchquery zusammenbauen.
             for types in filter_arr['types']:
-
-                # Bei der Filtersuche können auch nur die Typen ausgewählt werden, aber keinen Text einer Entiät. Z.B. es wird der Typ CITY ausgewählt, aber nicht weiter die Stadt
-                # spezifizert. Ist eines von beiden oder beides nicht gesetzt, sollen die Knoten mit jeglichem Inhalt berücksichtigt werden. Dadurch fallen einige Überprüfungen
-                # weg und der Aufbau des Suchquerys gestaltet sich deutlich einfacher.
+                #print(key)
+                #print(value)
+                #print(value['ner'])
                 ent_ner = "ent1.ner =~ '.*'"
                 ent_text = "ent1.text =~ '.*'"
-
                 # Ist der Typ gesetzt, so soll auch nach diesem gefiltert werden.
                 if (types['ner'] != 'default'):
                     ent_ner = "ent1.ner = '" + types['ner'] + "'"
-
-                # Gleiches gilt für den Text der Entität.
+                #Gleiches gilt fuer den Text
                 if (types['text'] != 'default'):
                     ent_text = "ent1.text = '" + types['text'] + "'"
 
@@ -281,13 +278,15 @@ class neo4jConnector(object):
                 query += "WHERE (" + ent_ner + " and " + ent_text + ") "
                 query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent_ner, ent1.text as ent_text "
                 query += "ORDER BY rn1.changed DESC"
+                #print(query)
 
-                result = session.run(query).data()
+                result = session.run(query)
+                for record in result:
+                    #print(record)
+                    result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent_ner':record['ent_ner'], 'ent_text':record['ent_text']})
 
-                if (len(result) > 0):
-                    for res in result:
-                        result_dict.append(res)
-
+                    #print(result_dict)
+            
             # Alle übermittelten Relationen iterieren und den Suchquery zusammenbauen.
             for relations in filter_arr['relationships']:
 
@@ -320,13 +319,16 @@ class neo4jConnector(object):
                 query += "RETURN rn1.name as node_id, rn1.title as node_title, rn1.created as node_created, rn1.changed as node_changed, sen1.original_sent as sent, ent1.ner as ent1_ner, ent1.text as ent1_text, ent2.ner as ent2_ner, ent2.text as ent2_text, Type(rel) as rel "
                 query += "ORDER BY rn1.changed DESC"
 
-                result = session.run(query).data()
+                result = session.run(query)
 
-                if (len(result) > 0):
-                    for res in result:
-                        result_dict.append(res)
+                for record in result:
+                    result_dict.append({'node_id': record['node_id'], 'node_title': record['node_title'], 'node_created' : record['node_created'], 'node_changed' : record['node_changed'], 'sent':record['sent'], 'ent1_ner':record['ent1_ner'], 'ent1_text':record['ent1_text'], 'ent2_ner':record['ent2_ner'], 'ent2_text':record['ent2_text'], 'rel':record['rel']})
 
-            return(result_dict)
+                #if (len(result) > 0):
+                #    for res in result:
+                #        result_dict.append(res)
+            
+            return result_dict
 
 
     # Diese Funktion gibt anhand der IDs von Knoten Sentences und Clauses zurück. Wird beim Überprüfen von einem eingegeben Suchstring auf semantische Ähnlichkeit mit
@@ -387,7 +389,7 @@ class neo4jConnector(object):
                     query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
                     query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sen.original_sent as sents "
                     query += "LIMIT 100"
-
+                    print(query)
                     result = session.run(query).data()
 
                     result_arr = []
@@ -461,141 +463,141 @@ class neo4jConnector(object):
 
     # Diese Funktion wird verwendert, wenn die Funktion get_tag_syn_for_sent keine Ergebnisse liefert. Die Suche wird auf den Inhalt der gesamten Node
     # ausgeweitet und die Suchwörter müssen nicht alle in einem Satz stehen. Hier werden auch wieder zwei Suchquerys benötigt. Der Rest ist analog zu der
-    # anderen Funktion.
+    # anderen Funktion. 
     def get_tag_syn_for_node(self, search_query):
         with self._driver.session() as session:
             query = "MATCH (rn:RootNode) "
             query += "MATCH (rn)--(cf1:ContentField)--(sen1:Sentence)--(tag1:Tag) "
             query += "WHERE ("
-
+            
             for i in range(0, len(search_query)):
                 if (i == (len(search_query) - 1)):
-                    query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*')"
+                    query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*')"                                    
                 else:
                     query += "toLower(tag1.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                    query += ") "
-                    query += "OPTIONAL MATCH (rn)--(cf2:ContentField)--(sen2:Sentence)--(tag2:Tag)--(syn:Synonym) "
-                    query += "WHERE ("
-
+                    
+            query += ") "
+            query += "OPTIONAL MATCH (rn)--(cf2:ContentField)--(sen2:Sentence)--(tag2:Tag)--(syn:Synonym) "
+            query += "WHERE ("
+            
             for i in range(0, len(search_query)):
-
+                
                 if (i == (len(search_query) - 1)):
-                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
+                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"                
                 else:
-                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                    query += ") "
-                    query += "WITH rn, collect(cf1) as cfs1, collect(cf2) as cfs2, collect(DISTINCT sen1.original_sent) as sents1, collect(DISTINCT sen2.original_sent) as sents2, collect(DISTINCT tag1) as tags1, collect(DISTINCT tag2) as tags2, count(DISTINCT tag1) as tagCount, collect(DISTINCT syn) as syns, count(DISTINCT syn) as synCount "
-                    query += "WITH rn, cfs1, cfs2, sents1, sents2, tags1, tags2, syns, sum(tagCount + synCount) as totalCount "
-                    query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
-                    query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sents1, sents2, totalCount "
-                    query += "ORDER BY rn.changed DESC"
-
-                    result = session.run(query).data()
-
-                    result_arr = []
-
-
+                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "                    
+                
+            query += ") "
+            query += "WITH rn, collect(cf1) as cfs1, collect(cf2) as cfs2, collect(DISTINCT sen1.original_sent) as sents1, collect(DISTINCT sen2.original_sent) as sents2, collect(DISTINCT tag1) as tags1, collect(DISTINCT tag2) as tags2, count(DISTINCT tag1) as tagCount, collect(DISTINCT syn) as syns, count(DISTINCT syn) as synCount "
+            query += "WITH rn, cfs1, cfs2, sents1, sents2, tags1, tags2, syns, sum(tagCount + synCount) as totalCount "
+            query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
+            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sents1, sents2, totalCount "
+            query += "ORDER BY rn.changed DESC"
+            
+            result = session.run(query).data()
+            
+            result_arr = []
+            
+            
             for res in result:
                 exists = False
                 i = 0
                 for i in range(0, len(result_arr)):
                     if (result_arr[i]['node_id'] == res['node_id']):
-
+                        
                         exists = True
                         break
-
-                    if (exists):
-
-                        # Bei diesem Suchquery werden zwei Arrays mit Sätzen zurückgegeben. Einmal mit Sätzen, bei denen die Suchwörter als Tags übereinstimmen und einmal bei denen
-                        # die Suchwörter mit Synonyem übereinstimmen.
-                        for sent in res['sents1']:
-                            if (len(result_arr[i]['sents']) <= 2):
-                                if(sent not in result_arr[i]['sents']):
-                                    result_arr[i]['sents'].append(sent)
-
-
-                        for sent in res['sents2']:
-                            if (len(result_arr[i]['sents']) <= 2):
-                                if(sent not in result_arr[i]['sents']):
-                                    result_arr[i]['sents'].append(sent)
-                            else:
-                                elem = res
-                                elem['sents'] = []
-
-                        for sent in elem['sents1']:
-                            if (len(elem['sents']) <= 2):
-                                if(sent not in elem['sents']):
-                                    elem['sents'].append(sent)
-
-
-                        for sent in elem['sents2']:
-                            if (len(elem['sents']) <= 2):
-                                if(sent not in elem['sents']):
-                                    elem['sents'].append(sent)
-
-                        del(elem['sents1'])
-                        del(elem['sents2'])
-
+                
+                if (exists):
+                    
+                    # Bei diesem Suchquery werden zwei Arrays mit Sätzen zurückgegeben. Einmal mit Sätzen, bei denen die Suchwörter als Tags übereinstimmen und einmal bei denen
+                    # die Suchwörter mit Synonyem übereinstimmen. 
+                    for sent in res['sents1']:
+                        if (len(result_arr[i]['sents']) <= 2):                       
+                            if(sent not in result_arr[i]['sents']):
+                                result_arr[i]['sents'].append(sent)
+                                
+                    
+                    for sent in res['sents2']:
+                        if (len(result_arr[i]['sents']) <= 2):                       
+                            if(sent not in result_arr[i]['sents']):
+                                result_arr[i]['sents'].append(sent)
+                else:
+                    elem = res
+                    elem['sents'] = []
+                    
+                    for sent in elem['sents1']:
+                        if (len(elem['sents']) <= 2):                       
+                            if(sent not in elem['sents']):
+                                elem['sents'].append(sent)
+                               
+                    
+                    for sent in elem['sents2']:
+                        if (len(elem['sents']) <= 2):                       
+                            if(sent not in elem['sents']):
+                                elem['sents'].append(sent)
+                    
+                    del(elem['sents1'])
+                    del(elem['sents2'])
+                    
                     result_arr.append(elem)
-
-                        query = "MATCH (rn:RootNode) "
-                        query += "MATCH (rn)--(cf:ContentField)--(sen:Sentence)--(tag:Tag)--(syn:Synonym) "
-                        query += "WHERE ("
-
-                        for i in range(0, len(search_query)):
-
-                            if (i == (len(search_query) - 1)):
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"
-                            else:
-                                query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "
-
-                        query += ") "
-                        query += "WITH rn, collect(cf) as cfs, collect(DISTINCT sen.original_sent) as sents1, collect(DISTINCT tag) as tags, collect(DISTINCT syn) as syns, count(DISTINCT syn) as totalCount "
-                        query += "WITH rn, cfs, sents1, tags, syns, totalCount "
-                        query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
-                        query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sents1, totalCount "
-                        query += "ORDER BY rn.changed DESC"
-
-                        result = session.run(query).data()
-
-
-
-                        for res in result:
-                            exists = False
-                            i = 0
-                            for i in range(0, len(result_arr)):
-                                if (result_arr[i]['node_id'] == res['node_id']):
-
-                                    exists = True
-                                    break
-
-                            if (exists):
-
-
-                                for sent in res['sents1']:
-                                    if (len(result_arr[i]['sents']) <= 2):
-                                        if(sent not in result_arr[i]['sents']):
-                                            result_arr[i]['sents'].append(sent)
-
-                            else:
-                                elem = res
-                                elem['sents'] = []
-
-                                for sent in elem['sents1']:
-                                    if (len(elem['sents']) <= 2):
-                                        if(sent not in elem['sents']):
-                                            elem['sents'].append(sent)
-
-                                del(elem['sents1'])
-
-                                result_arr.append(elem)
-
-
-
-                        result_arr = sorted(result_arr, key=lambda x: x['node_changed'], reverse=True)
-                        return result_arr
+                    
+            query = "MATCH (rn:RootNode) "           
+            query += "MATCH (rn)--(cf:ContentField)--(sen:Sentence)--(tag:Tag)--(syn:Synonym) "
+            query += "WHERE ("
+            
+            for i in range(0, len(search_query)):
+                
+                if (i == (len(search_query) - 1)):
+                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*')"                
+                else:
+                    query += "toLower(syn.label) =~ toLower('.*" + search_query[i] + ".*') or "                    
+                
+            query += ") "
+            query += "WITH rn, collect(cf) as cfs, collect(DISTINCT sen.original_sent) as sents1, collect(DISTINCT tag) as tags, collect(DISTINCT syn) as syns, count(DISTINCT syn) as totalCount "
+            query += "WITH rn, cfs, sents1, tags, syns, totalCount "
+            query += "WHERE (totalCount >= " + str(len(search_query)) + ") "
+            query += "RETURN rn.name as node_id, rn.title as node_title, rn.created as node_created, rn.changed as node_changed, sents1, totalCount "
+            query += "ORDER BY rn.changed DESC"
+            
+            result = session.run(query).data()
+        
+            
+            
+            for res in result:
+                exists = False
+                i = 0
+                for i in range(0, len(result_arr)):
+                    if (result_arr[i]['node_id'] == res['node_id']):
+                        
+                        exists = True
+                        break
+                
+                if (exists):
+                    
+                    
+                    for sent in res['sents1']:
+                        if (len(result_arr[i]['sents']) <= 2):                       
+                            if(sent not in result_arr[i]['sents']):
+                                result_arr[i]['sents'].append(sent)
+                                                                
+                else:
+                    elem = res
+                    elem['sents'] = []
+                    
+                    for sent in elem['sents1']:
+                        if (len(elem['sents']) <= 2):                       
+                            if(sent not in elem['sents']):
+                                elem['sents'].append(sent)                                            
+                    
+                    del(elem['sents1'])
+                    
+                    result_arr.append(elem)
+                    
+            
+                    
+            result_arr = sorted(result_arr, key=lambda x: x['node_changed'], reverse=True)
+            return result_arr
 
                 # Diese Funktion liefert zu einer Node ID von einer Drupal Node alle dazugehörigen Entitäten aus. Wird für die Graphenanzeige bei der Ansicht der Node benötigt
                 def get_entities_by_id(self, node_id):
@@ -606,9 +608,15 @@ class neo4jConnector(object):
                         query += "RETURN DISTINCT rn.name as node_id, ent.ner as ent_ner, ent.text as ent_text "
                         query += "ORDER BY ent.ner ASC"
 
-                        result = session.run(query).data()
+            result = session.run(query)
 
-                        return result
+            res_dict = []
+            for record in result:
+                res_dict.append({'node_id': record['node_id'], 'ent_ner': record['ent_ner'], 'ent_text': record['ent_text']})
+
+            return res_dict 
+
+                
 
     # Diese Funktion liefert zu einer Node ID von einer Drupal Node alle Entitäten aus, die durch einen Relation miteinander verbunden sind. Da nicht alle Entitäten
     # zwingend mit anderen Entitäten verbunden sein müssen, existieren zwei getrennte Funktionen.
@@ -622,9 +630,12 @@ class neo4jConnector(object):
             query += "WHERE (rn.name = '" + str(node_id) + "') "
             query += "RETURN DISTINCT rn.name as node_id, ent.ner as ent_ner, ent.text as ent_text, ent2.ner as ent2_ner, ent2.text as ent2_text, Type(rel) as rel "
 
-            result = session.run(query).data()
+            result = session.run(query)
+            res_dict = []
+            for record in result:
+                res_dict.append({'node_id': record['node_id'], 'ent_ner': record['ent_ner'], 'ent_text': record['ent_text'], 'ent2_ner': record['ent2_ner'], 'ent2_text': record['ent2_text'], 'rel': record['rel']})
 
-            return result
+            return res_dict
 
     # Diese Funktion arbeitet ähnlich wie get_node_by_id, nur das im Mittelpunkt eine Entität steht und keine Drupal Node ID. Wenn beim Grapen in der Ansicht der Node
     # doppelt auf eine Entität geklickt wird, sollen alle Entitäten und Hauptknoten geladen werden, die mit dieser Entität in Verbindung stehen. Diese Funktion lädt alle
